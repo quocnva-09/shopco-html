@@ -8,6 +8,7 @@
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
 @mixin on-event($self: false) {
   @if $self {
+
     &,
     &:hover,
     &:active,
@@ -15,7 +16,10 @@
     &:focus-within {
       @content;
     }
-  } @else {
+  }
+
+  @else {
+
     &:hover,
     &:active,
     &:focus,
@@ -34,3 +38,32 @@
   }
 }
 
+
+//tự define
+// _mixins.scss
+
+@mixin grid-layout($cols: 1, $gap: 20px) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat($cols, 1fr);
+}
+
+@mixin flex-group($gap: 12px, $justify: flex-start, $align: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

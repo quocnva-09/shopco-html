@@ -1,0 +1,59 @@
+@use '../abstracts' as *;
+
+.review-card {
+    border: 1px solid $grey-color;
+    border-radius: $radius-lg;
+    padding: $base-spacing * 2 $base-spacing * 1.75;
+    display: flex;
+    flex-direction: column;
+    gap: $base-spacing;
+    max-width: 610px;
+    height: auto;
+
+    &__header {
+        @include flex-between;
+    }
+
+    &__rating {
+        background: $icn-star;
+        width: 22px;
+        height: 21px;
+    }
+
+    &__menu {
+        background: $icn-3-dot;
+        border: none;
+        cursor: pointer;
+        width: 24px;
+        height: 7px;
+        padding: 0;
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 20px;
+        font-weight: 700;
+        color: $black-color;
+    }
+
+    &__verified-icon {
+        background: $icn-tick;
+        margin-left: 4px;
+        width: 21px;
+        height: 21px;
+    }
+
+    &__text {
+        line-height: 22px;
+        font-size: 16px;
+        color: $text-muted;
+    }
+
+    &__date {
+        font-size: 16px;
+        color: $text-muted;
+        margin-top: auto;
+    }
+}

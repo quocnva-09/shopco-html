@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+.related-products {
+    &__title {
+        text-align: center;
+        font-family: $font-family-title;
+        font-size: 48px;
+        font-weight: 700;
+        color: $black-color;
+        margin: 64px 0 55px 0;
+    }
+
+    &__list {
+        @include grid-layout(4, 20px);
+    }
+}

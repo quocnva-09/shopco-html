@@ -12,9 +12,14 @@
 // 3. Layout-related sections
 @use 'layout/footer';
 @use 'layout/header';
+@use 'layout/reviews';
+@use 'layout/related-products';
 
 // 4. Components
 @use 'components/button';
+@use 'components/tabs';
+@use 'components/review-card';
+@use 'components/product-card';
 
 // 5. Pages
 @use 'pages/home';

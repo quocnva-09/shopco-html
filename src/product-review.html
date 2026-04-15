@@ -5,61 +5,122 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Detail Page</title>
+  <link rel="stylesheet" href="../build/css/main.css">
 </head>
 
 <body>
-  <nav class="tabs">
-    <section class="tabs__item tabs__item--active">Product Details</section>
-    <section class="tabs__item">Rating & Reviews</section>
-    <section class="tabs__item">FAQs</section>
-  </nav>
+  <div class="container">
+    <nav class="tabs">
+      <section class="tabs__item">Product Details</section>
+      <section class="tabs__item tabs__item--active">Rating & Reviews</section>
+      <section class="tabs__item">FAQs</section>
+    </nav>
 
-  <section class="reviews">
-    <header class="reviews__header">
-      <h2 class="reviews__title">
-        All Reviews <span class="reviews__count">(120)</span>
-      </h2>
-      <div class="reviews__actions">
-        <button class="btn-icon btn-icon--filter"></button>
-        <div class="select-dropdown">Latest</div>
-        <button class="btn btn--write-review">Write a Review</button>
-      </div>
-    </header>
 
-    <div class="reviews__grid">
-      <div class="review-card">
-        <div class="review-card__header">
-          <div class="review-card__rating"></div>
-          <button class="review-card__menu">...</button>
+    <section class="reviews">
+      <header class="reviews__header">
+        <h2 class="reviews__title">
+          All Reviews <span class="reviews__count">(120)</span>
+        </h2>
+        <div class="reviews__actions">
+          <button class="btn btn--filter"></button>
+          <div class="select-dropdown">Latest</div>
+          <button class="btn btn--write-review">Write a Review</button>
         </div>
-        <div class="review-card__author">
-          <strong>Samantha D.</strong>
-          <span class="review-card__verified-icon"></span>
-        </div>
-        <p class="review-card__text">"I absolutely love this t-shirt!..."</p>
-        <time class="review-card__date">Posted on August 14, 2023</time>
-      </div>
-    </div>
-    <button class="btn btn--load-more">Load More Reviews</button>
-  </section>
+      </header>
 
-  <section class="related-products">
-    <h2 class="related-products__title">YOU MIGHT ALSO LIKE</h2>
-    <div class="related-products__list">
-      <div class="product-card">
-        <figure class="product-card__image">
-          <img src="" alt="">
-        </figure>
-        <h3 class="product-card__name"></h3>
-        <div class="product-card__rating"></div>
-        <div class="product-card__price">
-          <span class="product-card__price--current"></span>
-          <span class="product-card__price--old"></span>
-          <span class="product-card__price--discount"></span>
+      <div class="reviews__grid">
+        <div class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__rating"></div>
+            <button class="review-card__menu"></button>
+          </div>
+          <div class="review-card__author">
+            Samantha D.
+            <span class="review-card__verified-icon"></span>
+          </div>
+          <p class="review-card__text">"I absolutely love this t-shirt! The design is unique and the fabric feels so
+            comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to
+            shirt."</p>
+          <time class="review-card__date">Posted on August 14, 2023</time>
         </div>
       </div>
-    </div>
-  </section>
+      <button class="btn btn--load-more">Load More Reviews</button>
+    </section>
+
+    <section class="related-products">
+      <h2 class="related-products__title">YOU MIGHT ALSO LIKE</h2>
+      <div class="related-products__list">
+        <!-- Card 1 -->
+        <div class="product-card">
+          <figure class="product-card__image">
+            <img src="assets/images/pic-gradient-graphic-t-shirt.jpg" alt="Gradient Graphic T-Shirt">
+          </figure>
+          <h3 class="product-card__name">Gradient Graphic T-Shirt</h3>
+          <div class="product-card__rating">
+            <span class="product-card__rating--start"></span>
+            <p>4.5/<span>5</span></p>
+          </div>
+          <div class="product-card__price">
+            <span class="product-card__price--current">$212</span>
+            <span class="product-card__price--old">$242</span>
+            <span class="product-card__price--discount">-20%</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="product-card">
+          <figure class="product-card__image">
+            <img src="assets/images/pic-gradient-graphic-t-shirt.jpg" alt="Gradient Graphic T-Shirt">
+          </figure>
+          <h3 class="product-card__name">Gradient Graphic T-Shirt</h3>
+          <div class="product-card__rating">
+            <span class="product-card__rating--start"></span>
+            <p>4.5/<span>5</span></p>
+          </div>
+          <div class="product-card__price">
+            <span class="product-card__price--current">$212</span>
+            <span class="product-card__price--old">$242</span>
+            <span class="product-card__price--discount">-20%</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="product-card">
+          <figure class="product-card__image">
+            <img src="assets/images/pic-gradient-graphic-t-shirt.jpg" alt="Gradient Graphic T-Shirt">
+          </figure>
+          <h3 class="product-card__name">Gradient Graphic T-Shirt</h3>
+          <div class="product-card__rating">
+            <span class="product-card__rating--start"></span>
+            <p>4.5/<span>5</span></p>
+          </div>
+          <div class="product-card__price">
+            <span class="product-card__price--current">$212</span>
+            <span class="product-card__price--old">$242</span>
+            <span class="product-card__price--discount">-20%</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="product-card">
+          <figure class="product-card__image">
+            <img src="assets/images/pic-gradient-graphic-t-shirt.jpg" alt="Gradient Graphic T-Shirt">
+          </figure>
+          <h3 class="product-card__name">Gradient Graphic T-Shirt</h3>
+          <div class="product-card__rating">
+            <span class="product-card__rating--start"></span>
+            <p>4.5/<span>5</span></p>
+          </div>
+          <div class="product-card__price">
+            <span class="product-card__price--current">$212</span>
+            <span class="product-card__price--old">$242</span>
+            <span class="product-card__price--discount">-20%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
 </body>
 

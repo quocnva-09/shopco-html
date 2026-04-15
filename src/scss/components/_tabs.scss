@@ -1,0 +1,31 @@
+@use '../abstracts' as *;
+
+.tabs {
+  @include flex-center(row);
+  gap: $base-spacing;
+  border-bottom: 1px solid $grey-color;
+
+  &__item {
+    min-width: 414px;
+    height: auto;
+    @include flex-center;
+    font-size: 20px;
+    color: $text-muted;
+    padding-bottom: 20px;
+    position: relative;
+
+    &--active {
+      color: $text-color;
+      font-weight: 500;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-bottom: 2px solid $black-color;
+      }
+    }
+  }
+}

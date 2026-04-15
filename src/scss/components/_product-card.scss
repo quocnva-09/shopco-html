@@ -1,0 +1,67 @@
+@use '../abstracts' as *;
+
+.product-card {
+    @include flex-group(0px, flex-start, flex-start);
+    flex-direction: column;
+
+    &__image {
+        margin: 0;
+
+        & img {
+            border-radius: $radius-lg;
+            max-width: 295px;
+            height: auto;
+        }
+    }
+
+    &__name {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 16px 0 0 0;
+    }
+
+    &__rating {
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        & span {
+            color: $text-muted;
+        }
+
+        &--start {
+            content: "";
+            background: $icn-star;
+            width: 22px;
+            height: 21px;
+        }
+    }
+
+    &__price {
+        margin-top: 8px;
+        font-size: 24px;
+        font-weight: 700;
+        @include flex-group(10px, flex-start, center);
+
+        &--current {
+            color: $black-color;
+        }
+
+        &--old {
+            color: $text-muted;
+            text-decoration: line-through;
+        }
+
+        &--discount {
+            padding: 6px 13.5px;
+            color: $danger-color;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: $radius-pill;
+            background-color: $label-danger-color;
+        }
+    }
+}

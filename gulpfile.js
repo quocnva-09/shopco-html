@@ -9,7 +9,6 @@ function buildStyles() {
     .pipe(sourcemaps.init())
     //compress scss to css
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-    .pipe(autoprefixer('last 2 versions'))
     .pipe(sourcemaps.write('.'))
     //export ra folder build/css
     .pipe(dest('build/css'));

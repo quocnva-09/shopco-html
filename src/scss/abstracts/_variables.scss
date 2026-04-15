@@ -2,70 +2,41 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
+$max-width: 1440px;
 
+//font
+$font-family-base: "Satoshi", sans-serif;
+$font-family-title: "IntegralCF", sans-serif;
+$text-font-stack: "Satoshi", sans-serif;
 
+//color
+$primary-color: #fff; // Màu chủ đạo (đen)
+$danger-color: #ff3333;
+$white-color: #f0eeed;
+$grey-color: #f0f0f0;
+$grey-color-hover: #999;
+$black-color: #000;
+$text-color: #000;
+$text-muted: #999;
+$label-danger-color: #ffebeb;
 
+//radius
+$radius-pill: 62px;
+$radius-lg: 20px;
 
-/// Regular font family
-/// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+//space
+$base-spacing: 16px;
 
-/// Code (monospace) font family
-/// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+//icon
+$icn-3-dot: url("../../src/assets/icons/icn-3-dot.svg") no-repeat center/cover;
+$icn-arrow-down: url("../../src/assets/icons/icn-arrow-down.svg") no-repeat center/cover;
+$icn-filter: url("../../src/assets/icons/icn-filter.svg") no-repeat center/cover;
+$icn-half-star: url("../../src/assets/icons/icn-half-star.svg") no-repeat center/cover;
+$icn-star: url("../../src/assets/icons/icn-star.svg") no-repeat center/cover;
+$icn-tick: url("../../src/assets/icons/icn-tick.svg") no-repeat center/cover;
 
-
-
-
-
-/// Copy text color
-/// @type Color
-$text-color: rgb(34, 34, 34) !default;
-
-/// Main brand color
-/// @type Color
-$brand-color: rgb(229, 0, 80) !default;
-
-/// Light grey
-/// @type Color
-$light-grey: rgb(237, 237, 237) !default;
-
-/// Medium grey
-/// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
-
-/// Dark grey
-/// @type Color
-$dark-grey: rgb(68, 68, 68) !default;
-
-
-
-
-
-/// Container's maximum width
-/// @type Length
-$max-width: 1180px !default;
-
-
-
-
-
-/// Breakpoints map
-/// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: (
-  'small': 320px,
-  'medium': 768px,
-  'large': 1024px,
-) !default;
-
-
-
-
-
-
-/// Relative or absolute URL where all assets are served from
-/// @type String
-/// @example scss - When using a CDN
-///   $base-url: 'https://cdn.example.com/assets/';
-$base-url: '/assets/' !default;
+//image
+$img-black-sctrip: url("../../src/assets/images/pic-black-sctrip-t-shirt.jpg") no-repeat center/cover;
+$img-gradient-graphic: url("../../src/assets/images/pic-gradient-graphic-t-shirt.jpg") no-repeat center/cover;
+$img-polo-contrast: url("../../src/assets/images/pic-polo-with-contrast-trims.jpg") no-repeat center/cover;
+$img-polo-tipping: url("../../src/assets/images/pic-polo-with-tipping-detail.jpg") no-repeat center/cover;
