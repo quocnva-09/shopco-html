@@ -1,47 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Detail Page</title>
 </head>
+
 <body>
   <nav class="tabs">
-    <section class="tabs__item"></section>
-    <section class="tabs__item"></section>
-    <section class="tabs__item"></section>
+    <section class="tabs__item tabs__item--active">Product Details</section>
+    <section class="tabs__item">Rating & Reviews</section>
+    <section class="tabs__item">FAQs</section>
   </nav>
 
-  <section class="main-content">
-    <header class="main-content__header">
-      <div class="main-content__title"></div>
-      <div class="main-content__btn--filter"></div>
-      <div class="main-content__btn--sort"></div>
-      <div class="main-content__btn--write"></div>
+  <section class="reviews">
+    <header class="reviews__header">
+      <h2 class="reviews__title">
+        All Reviews <span class="reviews__count">(120)</span>
+      </h2>
+      <div class="reviews__actions">
+        <button class="btn-icon btn-icon--filter"></button>
+        <div class="select-dropdown">Latest</div>
+        <button class="btn btn--write-review">Write a Review</button>
+      </div>
     </header>
-    <div class="review">
-      <div class="review__rating"></div>
-      <div class="review__author"></div>
-      <div class="review__text"></div>
-      <div class="review__posted-time"></div>
+
+    <div class="reviews__grid">
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__rating"></div>
+          <button class="review-card__menu">...</button>
+        </div>
+        <div class="review-card__author">
+          <strong>Samantha D.</strong>
+          <span class="review-card__verified-icon"></span>
+        </div>
+        <p class="review-card__text">"I absolutely love this t-shirt!..."</p>
+        <time class="review-card__date">Posted on August 14, 2023</time>
+      </div>
     </div>
-    <button class="main-content__btn--more">
-    </button>
+    <button class="btn btn--load-more">Load More Reviews</button>
   </section>
 
-  <section class="related-items">
-    <div class="related-items__title"></div>
-    <div class="slicer_items">
-      <div class="item">
-        <figure class="item__pic">
+  <section class="related-products">
+    <h2 class="related-products__title">YOU MIGHT ALSO LIKE</h2>
+    <div class="related-products__list">
+      <div class="product-card">
+        <figure class="product-card__image">
           <img src="" alt="">
         </figure>
-        <div class="item__title"></div>
-        <div class="item__rating"></div>
-        <div class="item__price"></div>
+        <h3 class="product-card__name"></h3>
+        <div class="product-card__rating"></div>
+        <div class="product-card__price">
+          <span class="product-card__price--current"></span>
+          <span class="product-card__price--old"></span>
+          <span class="product-card__price--discount"></span>
+        </div>
       </div>
     </div>
   </section>
 
 </body>
+
 </html>
