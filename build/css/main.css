@@ -560,6 +560,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
+  align-items: center;
 }
 .tab-content__header {
   display: flex;

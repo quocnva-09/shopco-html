@@ -43,7 +43,6 @@ function processFilter() {
       const selectedRating = Number(ratingRow.getAttribute("data-rating"));
       showReviews(selectedRating);
       menu.style.display = "none";
-      ratingRow.stopPropagation();
     });
   });
 
@@ -158,8 +157,8 @@ function productSlider() {
   btnPrev.addEventListener("click", () => {
     if (currentIndex > 0) {
       currentIndex--;
-      updateSlider();
     }
+    updateSlider();
   });
 
   btnNext.addEventListener("click", () => {
