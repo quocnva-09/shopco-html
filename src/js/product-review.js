@@ -187,7 +187,7 @@ function productSlider() {
         currentIndex = 0;
       }
       updateSlider();
-    }, 2000);
+    }, 30000);
   }
   function stopAutoSlide() {
     clearInterval(autoSlideInterval);
