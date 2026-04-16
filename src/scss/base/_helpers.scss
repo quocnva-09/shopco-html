@@ -1,4 +1,4 @@
-@use '../abstracts';
+@use "../abstracts" as *;
 
 // -----------------------------------------------------------------------------
 // This file contains CSS helper classes.
@@ -9,7 +9,7 @@
  */
 .clearfix::after {
   clear: both;
-  content: '';
+  content: "";
   display: table;
 }
 
@@ -20,7 +20,7 @@
  * 3. Leave some space on the edges, especially valuable on small screens
  */
 .container {
-  max-width: abstracts.$max-width;
+  max-width: $max-width;
   /* 1 */
   margin-left: auto;
   /* 2 */
@@ -61,4 +61,41 @@
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.rating-row {
+  @include flex-center;
+  justify-content: flex-start;
+  gap: $base-spacing * 0.5;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.rating {
+  @include flex-center;
+  gap: $base-spacing * 0.5;
+
+  &__star {
+    display: block;
+    width: 21px;
+    height: 21px;
+    background: $icn-star;
+  }
+
+  &__star--half {
+    display: block;
+    width: 11px;
+    height: 21px;
+    background: $icn-half-star;
+  }
+}
+
+.verified-icon {
+  background: $icn-tick;
+  margin-left: 4px;
+  width: 21px;
+  height: 21px;
 }

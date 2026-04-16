@@ -14,6 +14,9 @@
 @use 'layout/header';
 @use 'layout/reviews';
 @use 'layout/related-products';
+@use 'layout/tab-content';
+@use 'layout/faqs';
+@use 'layout/details';
 
 // 4. Components
 @use 'components/button';

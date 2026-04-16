@@ -11,116 +11,53 @@
 <body>
   <div class="container">
     <nav class="tabs">
-      <section class="tabs__item">Product Details</section>
-      <section class="tabs__item tabs__item--active">Rating & Reviews</section>
-      <section class="tabs__item">FAQs</section>
+      <section class="tabs__item" data-tab="js-details">Product Details</section>
+      <section class="tabs__item tabs__item--active" data-tab="js-reviews">Rating & Reviews</section>
+      <section class="tabs__item" data-tab="js-faqs">FAQs</section>
     </nav>
 
+    <section class="details js-tab-content tab-content" id="js-details">
+      <div class="tab-content__header">
+        <h2 class="tab-content__title">
+          Product Details
+        </h2>
+      </div>
+    </section>
 
-    <section class="reviews">
-      <header class="reviews__header">
-        <h2 class="reviews__title">
+    <section class="reviews js-tab-content tab-content" id="js-reviews">
+      <header class="tab-content__header">
+        <h2 class="tab-content__title">
           All Reviews <span class="reviews__count">(120)</span>
         </h2>
         <div class="reviews__actions">
-          <button class="btn btn--filter"></button>
+          <button class="btn btn--filter" id="js-btn-filter">
+            <div class="btn--filter__menu"></div>
+          </button>
           <div class="select-dropdown">Latest</div>
           <button class="btn btn--write-review">Write a Review</button>
         </div>
       </header>
 
-      <div class="reviews__grid">
-        <div class="review-card">
-          <div class="review-card__header">
-            <div class="review-card__rating"></div>
-            <button class="review-card__menu"></button>
-          </div>
-          <div class="review-card__author">
-            Samantha D.
-            <span class="review-card__verified-icon"></span>
-          </div>
-          <p class="review-card__text">"I absolutely love this t-shirt! The design is unique and the fabric feels so
-            comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to
-            shirt."</p>
-          <time class="review-card__date">Posted on August 14, 2023</time>
-        </div>
+      <div class="reviews__grid" id="js-reviews-grid">
       </div>
       <button class="btn btn--load-more">Load More Reviews</button>
     </section>
 
+    <section class="faqs js-tab-content tab-content" id="js-faqs">
+      <div class="tab-content__header">
+        <h2 class="tab-content__title">
+          Frequently Asked Questions
+        </h2>
+      </div>
+    </section>
+
     <section class="related-products">
       <h2 class="related-products__title">YOU MIGHT ALSO LIKE</h2>
-      <div class="related-products__list">
-        <!-- Card 1 -->
-        <div class="product-card">
-          <figure class="product-card__image">
-            <img src="assets/images/pic-gradient-graphic-t-shirt.jpg" alt="Gradient Graphic T-Shirt">
-          </figure>
-          <h3 class="product-card__name">Gradient Graphic T-Shirt</h3>
-          <div class="product-card__rating">
-            <span class="product-card__rating--start"></span>
-            <p>4.5/<span>5</span></p>
-          </div>
-          <div class="product-card__price">
-            <span class="product-card__price--current">$212</span>
-            <span class="product-card__price--old">$242</span>
-            <span class="product-card__price--discount">-20%</span>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="product-card">
-          <figure class="product-card__image">
-            <img src="assets/images/pic-gradient-graphic-t-shirt.jpg" alt="Gradient Graphic T-Shirt">
-          </figure>
-          <h3 class="product-card__name">Gradient Graphic T-Shirt</h3>
-          <div class="product-card__rating">
-            <span class="product-card__rating--start"></span>
-            <p>4.5/<span>5</span></p>
-          </div>
-          <div class="product-card__price">
-            <span class="product-card__price--current">$212</span>
-            <span class="product-card__price--old">$242</span>
-            <span class="product-card__price--discount">-20%</span>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="product-card">
-          <figure class="product-card__image">
-            <img src="assets/images/pic-gradient-graphic-t-shirt.jpg" alt="Gradient Graphic T-Shirt">
-          </figure>
-          <h3 class="product-card__name">Gradient Graphic T-Shirt</h3>
-          <div class="product-card__rating">
-            <span class="product-card__rating--start"></span>
-            <p>4.5/<span>5</span></p>
-          </div>
-          <div class="product-card__price">
-            <span class="product-card__price--current">$212</span>
-            <span class="product-card__price--old">$242</span>
-            <span class="product-card__price--discount">-20%</span>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="product-card">
-          <figure class="product-card__image">
-            <img src="assets/images/pic-gradient-graphic-t-shirt.jpg" alt="Gradient Graphic T-Shirt">
-          </figure>
-          <h3 class="product-card__name">Gradient Graphic T-Shirt</h3>
-          <div class="product-card__rating">
-            <span class="product-card__rating--start"></span>
-            <p>4.5/<span>5</span></p>
-          </div>
-          <div class="product-card__price">
-            <span class="product-card__price--current">$212</span>
-            <span class="product-card__price--old">$242</span>
-            <span class="product-card__price--discount">-20%</span>
-          </div>
-        </div>
+      <div class="related-products__list" id="js-related-products">
       </div>
     </section>
   </div>
+  <script src="js/product-review.js"></script>
 
 </body>
 

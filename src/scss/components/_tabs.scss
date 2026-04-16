@@ -1,4 +1,4 @@
-@use '../abstracts' as *;
+@use "../abstracts" as *;
 
 .tabs {
   @include flex-center(row);
@@ -6,13 +6,15 @@
   border-bottom: 1px solid $grey-color;
 
   &__item {
-    min-width: 414px;
+    max-width: 414px;
     height: auto;
     @include flex-center;
     font-size: 20px;
+    cursor: pointer;
     color: $text-muted;
     padding-bottom: 20px;
     position: relative;
+    flex: 1;
 
     &--active {
       color: $text-color;

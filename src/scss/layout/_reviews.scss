@@ -1,30 +1,20 @@
-@use '../abstracts' as *;
+@use "../abstracts" as *;
 
 .reviews {
-    max-width: 100%;
-    margin: 24px auto;
-    display: grid;
-    grid-template-columns: 1fr;
+  &__count {
+    font-size: 16px;
+    font-weight: 400;
+    color: $text-muted;
+  }
+
+  &__actions {
+    @include flex-center(row);
     gap: $base-spacing;
+    position: relative;
+  }
 
-    &__header {
-        @include flex-center(row);
-        justify-content: space-between;
-    }
-
-    &__title {
-        font-size: 24px;
-        font-weight: 700;
-    }
-
-    &__count {
-        font-size: 16px;
-        font-weight: 400;
-        color: $text-muted;
-    }
-
-    &__actions {
-        @include flex-center(row);
-        gap: $base-spacing;
-    }
+  &__grid {
+    @include grid-layout(2, 1fr);
+    gap: $base-spacing;
+  }
 }

@@ -5,11 +5,8 @@ const sourcemaps = require('gulp-sourcemaps');
 
 function buildStyles() {
   return src('src/scss/**/*.scss')
-    //tạo sourcemap để tracking scss
-    .pipe(sourcemaps.init())
     //compress scss to css
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-    .pipe(sourcemaps.write('.'))
     //export ra folder build/css
     .pipe(dest('build/css'));
 }
