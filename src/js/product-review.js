@@ -136,6 +136,7 @@ async function showProducts() {
 				<h3 class="product-card__name">${product.name}</h3>
 				<div class="product-card__rating">
 					<div class="rating">${renderRating(product.rating)}</div>
+          <p>${product.rating}<span>/5</span></p>
 				</div>
 				<div class="product-card__price">
 					<span class="product-card__price--current">$${product.price}</span>
@@ -148,9 +149,45 @@ async function showProducts() {
   productContainer.innerHTML = htmlContent;
 }
 
+function productSlider() {
+  let currentIndex = 0;
+  let totalProducts = 8;
+
+  const btnPrev = document.querySelector(".js-prev");
+  const btnNext = document.querySelector(".js-next");
+
+  btnPrev.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = totalProducts - 4;
+    }
+    updateSlider();
+  });
+
+  btnNext.addEventListener("click", () => {
+    if (currentIndex < totalProducts - 4) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
+    updateSlider();
+  });
+
+  function updateSlider() {
+    const list = document.getElementById("js-related-products");
+    const firstCard = list.querySelector(".product-card");
+
+    const slideDistance = firstCard.offsetWidth + 20;
+
+    list.style.transform = `translateX(-${currentIndex * slideDistance}px)`;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   processTabs();
   processFilter();
   showReviews();
   showProducts();
+  productSlider();
 });
