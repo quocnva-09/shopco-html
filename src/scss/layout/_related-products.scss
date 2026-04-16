@@ -15,8 +15,9 @@
 
   &__list {
     @include flex-center;
-    justify-content: center;
-    gap: $base-spacing;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 20px;
     width: 100%;
     transition: transform 0.5s ease;
 
@@ -54,6 +55,12 @@
     transition: 0.6s ease;
     z-index: 10;
     border-radius: $radius-lg;
+  }
+
+  &__prev:hover,
+  &__next:hover {
+    color: $grey-color-hover;
+    cursor: pointer;
   }
 
   &__prev {

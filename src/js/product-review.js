@@ -151,22 +151,19 @@ async function showProducts() {
 
 function productSlider() {
   let currentIndex = 0;
-  let totalProducts = 8;
-
+  const MAX_INDEX = 4;
   const btnPrev = document.querySelector(".js-prev");
   const btnNext = document.querySelector(".js-next");
 
   btnPrev.addEventListener("click", () => {
     if (currentIndex > 0) {
       currentIndex--;
-    } else {
-      currentIndex = totalProducts - 4;
+      updateSlider();
     }
-    updateSlider();
   });
 
   btnNext.addEventListener("click", () => {
-    if (currentIndex < totalProducts - 4) {
+    if (currentIndex < MAX_INDEX) {
       currentIndex++;
     } else {
       currentIndex = 0;
@@ -182,6 +179,22 @@ function productSlider() {
 
     list.style.transform = `translateX(-${currentIndex * slideDistance}px)`;
   }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      if (currentIndex < MAX_INDEX) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateSlider();
+    }, 2000);
+  }
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  startAutoSlide();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
