@@ -154,7 +154,7 @@ async function showProducts() {
     htmlContent += `
 			<div class="product-card">
 				<figure class="product-card__image">
-					<img src="${validImage}" alt="${product.name}">
+					<img src="${validImage}" alt="${product.name}" onerror="this.onerror=null; this.src='assets/images/default.png';">
 				</figure>
 				<div class="product-card__name-wrapper">
 					<h3 class="product-card__name">${product.name}</h3>

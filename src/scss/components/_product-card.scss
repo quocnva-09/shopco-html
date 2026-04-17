@@ -102,4 +102,46 @@
       background-color: $label-danger-color;
     }
   }
+
+  &--detail {
+    align-items: flex-start;
+    gap: 0;
+
+    .product-card__name {
+      font-size: 32px;
+      margin: 0 0 12px 0;
+      white-space: normal;
+      overflow: visible;
+      color: $text-dark;
+      font-family: $font-family-title;
+      width: 100%;
+    }
+
+    .product-card__rating {
+      margin-top: 0;
+      margin-bottom: 24px;
+      gap: 8px;
+    }
+
+    .product-card__rating-text {
+      font-size: 14px;
+      color: $text-dark;
+      margin: 0;
+
+      &--muted {
+        color: $text-muted;
+      }
+    }
+
+    .product-card__price {
+      margin-top: 0;
+      margin-bottom: 24px;
+      gap: 12px;
+
+      &--discount {
+        padding: 4px 12px;
+        font-size: 14px;
+      }
+    }
+  }
 }

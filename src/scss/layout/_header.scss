@@ -1,3 +1,156 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.top-bar {
+  background-color: $black-color;
+  color: $primary-color;
+  padding: 10px 0;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &__text {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  &__link {
+    color: $primary-color;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  &__close {
+    position: absolute;
+    right: 0;
+    background: none;
+    border: none;
+    color: $primary-color;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    margin-right: 350px;
+  }
+}
+
+.header {
+  &__main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 24px 0;
+    gap: 40px;
+    min-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 350px;
+    padding-right: 350px;
+    width: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 350px;
+      right: 350px;
+      height: 1px;
+      background-color: #e0e0e0;
+    }
+  }
+
+  &__logo {
+    font-family: $font-family-title;
+    font-size: 32px;
+    font-weight: 700;
+    color: $black-color;
+    text-decoration: none;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &-link {
+      color: $black-color;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 16px;
+
+      &:hover {
+        color: $text-muted;
+      }
+    }
+  }
+
+  &__search {
+    flex: 1;
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: $white-color;
+      border-radius: $radius-pill;
+      padding: 12px 16px;
+      gap: 12px;
+
+      &__btn {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+
+      &__icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      &__input {
+        border: none;
+        background: transparent;
+        width: 100%;
+        outline: none;
+        font-family: $font-family-base;
+        font-size: 16px;
+
+        &::placeholder {
+          color: $text-muted;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .icon-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

@@ -1,31 +1,35 @@
 @charset "UTF-8";
 
 // 1. Vendors
-@use 'vendors/normalize';
+@use "vendors/normalize";
 
 // 2. Base stuff
-@use 'base/base';
-@use 'base/fonts';
-@use 'base/helpers';
-@use 'base/typography';
+@use "base/base";
+@use "base/fonts";
+@use "base/helpers";
+@use "base/typography";
 
 // 3. Layout-related sections
-@use 'layout/footer';
-@use 'layout/header';
-@use 'layout/reviews';
-@use 'layout/related-products';
-@use 'layout/tab-content';
-@use 'layout/faqs';
-@use 'layout/details';
+@use "layout/footer";
+@use "layout/header";
+@use "layout/reviews";
+@use "layout/related-products";
+@use "layout/tab-content";
+@use "layout/faqs";
+@use "layout/details";
 
 // 4. Components
-@use 'components/button';
-@use 'components/tabs';
-@use 'components/review-card';
-@use 'components/product-card';
+@use "components/button";
+@use "components/tabs";
+@use "components/review-card";
+@use "components/product-card";
+@use "components/breadcrumb";
+@use "components/size-selector";
+@use "components/color-selector";
 
 // 5. Pages
-@use 'pages/home';
+@use "pages/home";
+@use "pages/product-detail";
 
 // 6. Themes
-@use 'themes/default';
+@use "themes/default";

@@ -73,6 +73,31 @@
       opacity: 0.6;
     }
   }
+
+  &--add-to-cart {
+    flex: 1;
+    border-radius: 24px;
+    background-color: $text-dark;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &--qty-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: $text-dark;
+    padding: 8px;
+  }
 }
 
 .select-dropdown {

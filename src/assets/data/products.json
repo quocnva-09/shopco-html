@@ -6,21 +6,27 @@
         "rating": 4.0,
         "price": 212,
         "oldPrice": 242,
-        "discount": "-20%"
+        "discount": "-20%",
+        "description": null,
+        "color": null
     },
     {
         "id": 2,
         "name": "Gradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirt",
         "image": "assets/images/pic-gradient-graphic-t-shirt.jpg",
         "rating": 3.5,
-        "price": 145
+        "price": 145,
+        "description": null,
+        "color": null
     },
     {
         "id": 3,
         "name": "Polo with Tipping Details",
         "image": "assets/images/pic-polo-with-tipping-detail.jpg",
         "rating": 4.5,
-        "price": 180
+        "price": 180,
+        "description": null,
+        "color": null
     },
     {
         "id": 4,
@@ -29,7 +35,9 @@
         "rating": 5.0,
         "price": 120,
         "oldPrice": 150,
-        "discount": "-30%"
+        "discount": "-30%",
+        "description": null,
+        "color": null
     },
     {
         "id": 5,
@@ -38,27 +46,60 @@
         "rating": 5.0,
         "price": 120,
         "oldPrice": 150,
-        "discount": "-30%"
+        "discount": "-30%",
+        "description": null,
+        "color": null
     },
     {
         "id": 6,
         "name": "Wonderful T-Shirt",
         "image": "assets/images/pic-gradient-graphic-t-shirt.jpg",
         "rating": 4.0,
-        "price": 145
+        "price": 145,
+        "description": null,
+        "color": null
     },
     {
         "id": 7,
         "name": "Polo Details",
         "image": "assets/images/pic-polo-with-tipping-detail.jpg",
         "rating": 4.5,
-        "price": 500
+        "price": 500,
+        "description": null,
+        "color": null
     },
     {
         "id": 8,
         "name": "Black T-shirt",
         "image": "assets/images/pic-black-sctrip-t-shirt.jpg",
         "rating": 5.0,
-        "price": 120
+        "price": 120,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 9,
+        "name": "One Life Graphic T-Shirt",
+        "image": [
+            "assets/images/product-1/pic-prod-1.png",
+            "assets/images/product-1/pic-prod-2.png",
+            "assets/images/product-1/pic-prod-3.png"
+        ],
+        "rating": 4.5,
+        "price": 260,
+        "oldPrice": 300,
+        "discount": "-40%",
+        "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+        "color": [
+            "#4f4631",
+            "#314f4a",
+            "#31344f"
+        ],
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ]
     }
 ]

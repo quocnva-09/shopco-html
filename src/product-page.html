@@ -3,56 +3,319 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Page</title>
+    <title>Product Detail Page</title>
+    <link rel="stylesheet" href="../build/css/main.css" />
   </head>
   <body>
-    <header>
-      <div class="header__notification"></div>
-      <nav class="header__nav">
-        <div class="header__logo"></div>
-        <div class="header__tab header__tab--shop"></div>
-        <div class="header__tab header__tab--on-sale"></div>
-        <div class="header__tab header__tab--new-arrivals"></div>
-        <div class="header__tab header__tab--brands"></div>
-        <div class="header__search"></div>
-        <div class="header__cart"></div>
-        <div class="header__user"></div>
-      </nav>
-      <div class="header__breadcrumb">
-        <div class="header__breadcrumb__item"></div>
+    <header class="header">
+      <div class="top-bar">
+        <div class="top-bar__container container">
+          <p class="top-bar__text">
+            Sign up and get 20% off to your first order.
+            <a href="#" class="top-bar__link">Sign Up Now</a>
+          </p>
+          <button
+            class="top-bar__close"
+            aria-label="Close notification"
+            id="js-close-top-bar"
+          >
+            <span>&#10005;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="header__main container">
+        <a href="/" class="header__logo">SHOP.CO</a>
+
+        <nav class="header__nav">
+          <ul class="header__menu">
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link"
+                >Shop
+                <img
+                  src="assets/icons/icn-arrow-down.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="header__menu-icon"
+              /></a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">On Sale</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">New Arrivals</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">Brands</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header__search">
+          <form action="#" class="search-bar">
+            <button type="submit" class="search-bar__btn" aria-label="Search">
+              <img src="assets/icons/icn-look-up.svg" alt="" />
+            </button>
+            <input
+              type="text"
+              class="search-bar__input"
+              placeholder="Search for products..."
+            />
+          </form>
+        </div>
+
+        <div class="header__actions">
+          <button class="icon-btn" aria-label="Cart">
+            <img src="assets/icons/icn-cart.svg" alt="" />
+          </button>
+          <button class="icon-btn" aria-label="User Profile">
+            <img src="assets/icons/icn-user.svg" alt="" />
+          </button>
+        </div>
       </div>
     </header>
-    <main>
-      <div class="product-page">
-        <div class="product-collections">
-          <div class="product-collections__item"></div>
-        </div>
-        <div class="product-page__image"></div>
-        <div class="product-page__info">
-          <div class="product-card">
-            <div class="product-card__name-wrapper">
-              <h3 class="product-card__name"></h3>
-              <h3 class="product-card__name-full"></h3>
-            </div>
+
+    <main class="container">
+      <div class="breadcrumb">
+        <a href="#" class="breadcrumb__item">Home</a>
+        <span class="breadcrumb__separator">&#10095;</span>
+        <a href="#" class="breadcrumb__item">Shop</a>
+        <span class="breadcrumb__separator">&#10095;</span>
+        <a href="#" class="breadcrumb__item">Men</a>
+        <span class="breadcrumb__separator">&#10095;</span>
+        <span class="breadcrumb__item breadcrumb__item--active">T-shirts</span>
+      </div>
+
+      <section class="product-detail">
+        <figure class="product-detail__gallery">
+          <div class="product-detail__thumbnails">
+            <img
+              src="assets/images/one-life-t-shirt/pic-one-life-graphic-t-shirt-1.png"
+              class="product-detail__thumbnail product-detail__thumbnail--active"
+              alt="Thumbnail 1"
+            />
+            <img
+              src="assets/images/one-life-t-shirt/pic-one-life-graphic-t-shirt-2.png"
+              class="product-detail__thumbnail"
+              alt="Thumbnail 2"
+            />
+            <img
+              src="assets/images/one-life-t-shirt/pic-one-life-graphic-t-shirt-3.png"
+              class="product-detail__thumbnail"
+              alt="Thumbnail 3"
+            />
+          </div>
+          <div class="product-detail__main-image">
+            <img
+              id="js-main-image"
+              src="assets/images/one-life-t-shirt/pic-one-life-graphic-t-shirt-1.png"
+              alt="Main Product"
+            />
+          </div>
+        </figure>
+
+        <div class="product-detail__info">
+          <div class="product-card product-card--detail">
+            <h1 class="product-card__name">One Life Graphic Tshirt</h1>
+
             <div class="product-card__rating">
-              <div class="rating"></div>
-              <p></p>
+              <div class="rating">
+                <span class="rating__star"></span>
+                <span class="rating__star"></span>
+                <span class="rating__star"></span>
+                <span class="rating__star"></span>
+                <span class="rating__star--half"></span>
+              </div>
+              <p class="product-card__rating-text">
+                4.5<span class="product-card__rating-text--muted">/5</span>
+              </p>
             </div>
+
             <div class="product-card__price">
-              <span class="product-card__price--current"></span>
-              <span class="product-card__price--old"></span>
-              <span class="product-card__price--discount"></span>
-            </div>
-            <div class="product-card__description"></div>
-            <div class="product-card__color"></div>
-            <div class="product-card__size"></div>
-            <div class="product-card__quantity-wrapper">
-              <div class="product-card__quantity"></div>
-              <div class="product-card__quantity-actions"></div>
+              <span class="product-card__price--current">$260</span>
+              <span class="product-card__price--old">$300</span>
+              <span class="product-card__price--discount">-40%</span>
             </div>
           </div>
+
+          <p class="product-detail__description">
+            This graphic t-shirt which is perfect for any occasion. Crafted from
+            a soft and breathable fabric, it offers superior comfort and style.
+          </p>
+
+          <form class="product-detail__form" id="js-add-to-cart-form">
+            <div class="product-detail__variant">
+              <span class="product-detail__variant-label">Select Colors</span>
+              <div class="color-selector">
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-1"
+                  value="green"
+                  checked
+                  class="color-selector__input"
+                />
+                <label
+                  for="color-1"
+                  class="color-selector__label"
+                  style="background-color: #4f4631"
+                ></label>
+
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-2"
+                  value="green-dark"
+                  class="color-selector__input"
+                />
+                <label
+                  for="color-2"
+                  class="color-selector__label"
+                  style="background-color: #314f4a"
+                ></label>
+
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-3"
+                  value="purple"
+                  class="color-selector__input"
+                />
+                <label
+                  for="color-3"
+                  class="color-selector__label"
+                  style="background-color: #31344f"
+                ></label>
+              </div>
+            </div>
+
+            <div class="product-detail__variant">
+              <span class="product-detail__variant-label">Choose Size</span>
+              <div class="size-selector">
+                <input
+                  type="radio"
+                  name="size"
+                  id="size-sm"
+                  value="Small"
+                  class="size-selector__input"
+                />
+                <label for="size-sm" class="size-selector__label">Small</label>
+
+                <input
+                  type="radio"
+                  name="size"
+                  id="size-md"
+                  value="Medium"
+                  checked
+                  class="size-selector__input"
+                />
+                <label for="size-md" class="size-selector__label">Medium</label>
+
+                <input
+                  type="radio"
+                  name="size"
+                  id="size-lg"
+                  value="Large"
+                  class="size-selector__input"
+                />
+                <label for="size-lg" class="size-selector__label">Large</label>
+
+                <input
+                  type="radio"
+                  name="size"
+                  id="size-xl"
+                  value="X-Large"
+                  class="size-selector__input"
+                />
+                <label for="size-xl" class="size-selector__label"
+                  >X-Large</label
+                >
+              </div>
+            </div>
+
+            <div class="product-detail__actions">
+              <div class="product-detail__quantity">
+                <button type="button" class="btn btn--qty-btn js-qty-decrease">
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="product-detail__qty-input js-qty-input"
+                  value="1"
+                  min="1"
+                />
+                <button type="button" class="btn btn--qty-btn js-qty-increase">
+                  +
+                </button>
+              </div>
+              <button type="submit" class="btn btn--add-to-cart">
+                Add to Cart
+              </button>
+            </div>
+          </form>
         </div>
+      </section>
+
+      <div class="product-more-info">
+        <nav class="tabs">
+          <div class="tabs__item" data-tab="js-details">Product Details</div>
+          <div class="tabs__item tabs__item--active" data-tab="js-reviews">
+            Rating & Reviews
+          </div>
+          <div class="tabs__item" data-tab="js-faqs">FAQs</div>
+        </nav>
+
+        <section class="details js-tab-content tab-content" id="js-details">
+          <div class="tab-content__header">
+            <h2 class="tab-content__title">Product Details</h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </section>
+
+        <section class="reviews js-tab-content tab-content" id="js-reviews">
+          <div class="tab-content__header">
+            <h2 class="tab-content__title">
+              All Reviews <span class="reviews__count">(120)</span>
+            </h2>
+            <div class="reviews__actions">
+              <button class="btn btn--filter" id="js-btn-filter">
+                <div class="btn--filter__menu"></div>
+              </button>
+              <button class="select-dropdown">Latest</button>
+              <button class="btn btn--write-review">Write a Review</button>
+            </div>
+          </div>
+
+          <div class="reviews__grid" id="js-reviews-grid"></div>
+          <button class="btn btn--load-more">Load More Reviews</button>
+        </section>
+
+        <section class="faqs js-tab-content tab-content" id="js-faqs">
+          <div class="tab-content__header">
+            <h2 class="tab-content__title">Frequently Asked Questions</h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </section>
       </div>
+
+      <section class="related-products">
+        <h2 class="related-products__title">YOU MIGHT ALSO LIKE</h2>
+        <div class="related-products__slider">
+          <div class="related-products__list" id="js-related-products"></div>
+          <a class="related-products__prev js-prev">&#10094;</a>
+          <a class="related-products__next js-next">&#10095;</a>
+        </div>
+      </section>
     </main>
+
+    <script src="js/product-gallery.js"></script>
+    <script src="js/product-info.js"></script>
+    <script src="js/product-review.js"></script>
   </body>
 </html>
