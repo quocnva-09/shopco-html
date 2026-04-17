@@ -98,27 +98,27 @@
     color: $text-dark;
     padding: 8px;
   }
-}
 
-.select-dropdown {
-  @include flex-center;
-  padding: 13px 20px;
-  background-color: $grey-color;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 400;
-  font-size: 16px;
+  &--dropdown {
+    @include flex-center;
+    padding: 13px 20px;
+    background-color: $grey-color;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 16px;
 
-  &::after {
-    content: "";
-    margin-left: 20px;
-    display: block;
-    width: 12px;
-    height: 7px;
-    background: $icn-arrow-down;
-  }
+    &::after {
+      content: "";
+      margin-left: 20px;
+      display: block;
+      width: 12px;
+      height: 7px;
+      background: $icn-arrow-down;
+    }
 
-  &:hover {
-    opacity: 0.8;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

@@ -28,14 +28,13 @@
 
   &__close {
     position: absolute;
-    right: 0;
+    right: $padding-left-right-full-layout;
     background: none;
     border: none;
     color: $primary-color;
     cursor: pointer;
     font-size: 16px;
     padding: 0;
-    margin-right: 350px;
   }
 }
 
@@ -44,21 +43,16 @@
     position: relative;
     display: flex;
     align-items: center;
-    padding: 24px 0;
+    padding-top: 24px;
+    padding-bottom: 24px;
     gap: 40px;
-    min-width: $max-width;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 350px;
-    padding-right: 350px;
-    width: 100%;
 
     &::after {
       content: "";
       position: absolute;
       bottom: 0;
-      left: 350px;
-      right: 350px;
+      left: $padding-left-right-full-layout;
+      right: $padding-left-right-full-layout;
       height: 1px;
       background-color: #e0e0e0;
     }

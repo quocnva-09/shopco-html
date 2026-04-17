@@ -8,6 +8,7 @@
   &__gallery {
     flex: 1;
     display: flex;
+    margin: 0;
     gap: 16px;
     height: 500px;
   }
@@ -89,6 +90,7 @@
     font-size: 16px;
     color: $text-muted;
   }
+
   &__actions {
     display: flex;
     gap: 16px;
