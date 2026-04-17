@@ -3,19 +3,56 @@
 .product-card {
   @include flex-group(0px, space-between, flex-start);
   flex-direction: column;
+  min-width: 0;
 
   &__image {
     margin: 0;
 
     & img {
       border-radius: $radius-lg;
+      max-width: 100%;
+    }
+  }
+
+  &__name-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 16px 0 0 0;
+
+    &:hover .product-card__name-full {
+      opacity: 1;
+      visibility: visible;
     }
   }
 
   &__name {
     font-size: 20px;
     font-weight: 700;
-    margin: 16px 0 0 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  &__name-full {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    word-break: break-word;
+    border-radius: 4px;
+    padding: 6px;
+    box-sizing: border-box;
   }
 
   &__rating {
