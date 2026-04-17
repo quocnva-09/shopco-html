@@ -4,17 +4,33 @@ function processTabs() {
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-      tabs.forEach((t) => {
-        t.classList.remove("tabs__item--active");
-      });
-      tab.classList.add("tabs__item--active");
-      tabContents.forEach((tabContent) => {
-        tabContent.style.display = "none";
-      });
-      const targetId = tab.getAttribute("data-tab");
-      document.getElementById(targetId).style.display = "block";
+      switchTab(tab, tabs, tabContents);
     });
   });
+}
+
+function switchTab(selectedTab, allTabs, allContents) {
+  // Reset all tabs
+  allTabs.forEach((tab) => {
+    tab.classList.remove("tabs__item--active");
+    tab.setAttribute("aria-selected", "false");
+  });
+  
+  // Set active tab
+  selectedTab.classList.add("tabs__item--active");
+  selectedTab.setAttribute("aria-selected", "true");
+  
+  // Hide all contents
+  allContents.forEach((content) => {
+    content.style.display = "none";
+  });
+  
+  // Show target content
+  const targetId = selectedTab.getAttribute("data-tab");
+  const targetContent = document.getElementById(targetId);
+  if (targetContent) {
+    targetContent.style.display = "block";
+  }
 }
 
 function processFilter() {

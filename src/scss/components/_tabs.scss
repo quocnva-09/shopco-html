@@ -9,6 +9,8 @@
     max-width: 414px;
     height: auto;
     @include flex-center;
+    background: transparent;
+    border: none;
     font-size: 20px;
     cursor: pointer;
     color: $text-muted;
