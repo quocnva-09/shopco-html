@@ -80,15 +80,15 @@
 
   &__star {
     display: block;
-    width: auto;
-    height: auto;
+    width: 21px;
+    height: 21px;
     background: $icn-star;
   }
 
   &__star--half {
     display: block;
-    width: auto;
-    height: auto;
+    width: 11px;
+    height: 21px;
     background: $icn-half-star;
   }
 }

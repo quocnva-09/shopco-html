@@ -60,22 +60,10 @@ async function showReviews(filterRating = 0) {
     response.json(),
   );
 
-  switch (filterRating) {
-    case 4:
-      reviews = reviews.filter((review) => Math.floor(review.rating) === 4);
-      break;
-    case 3:
-      reviews = reviews.filter((review) => Math.floor(review.rating) === 3);
-      break;
-    case 2:
-      reviews = reviews.filter((review) => Math.floor(review.rating) === 2);
-      break;
-    case 1:
-      reviews = reviews.filter((review) => Math.floor(review.rating) === 1);
-      break;
-    default:
-      break;
-  }
+  reviews =
+    filterRating === 0
+      ? reviews
+      : reviews.filter((review) => Math.floor(review.rating) === filterRating);
 
   const reviewContainer = document.getElementById("js-reviews-grid");
   reviewContainer.innerHTML = "";
@@ -88,11 +76,20 @@ async function showReviews(filterRating = 0) {
             </div>
             <button class="review-card__menu"></button>
           </div>
-          <div class="review-card__author">
-            ${review.name}
-            <span class="verified-icon"></span>
+          <div class="review-card__name-wrapper">
+            <div class="review-card__name">
+              <span>${review.name}</span>
+              <span class="verified-icon"></span>
+            </div>
+            <div class="review-card__name-full">
+              <span>${review.name}</span>
+              <span class="verified-icon"></span>
+            </div>
           </div>
-          <p class="review-card__text">${review.comment}</p>
+          <div class="review-card__comment-wrapper">
+            <p class="review-card__comment">${review.comment}</p>
+            <div class="review-card__comment-full">${review.comment}</div>
+          </div>
           <time class="review-card__date">Posted ${review.date}</time>
         </div>
         `;
@@ -118,9 +115,10 @@ async function showProducts() {
     response.json(),
   );
   const productContainer = document.getElementById("js-related-products");
-  
+
   if (!products || products.length === 0) {
-    productContainer.innerHTML = '<p class="product-empty-message" style="width: 100%; text-align: center;">Hiện tại không có sản phẩm hiển thị</p>';
+    productContainer.innerHTML =
+      '<p class="product-empty-message" style="width: 100%; text-align: center;">Hiện tại không có sản phẩm hiển thị</p>';
     return;
   }
 
@@ -128,7 +126,7 @@ async function showProducts() {
   products.forEach((product) => {
     let validImage = product.image;
     if (!validImage || !/\.(jpg|jpeg|png)$/i.test(validImage)) {
-      validImage = 'assets/images/default.png';
+      validImage = "assets/images/default.png";
     }
 
     let parsedPrice = parseInt(product.price) || 0;
@@ -144,7 +142,9 @@ async function showProducts() {
     let discount = "";
     if (product.discount) {
       // product.discount could be "-20%" or "30" etc.
-      let parsedDiscount = parseInt(String(product.discount).replace(/[^\d.-]/g, ''));
+      let parsedDiscount = parseInt(
+        String(product.discount).replace(/[^\d.-]/g, ""),
+      );
       if (!isNaN(parsedDiscount)) {
         let absDiscount = Math.abs(parsedDiscount);
         discount = `<span class="product-card__price--discount">-${absDiscount}%</span>`;
