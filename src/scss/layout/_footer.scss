@@ -2,14 +2,14 @@
 
 .footer {
   background-color: $grey-color;
-  padding-top: 140px; // Tạo khoảng bù để hiển thị newsletter
+  padding-top: 140px;
   padding-bottom: 50px;
   position: relative;
-  margin-top: 70px;
+  margin-top: 80px * 2;
 
   &__newsletter {
     position: absolute;
-    top: -70px; // Nửa khối đè lên phần trên ngoài footer
+    top: -80px;
     left: 0;
     width: 100%;
     z-index: 10;
@@ -49,11 +49,15 @@
       border-radius: $radius-pill;
       padding: 12px 24px;
       gap: 12px;
-    }
 
-    &-input-icon {
-      width: 20px;
-      height: 20px;
+      &::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        background: $icn-email-input;
+        background-size: contain;
+        flex-shrink: 0;
+      }
     }
 
     &-input {
@@ -121,9 +125,10 @@
         width: 14px;
         height: 14px;
       }
-      
+
       &:hover {
         background-color: $black-color;
+
         img {
           filter: invert(1);
         }
@@ -182,9 +187,30 @@
   &__payments {
     display: flex;
     align-items: center;
-    
-    img {
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .payment-item {
+      width: 46px;
       height: 30px;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        transition: transform 0.3s ease;
+
+      }
     }
   }
 }
