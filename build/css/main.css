@@ -821,7 +821,13 @@ body {
   .header__hamburger {
     display: block;
     order: 1;
+    margin-top: 10px;
   }
+}
+.header__hamburger--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 .header__hamburger::before, .header__hamburger::after {
   content: "";

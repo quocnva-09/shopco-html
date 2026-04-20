@@ -1,76 +1,4 @@
-function processTabs() {
-  const tabs = document.querySelectorAll(".tabs__item");
-  const tabContents = document.querySelectorAll(".js-tab-content");
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      switchTab(tab, tabs, tabContents);
-    });
-  });
-}
-
-function switchTab(selectedTab, allTabs, allContents) {
-  // Reset all tabs
-  allTabs.forEach((tab) => {
-    tab.classList.remove("tabs__item--active");
-    tab.setAttribute("aria-selected", "false");
-  });
-  
-  // Set active tab
-  selectedTab.classList.add("tabs__item--active");
-  selectedTab.setAttribute("aria-selected", "true");
-  
-  // Hide all contents
-  allContents.forEach((content) => {
-    content.style.display = "none";
-  });
-  
-  // Show target content
-  const targetId = selectedTab.getAttribute("data-tab");
-  const targetContent = document.getElementById(targetId);
-  if (targetContent) {
-    targetContent.style.display = "block";
-  }
-}
-
-function processFilter() {
-  const filter = document.getElementById("js-btn-filter");
-  const rating = [4, 3, 2, 1];
-  const menu = filter.firstElementChild;
-  menu.style.display = "none";
-
-  if (menu.innerHTML === "") {
-    rating.forEach((numRating) => {
-      let stars = "";
-      for (let i = 0; i < numRating; i++) {
-        stars += '<span class="rating__star"></span>';
-      }
-      menu.innerHTML += `
-            <div class="rating-row" data-rating="${numRating}">
-                <div class="rating">${stars}</div>
-            </div>
-            `;
-    });
-  }
-
-  const ratingRows = document.querySelectorAll(".rating-row");
-  ratingRows.forEach((ratingRow) => {
-    ratingRow.addEventListener("click", () => {
-      const selectedRating = Number(ratingRow.getAttribute("data-rating"));
-      showReviews(selectedRating);
-      menu.style.display = "none";
-    });
-  });
-
-  filter.addEventListener("click", () => {
-    if (menu.style.display === "flex") {
-      menu.style.display = "none";
-    } else {
-      menu.style.display = "flex";
-    }
-  });
-}
-
+// Render and load data functions
 async function showReviews(filterRating = 0) {
   let reviews = await fetch("./assets/data/reviews.json").then((response) =>
     response.json(),
@@ -157,7 +85,6 @@ async function showProducts() {
 
     let discount = "";
     if (product.discount) {
-      // product.discount could be "-20%" or "30" etc.
       let parsedDiscount = parseInt(
         String(product.discount).replace(/[^\d.-]/g, ""),
       );
@@ -191,58 +118,7 @@ async function showProducts() {
   productContainer.innerHTML = htmlContent;
 }
 
-function productSlider() {
-  let currentIndex = 0;
-  const MAX_INDEX = 4;
-  const btnPrev = document.querySelector(".js-prev");
-  const btnNext = document.querySelector(".js-next");
-
-  btnPrev.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-    }
-    updateSlider();
-  });
-
-  btnNext.addEventListener("click", () => {
-    if (currentIndex < MAX_INDEX) {
-      currentIndex++;
-    } else {
-      currentIndex = 0;
-    }
-    updateSlider();
-  });
-
-  function updateSlider() {
-    const list = document.getElementById("js-related-products");
-    const firstCard = list.querySelector(".product-card");
-
-    const slideDistance = firstCard.offsetWidth + 20;
-
-    list.style.transform = `translateX(-${currentIndex * slideDistance}px)`;
-  }
-
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-      if (currentIndex < MAX_INDEX) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      updateSlider();
-    }, 30000);
-  }
-  function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-  }
-
-  startAutoSlide();
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  processTabs();
-  processFilter();
-  showReviews();
-  showProducts();
-  productSlider();
+    showReviews();
+    showProducts();
 });

@@ -92,6 +92,13 @@
     @media (max-width: $breakpoint) {
       display: block;
       order: 1;
+      margin-top: 10px;
+    }
+
+    &--hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
 
     &::before,
