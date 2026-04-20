@@ -62,7 +62,7 @@ async function showProducts() {
 
   if (!products || products.length === 0) {
     productContainer.innerHTML =
-      '<p class="product-empty-message" style="width: 100%; text-align: center;">Hiện tại không có sản phẩm hiển thị</p>';
+      '<p class="product-empty-message" style="width: 100%; text-align: center;">No product to show!</p>';
     return;
   }
 
@@ -119,6 +119,6 @@ async function showProducts() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    showReviews();
-    showProducts();
+  showReviews();
+  showProducts();
 });
