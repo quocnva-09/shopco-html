@@ -2,6 +2,14 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
+//responsive
+$breakpoint: 991px;
+$mobile: 390px;
+$tablet: 768px;
+$desktop: 1024px;
+$large-desktop: 1440px;
+
+//width
 $max-width: 1440px;
 
 //font
@@ -30,20 +38,30 @@ $base-spacing: 16px;
 
 //padding
 $padding-left-right-full-layout: 100px;
+$padding-left-right-mobile: 16px;
 
 //icon
 $icn-3-dot: url("../../src/assets/icons/icn-3-dot.svg") no-repeat center/cover;
-$icn-arrow-down: url("../../src/assets/icons/icn-arrow-down.svg") no-repeat center/cover;
+$icn-arrow-down: url("../../src/assets/icons/icn-arrow-down.svg") no-repeat
+  center/cover;
 $icn-filter: url("../../src/assets/icons/icn-filter.svg") no-repeat center/cover;
-$icn-half-star: url("../../src/assets/icons/icn-half-star.svg") no-repeat center/cover;
+$icn-half-star: url("../../src/assets/icons/icn-half-star.svg") no-repeat
+  center/cover;
 $icn-star: url("../../src/assets/icons/icn-star.svg") no-repeat center/cover;
 $icn-tick: url("../../src/assets/icons/icn-tick.svg") no-repeat center/cover;
-$icn-double-left: url("../../src/assets/icons/icn-double-left.png") no-repeat center/cover;
-$icn-double-right: url("../../src/assets/icons/icn-double-right.png") no-repeat center/cover;
-$icn-email-input: url("../../src/assets/icons/icn-email-input.svg") no-repeat center/cover;
+$icn-double-left: url("../../src/assets/icons/icn-double-left.png") no-repeat
+  center/cover;
+$icn-double-right: url("../../src/assets/icons/icn-double-right.png") no-repeat
+  center/cover;
+$icn-email-input: url("../../src/assets/icons/icn-email-input.svg") no-repeat
+  center/cover;
 
 //image
-$img-black-sctrip: url("../../src/assets/images/pic-black-sctrip-t-shirt.jpg") no-repeat center/cover;
-$img-gradient-graphic: url("../../src/assets/images/pic-gradient-graphic-t-shirt.jpg") no-repeat center/cover;
-$img-polo-contrast: url("../../src/assets/images/pic-polo-with-contrast-trims.jpg") no-repeat center/cover;
-$img-polo-tipping: url("../../src/assets/images/pic-polo-with-tipping-detail.jpg") no-repeat center/cover;
+$img-black-sctrip: url("../../src/assets/images/pic-black-sctrip-t-shirt.jpg")
+  no-repeat center/cover;
+$img-gradient-graphic: url("../../src/assets/images/pic-gradient-graphic-t-shirt.jpg")
+  no-repeat center/cover;
+$img-polo-contrast: url("../../src/assets/images/pic-polo-with-contrast-trims.jpg")
+  no-repeat center/cover;
+$img-polo-tipping: url("../../src/assets/images/pic-polo-with-tipping-detail.jpg")
+  no-repeat center/cover;

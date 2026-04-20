@@ -18,6 +18,10 @@
   &__text {
     font-size: 14px;
     margin: 0;
+
+    @media (max-width: $breakpoint) {
+      font-size: 12px;
+    }
   }
 
   &__link {
@@ -35,6 +39,10 @@
     cursor: pointer;
     font-size: 16px;
     padding: 0;
+
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
   }
 }
 
@@ -47,6 +55,11 @@
     padding-bottom: 24px;
     gap: 40px;
 
+    @media (max-width: $breakpoint) {
+      gap: 16px;
+      padding: 20px 16px;
+    }
+
     &::after {
       content: "";
       position: absolute;
@@ -55,6 +68,48 @@
       right: $padding-left-right-full-layout;
       height: 1px;
       background-color: #e0e0e0;
+
+      @media (max-width: $breakpoint) {
+        left: $padding-left-right-mobile;
+        right: $padding-left-right-mobile;
+      }
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    z-index: 1001;
+
+    @media (max-width: $breakpoint) {
+      display: block;
+      order: 1;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $black-color;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    &::before {
+      top: 5px;
+      box-shadow: 0 6px 0 $black-color;
+    }
+
+    &::after {
+      bottom: 5px;
     }
   }
 
@@ -64,6 +119,32 @@
     font-weight: 700;
     color: $black-color;
     text-decoration: none;
+
+    @media (max-width: $breakpoint) {
+      order: 2;
+      margin-right: auto;
+      font-size: 25px;
+    }
+  }
+
+  &__nav {
+    @media (max-width: $breakpoint) {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background-color: $primary-color;
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding-top: 64px;
+      overflow-y: auto;
+
+      &.js-nav--active {
+        left: 0;
+      }
+    }
   }
 
   &__menu {
@@ -72,6 +153,12 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    @media (max-width: $breakpoint) {
+      flex-direction: column;
+      padding: 0 24px;
+      gap: 16px;
+    }
 
     &-link {
       color: $black-color;
@@ -90,6 +177,11 @@
   &__search {
     flex: 1;
 
+    @media (max-width: $breakpoint) {
+      flex: 0;
+      order: 3;
+    }
+
     .search-bar {
       display: flex;
       align-items: center;
@@ -98,6 +190,11 @@
       padding: 12px 16px;
       gap: 12px;
 
+      @media (max-width: $breakpoint) {
+        background-color: transparent;
+        padding: 0;
+      }
+
       &__btn {
         background: none;
         border: none;
@@ -105,6 +202,11 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+        opacity: 0.2;
+
+        @media (max-width: $breakpoint) {
+          opacity: 1;
+        }
       }
 
       &__icon {
@@ -123,6 +225,10 @@
         &::placeholder {
           color: $text-muted;
         }
+
+        @media (max-width: $breakpoint) {
+          display: none;
+        }
       }
     }
   }
@@ -131,6 +237,11 @@
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @media (max-width: $breakpoint) {
+      order: 4;
+      gap: 12px;
+    }
 
     .icon-btn {
       background: none;
@@ -146,5 +257,20 @@
         height: 24px;
       }
     }
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  &.js-overlay--active {
+    opacity: 1;
+    visibility: visible;
   }
 }

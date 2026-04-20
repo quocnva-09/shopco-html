@@ -32,6 +32,11 @@
   /* 3 */
   width: 100%;
   /* 1 */
+
+  @media (max-width: $breakpoint) {
+    padding-left: $padding-left-right-mobile;
+    padding-right: $padding-left-right-mobile;
+  }
 }
 
 /**
