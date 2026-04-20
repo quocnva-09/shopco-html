@@ -341,6 +341,17 @@ p {
   padding: 0;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media print {
+  html,
+  body {
+    display: none !important;
+  }
+}
 @font-face {
   font-family: "Satoshi";
   src: url("../../src/assets/fonts/Satoshi/Satoshi-Regular.otf") format("opentype");

@@ -46,3 +46,15 @@ p {
   margin: 0;
   padding: 0;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media print {
+  html,
+  body {
+    display: none !important;
+  }
+}

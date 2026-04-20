@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Detail Page</title>
-    <link rel="stylesheet" href="../build/css/main.css" />
+    <link rel="stylesheet" href="../build/css/main.css?v=20260420" />
   </head>
 
-  <body>
+  <body
+    oncontextmenu="return false;"
+    ondragstart="return false;"
+    ondrop="return false;"
+  >
     <header class="header">
       <div class="top-bar">
         <div class="top-bar__container container">
@@ -61,7 +65,11 @@
         <div class="header__search">
           <form action="#" class="search-bar">
             <button type="submit" class="search-bar__btn" aria-label="Search">
-              <img src="assets/icons/icn-look-up.svg" alt="Icon search" />
+              <img
+                src="assets/icons/icn-look-up.svg"
+                alt="Icon search"
+                title="Icon search"
+              />
             </button>
             <input
               type="text"
@@ -73,10 +81,18 @@
 
         <div class="header__actions">
           <button class="icon-btn" aria-label="Cart">
-            <img src="assets/icons/icn-cart.svg" alt="Icon cart" />
+            <img
+              src="assets/icons/icn-cart.svg"
+              alt="Icon cart"
+              title="Icon cart"
+            />
           </button>
           <button class="icon-btn" aria-label="User Profile">
-            <img src="assets/icons/icn-user.svg" alt="Icon user" />
+            <img
+              src="assets/icons/icn-user.svg"
+              alt="Icon user"
+              title="Icon user"
+            />
           </button>
         </div>
       </div>
@@ -100,16 +116,19 @@
               src="assets/images/one-life-t-shirt/pic-one-life-graphic-t-shirt-1.png"
               class="product-detail__thumbnail product-detail__thumbnail--active"
               alt="Thumbnail 1"
+              title="Thumbnail 1"
             />
             <img
               src="assets/images/one-life-t-shirt/pic-one-life-graphic-t-shirt-2.png"
               class="product-detail__thumbnail"
               alt="Thumbnail 2"
+              title="Thumbnail 2"
             />
             <img
               src="assets/images/one-life-t-shirt/pic-one-life-graphic-t-shirt-3.png"
               class="product-detail__thumbnail"
               alt="Thumbnail 3"
+              title="Thumbnail 3"
             />
           </div>
           <div class="product-detail__main-image">
@@ -117,6 +136,7 @@
               id="js-main-image"
               src="assets/images/one-life-t-shirt/pic-one-life-graphic-t-shirt-1.png"
               alt="Main Product"
+              title="Main Product"
             />
           </div>
         </figure>
@@ -380,21 +400,28 @@
                   <img
                     src="assets/icons/icn-logo-twitter.svg"
                     alt="Twitter logo"
+                    title="Twitter logo"
                   />
                 </a>
                 <a href="#" class="social-link" aria-label="Facebook">
-                  <img src="assets/icons/icn-logo-fb.svg" alt="Facebook logo" />
+                  <img
+                    src="assets/icons/icn-logo-fb.svg"
+                    alt="Facebook logo"
+                    title="Facebook logo"
+                  />
                 </a>
                 <a href="#" class="social-link" aria-label="Instagram">
                   <img
                     src="assets/icons/icn-logo-insta.svg"
                     alt="Instagram logo"
+                    title="Instagram logo"
                   />
                 </a>
                 <a href="#" class="social-link" aria-label="GitHub">
                   <img
                     src="assets/icons/icn-logo-github.svg"
                     alt="GitHub logo"
+                    title="GitHub logo"
                   />
                 </a>
               </div>
@@ -476,24 +503,38 @@
             </p>
             <ul class="footer__payments">
               <li class="payment-item">
-                <img src="assets/icons/icn-visa.svg" alt="VISA payment" />
+                <img
+                  src="assets/icons/icn-visa.svg"
+                  alt="VISA payment"
+                  title="VISA payment"
+                />
               </li>
               <li class="payment-item">
                 <img
                   src="assets/icons/icn-mastercard.svg"
                   alt="Mastercard payment"
+                  title="Mastercard payment"
                 />
               </li>
               <li class="payment-item">
-                <img src="assets/icons/icn-paypal.svg" alt="Paypal payment" />
+                <img
+                  src="assets/icons/icn-paypal.svg"
+                  alt="Paypal payment"
+                  title="Paypal payment"
+                />
               </li>
               <li class="payment-item">
-                <img src="assets/icons/icn-a-pay.svg" alt="Apple Pay payment" />
+                <img
+                  src="assets/icons/icn-a-pay.svg"
+                  alt="Apple Pay payment"
+                  title="Apple Pay payment"
+                />
               </li>
               <li class="payment-item">
                 <img
                   src="assets/icons/icn-g-pay.svg"
                   alt="Google Pay payment"
+                  title="Google Pay payment"
                 />
               </li>
             </ul>
@@ -502,7 +543,7 @@
       </div>
     </footer>
 
-    <script src="js/load-data.js"></script>
-    <script src="js/product-page.js"></script>
+    <script src="js/load-data.js?v=20260420"></script>
+    <script src="js/product-page.js?v=20260420"></script>
   </body>
 </html>

@@ -33,9 +33,9 @@
         "name": "Black Striped T-shirt",
         "image": "assets/images/pic-black-sctrip-t-shirt.png",
         "rating": 5.0,
-        "price": 120,
+        "price": 12000,
         "oldPrice": 150,
-        "discount": "-30%",
+        "discount": "-3000%",
         "description": null,
         "color": null
     },
