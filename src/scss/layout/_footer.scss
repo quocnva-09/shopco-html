@@ -1,18 +1,22 @@
 @use "../abstracts" as *;
 
 .footer {
-  background-color: $grey-color;
-  padding-top: 150px;
-  padding-bottom: 82px;
   position: relative;
-  margin-top: 80px * 2;
+  /* Giữ khoảng cách 80px trống ở trên cùng để top 50% newsletter mask khớp màu section trước */
+  margin-top: 80px;
+
+  &__content {
+    background-color: $grey-color;
+    padding-top: 50px;
+    padding-bottom: 82px;
+
+    @media (max-width: $breakpoint) {
+      padding-top: 32px;
+    }
+  }
 
   &__newsletter {
-    position: absolute;
-    top: -80px;
-    left: 0;
-    width: 100%;
-    z-index: 10;
+    background: linear-gradient(to bottom, transparent 50%, $grey-color 50%);
 
     &-container {
       background-color: $black-color;
@@ -22,8 +26,13 @@
       justify-content: space-between;
       align-items: center;
       gap: 40px;
-      max-width: calc(#{$max-width} - #{$padding-left-right-full-layout} * 2);
-      margin: 0 auto;
+
+      @media (max-width: $breakpoint) {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 32px 24px;
+        gap: 32px;
+      }
     }
 
     &-title {
@@ -33,6 +42,11 @@
       line-height: 1.2;
       margin: 0;
       max-width: 50%;
+
+      @media (max-width: $breakpoint) {
+        max-width: 100%;
+        font-size: 32px;
+      }
     }
 
     &-form {
@@ -74,22 +88,25 @@
     }
   }
 
-  &__container {
-    max-width: $max-width;
-    margin: 0 auto;
-    padding: 0 $padding-left-right-full-layout;
-  }
-
   &__main {
     display: flex;
     justify-content: space-between;
     gap: 80px;
     padding-bottom: 50px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    @media (max-width: $breakpoint) {
+      flex-direction: column;
+      gap: 12px;
+    }
   }
 
   &__brand {
     max-width: 280px;
+
+    @media (max-width: $breakpoint) {
+      max-width: 100%;
+    }
   }
 
   &__logo {
@@ -104,6 +121,10 @@
     line-height: 1.6;
     margin-bottom: 32px;
     font-size: 14px;
+
+    @media (max-width: $breakpoint) {
+      width: 100%;
+    }
   }
 
   &__socials {
@@ -141,6 +162,12 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
+
+    @media (max-width: $breakpoint) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 16px;
+    }
   }
 
   &__col-title {
@@ -148,6 +175,11 @@
     font-weight: 600;
     letter-spacing: 2px;
     margin: 0 0 24px 0;
+
+    @media (max-width: $breakpoint) {
+      font-size: 14px;
+      margin: 0 0 16px 0;
+    }
   }
 
   &__list {
@@ -176,6 +208,11 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 20px;
+
+    @media (max-width: $breakpoint) {
+      flex-direction: column;
+      gap: 12px;
+    }
   }
 
   &__copyright {

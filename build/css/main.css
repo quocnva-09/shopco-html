@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -478,18 +479,22 @@ body {
 }
 
 .footer {
-  background-color: #f0f0f0;
-  padding-top: 150px;
-  padding-bottom: 82px;
   position: relative;
-  margin-top: 160px;
+  /* Giữ khoảng cách 80px trống ở trên cùng để top 50% newsletter mask khớp màu section trước */
+  margin-top: 80px;
+}
+.footer__content {
+  background-color: #f0f0f0;
+  padding-top: 50px;
+  padding-bottom: 82px;
+}
+@media (max-width: 991px) {
+  .footer__content {
+    padding-top: 32px;
+  }
 }
 .footer__newsletter {
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  z-index: 10;
+  background: linear-gradient(to bottom, transparent 50%, #f0f0f0 50%);
 }
 .footer__newsletter-container {
   background-color: #000;
@@ -499,8 +504,14 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 40px;
-  max-width: calc(1440px - 100px * 2);
-  margin: 0 auto;
+}
+@media (max-width: 991px) {
+  .footer__newsletter-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 24px;
+    gap: 32px;
+  }
 }
 .footer__newsletter-title {
   color: #f0eeed;
@@ -509,6 +520,12 @@ body {
   line-height: 1.2;
   margin: 0;
   max-width: 50%;
+}
+@media (max-width: 991px) {
+  .footer__newsletter-title {
+    max-width: 100%;
+    font-size: 32px;
+  }
 }
 .footer__newsletter-form {
   flex: 1;
@@ -543,11 +560,6 @@ body {
 .footer__newsletter-input::placeholder {
   color: #999;
 }
-.footer__container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 100px;
-}
 .footer__main {
   display: flex;
   justify-content: space-between;
@@ -555,8 +567,19 @@ body {
   padding-bottom: 50px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 991px) {
+  .footer__main {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
 .footer__brand {
   max-width: 280px;
+}
+@media (max-width: 991px) {
+  .footer__brand {
+    max-width: 100%;
+  }
 }
 .footer__logo {
   font-family: "IntegralCF", sans-serif;
@@ -569,6 +592,11 @@ body {
   line-height: 1.6;
   margin-bottom: 32px;
   font-size: 14px;
+}
+@media (max-width: 991px) {
+  .footer__desc {
+    width: 100%;
+  }
 }
 .footer__socials {
   display: flex;
@@ -601,11 +629,24 @@ body {
   justify-content: space-between;
   gap: 20px;
 }
+@media (max-width: 991px) {
+  .footer__links-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+}
 .footer__col-title {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 2px;
   margin: 0 0 24px 0;
+}
+@media (max-width: 991px) {
+  .footer__col-title {
+    font-size: 14px;
+    margin: 0 0 16px 0;
+  }
 }
 .footer__list {
   list-style: none;
@@ -629,6 +670,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding-top: 20px;
+}
+@media (max-width: 991px) {
+  .footer__bottom {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 .footer__copyright {
   color: #999;
