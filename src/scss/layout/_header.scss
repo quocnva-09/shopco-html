@@ -27,7 +27,6 @@
   &__link {
     color: $primary-color;
     text-decoration: underline;
-    font-weight: 500;
   }
 
   &__close {
@@ -37,7 +36,10 @@
     border: none;
     color: $primary-color;
     cursor: pointer;
-    font-size: 16px;
+    font-size: $font-size-base;
+    @media (max-width: $breakpoint) {
+      font-size: $font-size-mobile;
+    }
     padding: 0;
 
     @media (max-width: $breakpoint) {
@@ -166,7 +168,10 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      font-size: 16px;
+      font-size: $font-size-base;
+      @media (max-width: $breakpoint) {
+        font-size: $font-size-mobile;
+      }
 
       &:hover {
         color: $text-muted;
@@ -220,7 +225,10 @@
         width: 100%;
         outline: none;
         font-family: $font-family-base;
-        font-size: 16px;
+        font-size: $font-size-base;
+        @media (max-width: $breakpoint) {
+          font-size: $font-size-mobile;
+        }
 
         &::placeholder {
           color: $text-muted;

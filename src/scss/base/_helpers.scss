@@ -36,6 +36,7 @@
   @media (max-width: $breakpoint) {
     padding-left: $padding-left-right-mobile;
     padding-right: $padding-left-right-mobile;
+    font-size: $font-size-mobile;
   }
 }
 
@@ -88,6 +89,12 @@
     width: 21px;
     height: 21px;
     background: $icn-star;
+
+    @media (max-width: $breakpoint) {
+      width: 15px;
+      height: 15px;
+      background-size: cover;
+    }
   }
 
   &__star--half {
@@ -95,6 +102,12 @@
     width: 11px;
     height: 21px;
     background: $icn-half-star;
+
+    @media (max-width: $breakpoint) {
+      width: 8px;
+      height: 15px;
+      background-size: cover;
+    }
   }
 }
 

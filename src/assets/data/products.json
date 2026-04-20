@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Polo with Contrast Trims",
-        "image": "assets/images/pic-polo-with-contrast-trims.jpg",
+        "image": "assets/images/pic-polo-with-contrast-trims.png",
         "rating": 4.0,
         "price": 212,
         "oldPrice": 242,
@@ -13,7 +13,7 @@
     {
         "id": 2,
         "name": "Gradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirt",
-        "image": "assets/images/pic-gradient-graphic-t-shirt.jpg",
+        "image": "assets/images/pic-gradient-graphic-t-shirt.png",
         "rating": 3.5,
         "price": 145,
         "description": null,
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "name": "Polo with Tipping Details",
-        "image": "assets/images/pic-polo-with-tipping-detail.jpg",
+        "image": "assets/images/pic-polo-with-tipping-detail.png",
         "rating": 4.5,
         "price": 180,
         "description": null,
@@ -31,7 +31,7 @@
     {
         "id": 4,
         "name": "Black Striped T-shirt",
-        "image": "assets/images/pic-black-sctrip-t-shirt.jpg",
+        "image": "assets/images/pic-black-sctrip-t-shirt.png",
         "rating": 5.0,
         "price": 120,
         "oldPrice": 150,
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "name": "Polo man",
-        "image": "assets/images/pic-polo-with-contrast-trims.jpg",
+        "image": "assets/images/pic-polo-with-contrast-trims.png",
         "rating": 5.0,
         "price": 120,
         "oldPrice": 150,
@@ -53,7 +53,7 @@
     {
         "id": 6,
         "name": "Wonderful T-Shirt",
-        "image": "assets/images/pic-gradient-graphic-t-shirt.jpg",
+        "image": "assets/images/pic-gradient-graphic-t-shirt.png",
         "rating": 4.0,
         "price": 145,
         "description": null,
@@ -62,7 +62,7 @@
     {
         "id": 7,
         "name": "Polo Details",
-        "image": "assets/images/pic-polo-with-tipping-detail.jpg",
+        "image": "assets/images/pic-polo-with-tipping-detail.png",
         "rating": 4.5,
         "price": 500,
         "description": null,
@@ -71,7 +71,7 @@
     {
         "id": 8,
         "name": "Black T-shirt",
-        "image": "assets/images/pic-black-sctrip-t-shirt.jpg",
+        "image": "assets/images/pic-black-sctrip-t-shirt.png",
         "rating": 5.0,
         "price": 120,
         "description": null,

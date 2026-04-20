@@ -11,6 +11,11 @@
     font-weight: 700;
     color: $black-color;
     margin: 64px 0 55px 0;
+
+    @media (max-width: $breakpoint) {
+      font-size: 32px;
+      margin: 40px 37px;
+    }
   }
 
   &__list {
@@ -21,9 +26,19 @@
     width: 100%;
     transition: transform 0.5s ease;
 
+    @media (max-width: $breakpoint) {
+      gap: 16px;
+      margin-left: 16px;
+    }
+
     .product-card {
       flex: 0 0 calc(25% - 15px);
       width: 100%;
+
+      @media (max-width: $breakpoint) {
+        flex: 0 0 calc(50% - 8px);
+        scroll-snap-align: start;
+      }
 
       &__image {
         width: 100%;
@@ -39,6 +54,17 @@
   &__slider {
     overflow: hidden;
     width: 100%;
+
+    @media (max-width: $breakpoint) {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 
   &__prev,
@@ -54,6 +80,10 @@
     transition: 0.6s ease;
     z-index: 10;
     border-radius: $radius-lg;
+
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
   }
 
   &__prev:hover,

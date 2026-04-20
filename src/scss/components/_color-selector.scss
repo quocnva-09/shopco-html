@@ -20,17 +20,18 @@
     &::after {
       content: "";
       position: absolute;
-      top: -4px;
-      left: -4px;
-      right: -4px;
-      bottom: -4px;
-      border-radius: 50%;
-      border: 1px solid transparent;
-      transition: border-color 0.2s ease;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: url("../../src/assets/icons/vector-tick.svg") no-repeat center/contain;
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
   }
 
   &__input:checked + &__label::after {
-    border-color: $text-dark;
+    opacity: 1;
   }
 }

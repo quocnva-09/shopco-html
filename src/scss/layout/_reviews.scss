@@ -2,7 +2,10 @@
 
 .reviews {
   &__count {
-    font-size: 16px;
+    font-size: $font-size-base;
+    @media (max-width: $breakpoint) {
+      font-size: $font-size-mobile;
+    }
     font-weight: 400;
     color: $text-muted;
   }
@@ -11,10 +14,18 @@
     @include flex-center(row);
     gap: $base-spacing;
     position: relative;
+
+    @media (max-width: $breakpoint) {
+      gap: $base-spacing * 0.5;
+    }
   }
 
   &__grid {
     @include grid-layout(2, 1fr);
     gap: $base-spacing;
+
+    @media (max-width: $breakpoint) {
+      grid-template-columns: 1fr;
+    }
   }
 }

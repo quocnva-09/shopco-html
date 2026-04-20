@@ -9,8 +9,10 @@
     margin: 0;
 
     & img {
-      border-radius: $radius-lg;
-      max-width: 100%;
+      border-radius: 13px;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
     }
   }
 
@@ -33,6 +35,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+
+    @media (max-width: $breakpoint) {
+      font-size: 16px;
+    }
   }
 
   &__name-full {
@@ -40,8 +46,7 @@
     font-weight: 700;
     margin: 0;
     position: absolute;
-    bottom: 100%;
-    margin-bottom: 4px;
+    bottom: 0;
     left: 0;
     width: 100%;
     background-color: #fff;
@@ -66,6 +71,10 @@
     align-items: center;
     gap: 6px;
 
+    @media (max-width: $breakpoint) {
+      font-size: 12px;
+    }
+
     & span {
       color: $text-muted;
     }
@@ -75,6 +84,12 @@
       background: $icn-star;
       width: 22px;
       height: 21px;
+
+      @media (max-width: $breakpoint) {
+        width: 15px;
+        height: 15px;
+        background-size: cover;
+      }
     }
   }
 
@@ -83,6 +98,11 @@
     font-size: 24px;
     font-weight: 700;
     @include flex-group(10px, flex-start, center);
+
+    @media (max-width: $breakpoint) {
+      font-size: 20px;
+      gap: 5px;
+    }
 
     &--current {
       color: $black-color;
@@ -100,6 +120,11 @@
       font-weight: 500;
       border-radius: $radius-pill;
       background-color: $label-danger-color;
+
+      @media (max-width: $breakpoint) {
+        font-size: 10px;
+        padding: 3px 8px;
+      }
     }
   }
 
@@ -115,12 +140,20 @@
       color: $text-dark;
       font-family: $font-family-title;
       width: 100%;
+
+      @media (max-width: $breakpoint) {
+        font-size: 24px;
+      }
     }
 
     .product-card__rating {
       margin-top: 0;
       margin-bottom: 24px;
       gap: 8px;
+
+      @media (max-width: $breakpoint) {
+        margin-bottom: 12px;
+      }
     }
 
     .product-card__rating-text {
@@ -141,6 +174,10 @@
       &--discount {
         padding: 4px 12px;
         font-size: 14px;
+      }
+
+      @media (max-width: $breakpoint) {
+        margin-bottom: 20px;
       }
     }
   }

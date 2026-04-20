@@ -7,6 +7,10 @@
   color: $text-muted;
   margin: 24px 0 36px 0;
 
+  @media (max-width: $breakpoint) {
+    margin: 20px 0;
+  }
+
   &__item {
     color: $text-muted;
     text-decoration: none;

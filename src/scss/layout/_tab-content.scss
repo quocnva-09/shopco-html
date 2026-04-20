@@ -1,20 +1,30 @@
 @use "../abstracts" as *;
 
 .tab-content {
-  max-width: 100%;
-  margin: 24px auto;
+  width: 100%;
+  margin: 24px auto 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: $base-spacing;
   align-items: center;
 
+  @media (max-width: $breakpoint) {
+    margin-top: 20px;
+  }
+
   &__header {
     @include flex-center(row);
     justify-content: space-between;
+    width: 100%;
+    height: auto;
   }
 
   &__title {
     font-size: 24px;
     font-weight: 700;
+    @media (max-width: $breakpoint) {
+      font-size: 20px;
+      margin: 0;
+    }
   }
 }

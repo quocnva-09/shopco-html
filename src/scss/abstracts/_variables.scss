@@ -2,6 +2,10 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
+//font size
+$font-size-base: 16px;
+$font-size-mobile: 14px;
+
 //responsive
 $breakpoint: 991px;
 $mobile: 390px;
@@ -14,13 +18,14 @@ $max-width: 1440px;
 
 //font
 $font-family-base: "Satoshi", sans-serif;
-$font-family-title: "IntegralCF", sans-serif;
+$font-family-title: "IntegralCF", "Inter", "Arial", sans-serif;
 $text-font-stack: "Satoshi", sans-serif;
 
 //color
-$primary-color: #fff; // Màu chủ đạo (đen)
+$primary-color: #fff;
 $danger-color: #ff3333;
-$white-color: #f0eeed;
+$white-color: #fff;
+$white-cream-color: #f0eeed;
 $grey-color: #f0f0f0;
 $grey-color-hover: #999;
 $black-color: #000;

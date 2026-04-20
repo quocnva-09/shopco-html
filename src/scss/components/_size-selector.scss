@@ -5,18 +5,27 @@
   gap: 12px;
   flex-wrap: wrap;
 
+  @media (max-width: $breakpoint) {
+    gap: 8px;
+  }
+
   &__input {
     display: none;
   }
 
   &__label {
-    padding: 10px 24px;
+    padding: 12px 24px;
     background-color: #f0f0f0;
     color: $text-muted;
     border-radius: 24px;
-    font-size: 14px;
+    font-size: $font-size-base;
     cursor: pointer;
     transition: all 0.3s ease;
+
+    @media (max-width: $breakpoint) {
+      font-size: $font-size-mobile;
+      padding: 10px 20px;
+    }
   }
 
   &__input:checked + &__label {

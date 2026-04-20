@@ -80,7 +80,10 @@
       width: 100%;
       outline: none;
       font-family: $font-family-base;
-      font-size: 16px;
+      font-size: $font-size-base;
+      @media (max-width: $breakpoint) {
+        font-size: $font-size-mobile;
+      }
 
       &::placeholder {
         color: $text-muted;
@@ -92,7 +95,7 @@
     display: flex;
     justify-content: space-between;
     gap: 80px;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
     @media (max-width: $breakpoint) {
@@ -171,13 +174,13 @@
   }
 
   &__col-title {
-    font-size: 16px;
+    font-size: $font-size-base;
     font-weight: 600;
     letter-spacing: 2px;
     margin: 0 0 24px 0;
 
     @media (max-width: $breakpoint) {
-      font-size: 14px;
+      font-size: $font-size-mobile;
       margin: 0 0 16px 0;
     }
   }
@@ -200,6 +203,7 @@
 
     &:hover {
       color: $text-dark;
+      text-decoration: underline;
     }
   }
 
