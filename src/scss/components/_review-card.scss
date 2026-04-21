@@ -32,6 +32,10 @@
     width: 24px;
     height: 7px;
     padding: 0;
+
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
   }
 
   &__name-wrapper {
@@ -39,14 +43,13 @@
     width: 100%;
     min-width: 0;
 
-    &:hover .review-card__name-full {
+    &:hover .tooltip {
       opacity: 1;
       visibility: visible;
     }
   }
 
-  &__name,
-  &__name-full {
+  &__name {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -54,9 +57,6 @@
     font-weight: 700;
     color: $black-color;
     margin: 0;
-  }
-
-  &__name {
     width: 100%;
 
     span:not(.verified-icon) {
@@ -70,32 +70,6 @@
     }
   }
 
-  &__name-full {
-    position: absolute;
-    top: 0;
-    margin-bottom: 4px;
-    left: -6px;
-    width: calc(100% + 12px);
-    background-color: #fff;
-    z-index: 10;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.2s ease,
-      visibility 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 6px;
-    box-sizing: border-box;
-
-    span:not(.verified-icon) {
-      word-break: break-word;
-    }
-
-    .verified-icon {
-      flex-shrink: 0;
-    }
-  }
 
   &__comment-wrapper {
     position: relative;
@@ -105,7 +79,7 @@
     display: flex;
     align-items: flex-start;
 
-    &:hover .review-card__comment-full {
+    &:hover .tooltip {
       opacity: 1;
       visibility: visible;
     }
@@ -114,9 +88,6 @@
   &__comment {
     line-height: 22px;
     font-size: $font-size-base;
-    @media (max-width: $breakpoint) {
-      font-size: $font-size-mobile;
-    }
     color: $text-muted;
     margin: 0;
     display: -webkit-box;
@@ -124,33 +95,13 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     width: 100%;
-  }
 
-  &__comment-full {
-    line-height: 22px;
-    font-size: $font-size-base;
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
+      display: block; // Show all comment lines
+      -webkit-line-clamp: unset;
+      overflow: visible;
     }
-    color: $text-muted;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    margin-bottom: 4px;
-    left: -6px;
-    width: calc(100% + 12px);
-    background-color: #fff;
-    z-index: 10;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.2s ease,
-      visibility 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    word-break: break-word;
-    border-radius: 4px;
-    padding: 6px;
-    box-sizing: border-box;
   }
 
   &__date {

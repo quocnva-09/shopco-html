@@ -25,14 +25,14 @@ async function showReviews(filterRating = 0) {
               <span>${review.name}</span>
               <span class="verified-icon"></span>
             </div>
-            <div class="review-card__name-full">
+            <div class="tooltip tooltip--review-card">
               <span>${review.name}</span>
               <span class="verified-icon"></span>
             </div>
           </div>
           <div class="review-card__comment-wrapper">
             <p class="review-card__comment">${review.comment}</p>
-            <div class="review-card__comment-full">${review.comment}</div>
+            <div class="tooltip tooltip--comment">${review.comment}</div>
           </div>
           <time class="review-card__date">Posted ${review.date}</time>
         </div>
@@ -101,7 +101,7 @@ async function showProducts() {
 				</figure>
 				<div class="product-card__name-wrapper">
 					<h3 class="product-card__name">${product.name}</h3>
-					<h3 class="product-card__name-full">${product.name}</h3>
+					<h3 class="tooltip tooltip--product-card">${product.name}</h3>
 				</div>
 				<div class="product-card__rating">
 					<div class="rating">${renderRating(product.rating)}</div>

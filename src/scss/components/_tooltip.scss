@@ -1,0 +1,54 @@
+@use "../abstracts" as *;
+
+.tooltip {
+  position: absolute;
+  background-color: #fff;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  word-break: break-word;
+  border-radius: 4px;
+  padding: 6px;
+  box-sizing: border-box;
+
+  &--product-card {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    bottom: -6px;
+    left: -6px;
+    width: calc(100% + 12px);
+  }
+
+  &--review-card {
+    top: -6px;
+    left: -6px;
+    width: calc(100% + 12px);
+    font-weight: 700;
+    span:not(.verified-icon) {
+      word-break: break-word;
+    }
+
+    .verified-icon {
+      flex-shrink: 0;
+    }
+  }
+
+  &--comment {
+    line-height: 22px;
+    font-size: $font-size-base;
+    color: $text-muted;
+    margin: 0;
+    top: -6px;
+    left: -6px;
+    width: calc(100% + 12px);
+
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
+  }
+}
