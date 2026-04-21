@@ -114,7 +114,7 @@
 
     .product-card__name {
       font-size: 32px;
-      margin: 0 0 12px 0;
+      margin: 0 0 14px 0;
       white-space: normal;
       overflow: visible;
       color: $text-dark;
@@ -128,11 +128,11 @@
 
     .product-card__rating {
       margin-top: 0;
-      margin-bottom: 24px;
+      margin-bottom: 14px;
       gap: 8px;
 
       @media (max-width: $breakpoint) {
-        margin-bottom: 12px;
+        margin-bottom: 8px;
       }
     }
 

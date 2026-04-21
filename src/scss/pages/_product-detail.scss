@@ -4,26 +4,28 @@ $mobile-gap: 20px;
 $base-gap: 40px;
 
 .product-detail {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: $base-gap;
   margin-bottom: 60px;
 
   @media (max-width: $breakpoint) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: $mobile-gap;
   }
 
   &__gallery {
-    flex: 1;
     display: flex;
     margin: 0;
     gap: 16px;
-    height: 500px;
+    min-height: 0;
+    min-width: 0;
+    contain: size;
 
     @media (max-width: $breakpoint) {
       flex-direction: column;
-      height: auto;
       gap: 12px;
+      contain: none;
     }
   }
 
@@ -97,7 +99,7 @@ $base-gap: 40px;
   }
 
   &__info {
-    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
   }
@@ -106,8 +108,8 @@ $base-gap: 40px;
     font-size: $font-size-base;
     line-height: 1.5;
     color: $text-muted;
-    margin-bottom: 32px;
     padding-bottom: 24px;
+    margin-bottom: 24px;
     border-bottom: 1px solid #eee;
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
