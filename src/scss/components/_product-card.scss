@@ -1,9 +1,10 @@
 @use "../abstracts" as *;
 
 .product-card {
-  @include flex-group(0px, space-between, flex-start);
+  @include flex-group(0px, flex-start, flex-start);
   flex-direction: column;
   min-width: 0;
+  height: 100%;
 
   &__image {
     margin: 0;
@@ -60,8 +61,8 @@
     &--start {
       content: "";
       background: $icn-star;
-      width: 22px;
-      height: 21px;
+      width: 19px;
+      height: 19px;
 
       @media (max-width: $breakpoint) {
         width: 15px;

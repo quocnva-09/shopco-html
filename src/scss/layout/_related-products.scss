@@ -19,10 +19,8 @@
   }
 
   &__list {
-    @include flex-center;
-    justify-content: flex-start;
+    @include flex-group(20px, flex-start, stretch);
     flex-wrap: nowrap;
-    gap: 20px;
     width: 100%;
     transition: transform 0.5s ease;
 

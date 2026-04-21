@@ -82,12 +82,12 @@
 
 .rating {
   @include flex-center;
-  gap: $base-spacing * 0.5;
+  gap: $base-spacing * 0.25;
 
   &__star {
     display: block;
-    width: 21px;
-    height: 21px;
+    width: 18px;
+    height: 18px;
     background: $icn-star;
 
     @media (max-width: $breakpoint) {
@@ -99,8 +99,8 @@
 
   &__star--half {
     display: block;
-    width: 11px;
-    height: 21px;
+    width: 10px;
+    height: 18px;
     background: $icn-half-star;
 
     @media (max-width: $breakpoint) {
