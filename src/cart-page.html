@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="../build/css/main.css" />
+  </head>
+
+  <body
+    oncontextmenu="return false;"
+    ondragstart="return false;"
+    ondrop="return false;"
+  >
+    <header class="header">
+      <div class="top-bar">
+        <div class="top-bar__container container">
+          <p class="top-bar__text">
+            Sign up and get 20% off to your first order.
+            <a href="#" class="top-bar__link">Sign Up Now</a>
+          </p>
+          <button
+            class="top-bar__close"
+            aria-label="Close notification"
+            id="js-close-top-bar"
+          >
+            <span>&#10005;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="container header__main">
+        <button
+          class="header__hamburger js-hamburger"
+          aria-label="Menu"
+        ></button>
+        <a href="#" class="header__logo">SHOP.CO</a>
+
+        <nav class="header__nav js-nav">
+          <ul class="header__menu">
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link"
+                >Shop
+                <img
+                  src="assets/icons/icn-arrow-down.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="header__menu-icon"
+              /></a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">On Sale</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">New Arrivals</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">Brands</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="overlay js-overlay"></div>
+
+        <div class="header__search">
+          <form action="#" class="search-bar">
+            <button type="submit" class="search-bar__btn" aria-label="Search">
+              <img
+                src="assets/icons/icn-look-up.svg"
+                alt="Icon search"
+                title="Icon search"
+              />
+            </button>
+            <input
+              type="text"
+              class="search-bar__input"
+              placeholder="Search for products..."
+            />
+          </form>
+        </div>
+
+        <div class="header__actions">
+          <button class="icon-btn" aria-label="Cart">
+            <img
+              src="assets/icons/icn-cart.svg"
+              alt="Icon cart"
+              title="Icon cart"
+            />
+          </button>
+          <button class="icon-btn" aria-label="User Profile">
+            <img
+              src="assets/icons/icn-user.svg"
+              alt="Icon user"
+              title="Icon user"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="breadcrumb">
+        <a href="#" class="breadcrumb__item">Home</a>
+        <span class="breadcrumb__separator">&#10095;</span>
+        <span class="breadcrumb__item breadcrumb__item--active">Cart</span>
+      </div>
+
+      <h1 class="cart__title">YOUR CART</h1>
+
+      <div class="cart">
+        <div class="cart__items">
+          <article class="cart-item">
+            <div class="cart-item__image-wrap">
+              <img
+                src="assets/images/pic-gradient-graphic-t-shirt.png"
+                alt="Gradient Graphic T-shirt"
+                title="Gradient Graphic T-shirt"
+                class="cart-item__image"
+              />
+            </div>
+            <div class="cart-item__info">
+              <h2 class="cart-item__name">Gradient Graphic T-shirt</h2>
+              <p class="cart-item__variant">
+                Size: <span class="cart-item__variant-value">Large</span>
+              </p>
+              <p class="cart-item__variant">
+                Color: <span class="cart-item__variant-value">White</span>
+              </p>
+              <p class="cart-item__price">$145</p>
+            </div>
+            <div class="cart-item__actions">
+              <button class="btn btn--delete" aria-label="Remove item"></button>
+              <div class="cart-item__quantity">
+                <button type="button" class="btn btn--qty-btn js-qty-decrease">
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="cart-item__qty-input js-qty-input"
+                  value="1"
+                  min="1"
+                  aria-label="Quantity"
+                />
+                <button type="button" class="btn btn--qty-btn js-qty-increase">
+                  +
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cart-item">
+            <div class="cart-item__image-wrap">
+              <img
+                src="assets/images/pic-black-sctrip-t-shirt.png"
+                alt="Checkered Shirt"
+                title="Checkered Shirt"
+                class="cart-item__image"
+              />
+            </div>
+            <div class="cart-item__info">
+              <h2 class="cart-item__name">Checkered Shirt</h2>
+              <p class="cart-item__variant">
+                Size: <span class="cart-item__variant-value">Medium</span>
+              </p>
+              <p class="cart-item__variant">
+                Color: <span class="cart-item__variant-value">Red</span>
+              </p>
+              <p class="cart-item__price">$180</p>
+            </div>
+            <div class="cart-item__actions">
+              <button class="btn btn--delete" aria-label="Remove item"></button>
+              <div class="cart-item__quantity">
+                <button type="button" class="btn btn--qty-btn js-qty-decrease">
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="cart-item__qty-input js-qty-input"
+                  value="1"
+                  min="1"
+                  aria-label="Quantity"
+                />
+                <button type="button" class="btn btn--qty-btn js-qty-increase">
+                  +
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="cart-item">
+            <div class="cart-item__image-wrap">
+              <img
+                src="assets/images/pic-black-sctrip-t-shirt.png"
+                alt="Checkered Shirt"
+                title="Checkered Shirt"
+                class="cart-item__image"
+              />
+            </div>
+            <div class="cart-item__info">
+              <h2 class="cart-item__name">Checkered Shirt</h2>
+              <p class="cart-item__variant">
+                Size: <span class="cart-item__variant-value">Medium</span>
+              </p>
+              <p class="cart-item__variant">
+                Color: <span class="cart-item__variant-value">Red</span>
+              </p>
+              <p class="cart-item__price">$180</p>
+            </div>
+            <div class="cart-item__actions">
+              <button class="btn btn--delete" aria-label="Remove item"></button>
+              <div class="cart-item__quantity">
+                <button type="button" class="btn btn--qty-btn js-qty-decrease">
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="cart-item__qty-input js-qty-input"
+                  value="1"
+                  min="1"
+                  aria-label="Quantity"
+                />
+                <button type="button" class="btn btn--qty-btn js-qty-increase">
+                  +
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cart__summary">
+          <aside class="cart-summary">
+            <h2 class="cart-summary__title">Order Summary</h2>
+            <ul class="cart-summary__list">
+              <li class="cart-summary__item">
+                <span class="cart-summary__label">Subtotal</span>
+                <span class="cart-summary__value">$565</span>
+              </li>
+              <li class="cart-summary__item cart-summary__item--discount">
+                <span class="cart-summary__label">Discount (-20%)</span>
+                <span class="cart-summary__value">-$113</span>
+              </li>
+              <li class="cart-summary__item">
+                <span class="cart-summary__label">Delivery Fee</span>
+                <span class="cart-summary__value">$15</span>
+              </li>
+            </ul>
+            <div class="cart-summary__total">
+              <span class="cart-summary__label">Total</span>
+              <span class="cart-summary__value">$467</span>
+            </div>
+            <form class="cart-summary__promo">
+              <div class="cart-summary__promo-input-wrapper">
+                <input
+                  type="text"
+                  class="cart-summary__promo-input"
+                  placeholder="Add promo code"
+                />
+              </div>
+              <button type="submit" class="btn btn--apply">Apply</button>
+            </form>
+            <button class="btn btn--add-to-cart cart-summary__checkout">
+              Go to Checkout
+              <span class="cart-summary__checkout-arrow">&#8594;</span>
+            </button>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__newsletter">
+        <div class="container">
+          <div class="footer__newsletter-container">
+            <h2 class="footer__newsletter-title">
+              STAY UPTO DATE ABOUT OUR LATEST OFFERS
+            </h2>
+            <form class="footer__newsletter-form js-newsletter-form">
+              <div class="footer__newsletter-input-wrapper">
+                <input
+                  type="email"
+                  class="footer__newsletter-input"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn--newsletter">
+                Subscribe to Newsletter
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer__content">
+        <div class="container">
+          <div class="footer__main">
+            <div class="footer__brand">
+              <h2 class="footer__logo">SHOP.CO</h2>
+              <p class="footer__desc">
+                We have clothes that suits your style and which you're proud to
+                wear. From women to men.
+              </p>
+              <div class="footer__socials">
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <img
+                    src="assets/icons/icn-logo-twitter.svg"
+                    alt="Twitter logo"
+                    title="Twitter logo"
+                  />
+                </a>
+                <a href="#" class="social-link" aria-label="Facebook">
+                  <img
+                    src="assets/icons/icn-logo-fb.svg"
+                    alt="Facebook logo"
+                    title="Facebook logo"
+                  />
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                  <img
+                    src="assets/icons/icn-logo-insta.svg"
+                    alt="Instagram logo"
+                    title="Instagram logo"
+                  />
+                </a>
+                <a href="#" class="social-link" aria-label="GitHub">
+                  <img
+                    src="assets/icons/icn-logo-github.svg"
+                    alt="GitHub logo"
+                    title="GitHub logo"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="footer__links-group">
+              <div class="footer__col">
+                <h3 class="footer__col-title">COMPANY</h3>
+                <ul class="footer__list">
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">About</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Features</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Works</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Career</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h3 class="footer__col-title">HELP</h3>
+                <ul class="footer__list">
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Customer Support</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Delivery Details</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Terms & Conditions</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h3 class="footer__col-title">FAQ</h3>
+                <ul class="footer__list">
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Account</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Manage Deliveries</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Orders</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Payments</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h3 class="footer__col-title">RESOURCES</h3>
+                <ul class="footer__list">
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Free eBooks</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Development Tutorial</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">How to - Blog</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Youtube Playlist</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer__bottom">
+            <p class="footer__copyright">
+              Shop.co © 2000-2026, All Rights Reserved
+            </p>
+            <ul class="footer__payments">
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-visa.svg"
+                  alt="VISA payment"
+                  title="VISA payment"
+                />
+              </li>
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-mastercard.svg"
+                  alt="Mastercard payment"
+                  title="Mastercard payment"
+                />
+              </li>
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-paypal.svg"
+                  alt="Paypal payment"
+                  title="Paypal payment"
+                />
+              </li>
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-a-pay.svg"
+                  alt="Apple Pay payment"
+                  title="Apple Pay payment"
+                />
+              </li>
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-g-pay.svg"
+                  alt="Google Pay payment"
+                  title="Google Pay payment"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/load-data.js?v=20260421"></script>
+    <script src="js/product-page.js?v=20260421"></script>
+  </body>
+</html>

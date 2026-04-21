@@ -1,0 +1,49 @@
+@use "../abstracts/variables" as *;
+
+.cart {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 80px;
+
+  @media (max-width: $breakpoint) {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    font-family: $font-family-title;
+    font-size: 40px;
+    margin: 24px 0;
+    text-transform: uppercase;
+
+    @media (max-width: $breakpoint) {
+      font-size: 28px;
+      margin: 16px 0;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: $radius-lg;
+    padding: 24px;
+
+    @media (max-width: $breakpoint) {
+      padding: 16px;
+      gap: 16px;
+    }
+  }
+
+  &__summary {
+    width: 100%;
+
+    @media (max-width: $breakpoint) {
+      width: 100%;
+    }
+  }
+}

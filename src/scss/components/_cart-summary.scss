@@ -1,0 +1,136 @@
+@use "../abstracts/variables" as *;
+
+.cart-summary {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: $radius-lg;
+  padding: 20px 24px 32px;
+
+  @media (max-width: $breakpoint) {
+    padding: 24px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+
+    @media (max-width: $breakpoint) {
+      font-size: 20px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 24px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 20px;
+
+    @media (max-width: $breakpoint) {
+      font-size: 16px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--discount {
+      .cart-summary__value {
+        color: #ff3333;
+      }
+    }
+  }
+
+  &__label {
+    color: $text-muted;
+  }
+
+  &__value {
+    font-weight: 700;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+
+    @media (max-width: $breakpoint) {
+      font-size: 20px;
+    }
+
+    .cart-summary__label {
+      color: $text-dark;
+      font-weight: 400;
+    }
+  }
+
+  &__promo {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+
+    &-input-wrapper {
+      flex: 1;
+      background-color: #f0f0f0;
+      border-radius: $radius-pill;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        background: $icn-voucher;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 8px;
+        flex-shrink: 0;
+      }
+    }
+
+    &-input {
+      border: none;
+      background: transparent;
+      outline: none;
+      flex: 1;
+      font-size: $font-size-base;
+      height: 48px;
+      color: $text-dark;
+
+      &::placeholder {
+        color: $text-muted;
+      }
+
+      @media (max-width: $breakpoint) {
+        font-size: $font-size-mobile;
+        height: 44px;
+      }
+    }
+  }
+
+  &__checkout {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+
+    &-arrow {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+}

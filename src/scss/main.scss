@@ -17,6 +17,7 @@
 @use "layout/tab-content";
 @use "layout/faqs";
 @use "layout/details";
+@use "layout/cart";
 
 // 4. Components
 @use "components/button";
@@ -27,6 +28,8 @@
 @use "components/breadcrumb";
 @use "components/size-selector";
 @use "components/color-selector";
+@use "components/cart-item";
+@use "components/cart-summary";
 
 // 5. Pages
 @use "pages/home";
