@@ -10,6 +10,8 @@ async function showReviews(filterRating = 0) {
       : reviews.filter((review) => Math.floor(review.rating) === filterRating);
 
   const reviewContainer = document.getElementById("js-reviews-grid");
+  if (!reviewContainer) return;
+  
   reviewContainer.innerHTML = "";
   reviews.forEach((review) => {
     reviewContainer.innerHTML += `
@@ -59,6 +61,8 @@ async function showProducts() {
     response.json(),
   );
   const productContainer = document.getElementById("js-related-products");
+
+  if (!productContainer) return;
 
   if (!products || products.length === 0) {
     productContainer.innerHTML =
