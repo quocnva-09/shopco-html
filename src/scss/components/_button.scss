@@ -12,9 +12,11 @@
     background-color: $black-color;
     color: $white-color;
     font-size: $font-size-base;
+
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
     }
+
     font-weight: 400;
     padding: 13px 30px;
 
@@ -92,9 +94,11 @@
     color: #fff;
     border: none;
     font-size: $font-size-base;
+
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
     }
+
     font-weight: 500;
     cursor: pointer;
     transition: opacity 0.3s ease;
@@ -121,6 +125,7 @@
     cursor: pointer;
     font-weight: 400;
     font-size: $font-size-base;
+
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
     }
@@ -150,9 +155,11 @@
     width: 100%;
     padding: 12px 24px;
     font-size: $font-size-base;
+
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
     }
+
     font-weight: 500;
 
     &:hover {
@@ -167,10 +174,32 @@
     padding: 13px 34px;
     font-size: $font-size-base;
     font-weight: 500;
+
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
       padding: 12px 16px;
     }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &--apply-filter {
+    background-color: $black-color;
+    color: $white-color;
+    border-radius: $radius-pill;
+    padding: 13px 34px;
+    font-size: $font-size-base;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 24px;
+
+    @media (max-width: $breakpoint) {
+      font-size: $font-size-mobile;
+      padding: 12px 16px;
+    }
+
     &:hover {
       opacity: 0.8;
     }

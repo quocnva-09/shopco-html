@@ -60,7 +60,7 @@ async function showProducts() {
   let products = await fetch("./assets/data/products.json").then((response) =>
     response.json(),
   );
-  const productContainer = document.getElementById("js-related-products");
+  const productContainer = document.getElementById("js-related-products") || document.getElementById("js-category-products");
 
   if (!productContainer) return;
 

@@ -18,7 +18,8 @@
 @use "layout/faqs";
 @use "layout/details";
 @use "layout/cart";
-
+@use "layout/sidebar";
+@use "layout/product-grid";
 // 4. Components
 @use "components/button";
 @use "components/tabs";
@@ -30,10 +31,12 @@
 @use "components/color-selector";
 @use "components/cart-item";
 @use "components/cart-summary";
-
+@use "components/filter-group";
+@use "components/pagination";
+@use "components/range-slider";
 // 5. Pages
 @use "pages/home";
 @use "pages/product-detail";
-
+@use "pages/category";
 // 6. Themes
 @use "themes/default";
