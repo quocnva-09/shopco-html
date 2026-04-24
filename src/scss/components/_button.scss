@@ -39,6 +39,11 @@
     cursor: pointer;
     background-color: $grey-color;
 
+    @media (min-width: $tablet) {
+      width: 32px;
+      height: 32px;
+    }
+
     &::before {
       content: "";
       display: block;
@@ -167,13 +172,14 @@
     }
   }
 
-  &--apply {
+  &--apply,
+  &--apply-filter {
     background-color: $black-color;
     color: $white-color;
     border-radius: $radius-pill;
     padding: 13px 34px;
     font-size: $font-size-base;
-    font-weight: 500;
+    font-weight: 400;
 
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
@@ -186,23 +192,7 @@
   }
 
   &--apply-filter {
-    background-color: $black-color;
-    color: $white-color;
-    border-radius: $radius-pill;
-    padding: 13px 34px;
-    font-size: $font-size-base;
-    font-weight: 500;
-    width: 100%;
     margin-top: 24px;
-
-    @media (max-width: $breakpoint) {
-      font-size: $font-size-mobile;
-      padding: 12px 16px;
-    }
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
 
   &--delete {

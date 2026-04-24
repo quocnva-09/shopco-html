@@ -9,7 +9,9 @@
   margin-bottom: 80px;
 
   @media (min-width: $breakpoint) {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 295px 1fr;
+    align-items: start;
     gap: 20px;
   }
 }

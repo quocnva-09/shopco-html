@@ -2,8 +2,10 @@
     {
         "id": 1,
         "name": "Polo with Contrast Trims",
-        "image": "assets/images/pic-polo-with-contrast-trims.png",
-        "rating": 4.0,
+        "image": [
+            "assets/images/pic-polo-with-contrast-trims.png"
+        ],
+        "rating": 4,
         "price": 212,
         "oldPrice": 242,
         "discount": "-20%",
@@ -13,7 +15,9 @@
     {
         "id": 2,
         "name": "Gradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirt",
-        "image": "assets/images/pic-gradient-graphic-t-shirt.png",
+        "image": [
+            "assets/images/pic-gradient-graphic-t-shirt.png"
+        ],
         "rating": 3.5,
         "price": 145,
         "description": null,
@@ -22,7 +26,9 @@
     {
         "id": 3,
         "name": "Polo with Tipping Details",
-        "image": "assets/images/pic-polo-with-tipping-detail.png",
+        "image": [
+            "assets/images/pic-polo-with-tipping-detail.png"
+        ],
         "rating": 4.5,
         "price": 180,
         "description": null,
@@ -31,8 +37,10 @@
     {
         "id": 4,
         "name": "Black Striped T-shirt",
-        "image": "assets/images/pic-black-sctrip-t-shirt.png",
-        "rating": 5.0,
+        "image": [
+            "assets/images/pic-black-sctrip-t-shirt.png"
+        ],
+        "rating": 5,
         "price": 12000,
         "oldPrice": 150,
         "discount": "-3000%",
@@ -42,8 +50,10 @@
     {
         "id": 5,
         "name": "Polo man",
-        "image": "assets/images/pic-polo-with-contrast-trims.png",
-        "rating": 5.0,
+        "image": [
+            "assets/images/pic-polo-with-contrast-trims.png"
+        ],
+        "rating": 5,
         "price": 120,
         "oldPrice": 150,
         "discount": "-30%",
@@ -53,8 +63,10 @@
     {
         "id": 6,
         "name": "Wonderful T-Shirt",
-        "image": "assets/images/pic-gradient-graphic-t-shirt.png",
-        "rating": 4.0,
+        "image": [
+            "assets/images/pic-gradient-graphic-t-shirt.png"
+        ],
+        "rating": 4,
         "price": 145,
         "description": null,
         "color": null
@@ -62,7 +74,9 @@
     {
         "id": 7,
         "name": "Polo Details",
-        "image": "assets/images/pic-polo-with-tipping-detail.png",
+        "image": [
+            "assets/images/pic-polo-with-tipping-detail.png"
+        ],
         "rating": 4.5,
         "price": 500,
         "description": null,
@@ -71,8 +85,10 @@
     {
         "id": 8,
         "name": "Black T-shirt",
-        "image": "assets/images/pic-black-sctrip-t-shirt.png",
-        "rating": 5.0,
+        "image": [
+            "assets/images/pic-black-sctrip-t-shirt.png"
+        ],
+        "rating": 5,
         "price": 120,
         "description": null,
         "color": null
@@ -81,9 +97,247 @@
         "id": 9,
         "name": "One Life Graphic T-Shirt",
         "image": [
-            "assets/images/product-1/pic-prod-1.png",
-            "assets/images/product-1/pic-prod-2.png",
-            "assets/images/product-1/pic-prod-3.png"
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-1.png",
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-2.png",
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-3.png"
+        ],
+        "rating": 4.5,
+        "price": 260,
+        "oldPrice": 300,
+        "discount": "-40%",
+        "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+        "color": [
+            "#4f4631",
+            "#314f4a",
+            "#31344f"
+        ],
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Polo with Contrast Trims 2",
+        "image": [
+            "assets/images/pic-polo-with-contrast-trims.png"
+        ],
+        "rating": 4,
+        "price": 212,
+        "oldPrice": 242,
+        "discount": "-20%",
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 11,
+        "name": "Gradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirt 2",
+        "image": [
+            "assets/images/pic-gradient-graphic-t-shirt.png"
+        ],
+        "rating": 3.5,
+        "price": 145,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 12,
+        "name": "Polo with Tipping Details 2",
+        "image": [
+            "assets/images/pic-polo-with-tipping-detail.png"
+        ],
+        "rating": 4.5,
+        "price": 180,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 13,
+        "name": "Black Striped T-shirt 2",
+        "image": [
+            "assets/images/pic-black-sctrip-t-shirt.png"
+        ],
+        "rating": 5,
+        "price": 12000,
+        "oldPrice": 150,
+        "discount": "-3000%",
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 14,
+        "name": "Polo man 2",
+        "image": [
+            "assets/images/pic-polo-with-contrast-trims.png"
+        ],
+        "rating": 5,
+        "price": 120,
+        "oldPrice": 150,
+        "discount": "-30%",
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 15,
+        "name": "Wonderful T-Shirt 2",
+        "image": [
+            "assets/images/pic-gradient-graphic-t-shirt.png"
+        ],
+        "rating": 4,
+        "price": 145,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 16,
+        "name": "Polo Details 2",
+        "image": [
+            "assets/images/pic-polo-with-tipping-detail.png"
+        ],
+        "rating": 4.5,
+        "price": 500,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 17,
+        "name": "Black T-shirt 2",
+        "image": [
+            "assets/images/pic-black-sctrip-t-shirt.png"
+        ],
+        "rating": 5,
+        "price": 120,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 18,
+        "name": "One Life Graphic T-Shirt 2",
+        "image": [
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-1.png",
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-2.png",
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-3.png"
+        ],
+        "rating": 4.5,
+        "price": 260,
+        "oldPrice": 300,
+        "discount": "-40%",
+        "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+        "color": [
+            "#4f4631",
+            "#314f4a",
+            "#31344f"
+        ],
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Polo with Contrast Trims 3",
+        "image": [
+            "assets/images/pic-polo-with-contrast-trims.png"
+        ],
+        "rating": 4,
+        "price": 212,
+        "oldPrice": 242,
+        "discount": "-20%",
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 20,
+        "name": "Gradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirt 3",
+        "image": [
+            "assets/images/pic-gradient-graphic-t-shirt.png"
+        ],
+        "rating": 3.5,
+        "price": 145,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 21,
+        "name": "Polo with Tipping Details 3",
+        "image": [
+            "assets/images/pic-polo-with-tipping-detail.png"
+        ],
+        "rating": 4.5,
+        "price": 180,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 22,
+        "name": "Black Striped T-shirt 3",
+        "image": [
+            "assets/images/pic-black-sctrip-t-shirt.png"
+        ],
+        "rating": 5,
+        "price": 12000,
+        "oldPrice": 150,
+        "discount": "-3000%",
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 23,
+        "name": "Polo man 3",
+        "image": [
+            "assets/images/pic-polo-with-contrast-trims.png"
+        ],
+        "rating": 5,
+        "price": 120,
+        "oldPrice": 150,
+        "discount": "-30%",
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 24,
+        "name": "Wonderful T-Shirt 3",
+        "image": [
+            "assets/images/pic-gradient-graphic-t-shirt.png"
+        ],
+        "rating": 4,
+        "price": 145,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 25,
+        "name": "Polo Details 3",
+        "image": [
+            "assets/images/pic-polo-with-tipping-detail.png"
+        ],
+        "rating": 4.5,
+        "price": 500,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 26,
+        "name": "Black T-shirt 3",
+        "image": [
+            "assets/images/pic-black-sctrip-t-shirt.png"
+        ],
+        "rating": 5,
+        "price": 120,
+        "description": null,
+        "color": null
+    },
+    {
+        "id": 27,
+        "name": "One Life Graphic T-Shirt 3",
+        "image": [
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-1.png",
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-2.png",
+            "assets/images/one-life-t-shirt/pic-one-life-t-shirt-3.png"
         ],
         "rating": 4.5,
         "price": 260,

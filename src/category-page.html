@@ -1,429 +1,721 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category Page - Casual</title>
+    <link rel="stylesheet" href="../build/css/main.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Category Page - Casual</title>
-  <link rel="stylesheet" href="../build/css/main.css" />
-</head>
-
-<body oncontextmenu="return false;" ondragstart="return false;" ondrop="return false;">
-  <header class="header">
-    <div class="top-bar">
-      <div class="top-bar__container container">
-        <p class="top-bar__text">
-          Sign up and get 20% off to your first order.
-          <a href="#" class="top-bar__link">Sign Up Now</a>
-        </p>
-        <button class="top-bar__close" aria-label="Close notification" id="js-close-top-bar">
-          <span>&#10005;</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="container header__main">
-      <button class="header__hamburger js-hamburger" aria-label="Menu"></button>
-      <a href="#" class="header__logo">SHOP.CO</a>
-
-      <nav class="header__nav js-nav">
-        <ul class="header__menu">
-          <li class="header__menu-item">
-            <a href="#" class="header__menu-link">Shop
-              <img src="assets/icons/icn-arrow-down.svg" alt="" aria-hidden="true" class="header__menu-icon" /></a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#" class="header__menu-link">On Sale</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#" class="header__menu-link">New Arrivals</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#" class="header__menu-link">Brands</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="overlay js-overlay"></div>
-
-      <div class="header__search">
-        <form action="#" class="search-bar">
-          <button type="submit" class="search-bar__btn" aria-label="Search">
-            <img src="assets/icons/icn-look-up.svg" alt="Icon search" title="Icon search" />
-          </button>
-          <input type="text" class="search-bar__input" placeholder="Search for products..." />
-        </form>
-      </div>
-
-      <div class="header__actions">
-        <button class="icon-btn" aria-label="Cart">
-          <img src="assets/icons/icn-cart.svg" alt="Icon cart" title="Icon cart" />
-        </button>
-        <button class="icon-btn" aria-label="User Profile">
-          <img src="assets/icons/icn-user.svg" alt="Icon user" title="Icon user" />
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="breadcrumb">
-      <a href="#" class="breadcrumb__item">Home</a>
-      <span class="breadcrumb__separator">&#10095;</span>
-      <span class="breadcrumb__item breadcrumb__item--active">Casual</span>
-    </div>
-
-    <div class="category">
-      <!-- Sidebar Filters -->
-      <aside class="sidebar">
-        <div class="sidebar__header">
-          <h2 class="sidebar__title">Filters</h2>
-          <button class="sidebar__icon-btn">
-            <img src="assets/icons/icn-filter.svg" alt="Filter icon" title="Filter icon">
+  <body
+    oncontextmenu="return false;"
+    ondragstart="return false;"
+    ondrop="return false;"
+  >
+    <header class="header">
+      <div class="top-bar">
+        <div class="top-bar__container container">
+          <p class="top-bar__text">
+            Sign up and get 20% off to your first order.
+            <a href="#" class="top-bar__link">Sign Up Now</a>
+          </p>
+          <button
+            class="top-bar__close"
+            aria-label="Close notification"
+            id="js-close-top-bar"
+          >
+            <span>&#10005;</span>
           </button>
         </div>
+      </div>
 
-        <div class="sidebar__content">
-          <!-- Categories -->
-          <div class="filter-group filter-group--categories">
-            <ul class="filter-group__list">
-              <li class="filter-group__item"><a href="#">T-shirts</a> <img src="assets/icons/icn-arrow-right.svg"
-                  alt="Right"
-                  onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-              <li class="filter-group__item"><a href="#">Shorts</a> <img src="assets/icons/icn-arrow-right.svg"
-                  alt="Right"
-                  onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-              <li class="filter-group__item"><a href="#">Shirts</a> <img src="assets/icons/icn-arrow-right.svg"
-                  alt="Right"
-                  onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-              <li class="filter-group__item"><a href="#">Hoodie</a> <img src="assets/icons/icn-arrow-right.svg"
-                  alt="Right"
-                  onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-              <li class="filter-group__item"><a href="#">Jeans</a> <img src="assets/icons/icn-arrow-right.svg"
-                  alt="Right"
-                  onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-            </ul>
+      <div class="container header__main">
+        <button
+          class="header__hamburger js-hamburger"
+          aria-label="Menu"
+        ></button>
+        <a href="#" class="header__logo">SHOP.CO</a>
+
+        <nav class="header__nav js-nav">
+          <ul class="header__menu">
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link"
+                >Shop
+                <img
+                  src="assets/icons/icn-arrow-down.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="header__menu-icon"
+              /></a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">On Sale</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">New Arrivals</a>
+            </li>
+            <li class="header__menu-item">
+              <a href="#" class="header__menu-link">Brands</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="overlay js-overlay"></div>
+
+        <div class="header__search">
+          <form action="#" class="search-bar">
+            <button type="submit" class="search-bar__btn" aria-label="Search">
+              <img
+                src="assets/icons/icn-look-up.svg"
+                alt="Icon search"
+                title="Icon search"
+              />
+            </button>
+            <input
+              type="text"
+              class="search-bar__input"
+              placeholder="Search for products..."
+            />
+          </form>
+        </div>
+
+        <div class="header__actions">
+          <button class="icon-btn" aria-label="Cart">
+            <img
+              src="assets/icons/icn-cart.svg"
+              alt="Icon cart"
+              title="Icon cart"
+            />
+          </button>
+          <button class="icon-btn" aria-label="User Profile">
+            <img
+              src="assets/icons/icn-user.svg"
+              alt="Icon user"
+              title="Icon user"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="breadcrumb">
+        <a href="#" class="breadcrumb__item">Home</a>
+        <span class="breadcrumb__separator">&#10095;</span>
+        <span class="breadcrumb__item breadcrumb__item--active">Casual</span>
+      </div>
+
+      <div class="category">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar js-sidebar-filter">
+          <div class="sidebar__header">
+            <h2 class="sidebar__title">Filters</h2>
+            <button class="sidebar__icon-btn js-close-filter">
+              <img
+                src="assets/icons/icn-filter.svg"
+                alt="Filter icon"
+                title="Filter icon"
+              />
+            </button>
           </div>
 
-          <hr class="sidebar__divider">
+          <hr class="sidebar__divider" />
 
-          <!-- Price -->
-          <div class="filter-group">
-            <div class="filter-group__header js-filter-toggle">
-              <h3 class="filter-group__title">Price</h3>
-              <img src="assets/icons/icn-arrow-down.svg" class="filter-group__icon" alt="Toggle">
+          <div class="sidebar__content">
+            <!-- Categories -->
+            <div class="filter-group filter-group--categories">
+              <ul class="filter-group__list">
+                <li class="filter-group__item">
+                  <a href="#">T-shirts</a>
+                  <img src="assets/icons/vector-direct-right.svg" alt="Right" />
+                </li>
+                <li class="filter-group__item">
+                  <a href="#">Shorts</a>
+                  <img src="assets/icons/vector-direct-right.svg" alt="Right" />
+                </li>
+                <li class="filter-group__item">
+                  <a href="#">Shirts</a>
+                  <img src="assets/icons/vector-direct-right.svg" alt="Right" />
+                </li>
+                <li class="filter-group__item">
+                  <a href="#">Hoodie</a>
+                  <img src="assets/icons/vector-direct-right.svg" alt="Right" />
+                </li>
+                <li class="filter-group__item">
+                  <a href="#">Jeans</a>
+                  <img src="assets/icons/vector-direct-right.svg" alt="Right" />
+                </li>
+              </ul>
             </div>
-            <div class="filter-group__content">
-              <div class="range-slider">
-                <div class="range-slider__track"></div>
-                <div class="range-slider__thumb range-slider__thumb--left"></div>
-                <div class="range-slider__thumb range-slider__thumb--right"></div>
-                <div class="range-slider__values">
-                  <span>$50</span>
-                  <span>$200</span>
+
+            <hr class="sidebar__divider" />
+
+            <!-- Price -->
+            <div class="filter-group">
+              <div class="filter-group__header js-filter-toggle">
+                <h3 class="filter-group__title">Price</h3>
+                <img
+                  src="assets/icons/icn-arrow-down.svg"
+                  class="filter-group__icon"
+                  alt="Toggle"
+                />
+              </div>
+              <div class="filter-group__content">
+                <div
+                  class="range-slider js-range-slider"
+                  data-min="50"
+                  data-max="500"
+                  data-current-min="50"
+                  data-current-max="500"
+                >
+                  <div class="range-slider__track js-range-track"></div>
+                  <div
+                    class="range-slider__thumb range-slider__thumb--left js-range-thumb-left"
+                    tabindex="0"
+                    role="slider"
+                    aria-valuemin="50"
+                    aria-valuemax="500"
+                    aria-valuenow="50"
+                    aria-label="Minimum price"
+                  ></div>
+                  <div
+                    class="range-slider__thumb range-slider__thumb--right js-range-thumb-right"
+                    tabindex="0"
+                    role="slider"
+                    aria-valuemin="50"
+                    aria-valuemax="500"
+                    aria-valuenow="500"
+                    aria-label="Maximum price"
+                  ></div>
+                  <div class="range-slider__values js-range-values">
+                    <span>$50</span>
+                    <span>$500</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <hr class="sidebar__divider">
+            <hr class="sidebar__divider" />
 
-          <!-- Colors -->
-          <div class="filter-group">
-            <div class="filter-group__header js-filter-toggle">
-              <h3 class="filter-group__title">Colors</h3>
-              <img src="assets/icons/icn-arrow-down.svg" class="filter-group__icon" alt="Toggle">
-            </div>
-            <div class="filter-group__content">
-              <div class="color-selector">
-                <!-- Color options as in design -->
-                <input type="radio" name="color-filter" id="color-f1" value="green" class="color-selector__input" />
-                <label for="color-f1" class="color-selector__label" style="background-color: #00C12B;"></label>
-                <input type="radio" name="color-filter" id="color-f2" value="red" class="color-selector__input" />
-                <label for="color-f2" class="color-selector__label" style="background-color: #F50606;"></label>
-                <input type="radio" name="color-filter" id="color-f3" value="yellow" class="color-selector__input" />
-                <label for="color-f3" class="color-selector__label" style="background-color: #F5DD06;"></label>
-                <input type="radio" name="color-filter" id="color-f4" value="orange" class="color-selector__input" />
-                <label for="color-f4" class="color-selector__label" style="background-color: #F57906;"></label>
-                <input type="radio" name="color-filter" id="color-f5" value="cyan" class="color-selector__input" />
-                <label for="color-f5" class="color-selector__label" style="background-color: #06CAF5;"></label>
+            <!-- Colors -->
+            <div class="filter-group">
+              <div class="filter-group__header js-filter-toggle">
+                <h3 class="filter-group__title">Colors</h3>
+                <img
+                  src="assets/icons/icn-arrow-down.svg"
+                  class="filter-group__icon"
+                  alt="Toggle"
+                />
+              </div>
+              <div class="filter-group__content">
+                <div class="color-selector">
+                  <!-- Color options as in design -->
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f1"
+                    value="green"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f1"
+                    class="color-selector__label"
+                    style="background-color: #00c12b"
+                  ></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f2"
+                    value="red"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f2"
+                    class="color-selector__label"
+                    style="background-color: #f50606"
+                  ></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f3"
+                    value="yellow"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f3"
+                    class="color-selector__label"
+                    style="background-color: #f5dd06"
+                  ></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f4"
+                    value="orange"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f4"
+                    class="color-selector__label"
+                    style="background-color: #f57906"
+                  ></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f5"
+                    value="cyan"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f5"
+                    class="color-selector__label"
+                    style="background-color: #06caf5"
+                  ></label>
 
-                <input type="radio" name="color-filter" id="color-f6" value="blue" class="color-selector__input"
-                  checked />
-                <label for="color-f6" class="color-selector__label" style="background-color: #063AF5;"></label>
-                <input type="radio" name="color-filter" id="color-f7" value="purple" class="color-selector__input" />
-                <label for="color-f7" class="color-selector__label" style="background-color: #7D06F5;"></label>
-                <input type="radio" name="color-filter" id="color-f8" value="pink" class="color-selector__input" />
-                <label for="color-f8" class="color-selector__label" style="background-color: #F506A4;"></label>
-                <input type="radio" name="color-filter" id="color-f9" value="white" class="color-selector__input" />
-                <label for="color-f9" class="color-selector__label"
-                  style="background-color: #FFFFFF; border: 1px solid #ccc"></label>
-                <input type="radio" name="color-filter" id="color-f10" value="black" class="color-selector__input" />
-                <label for="color-f10" class="color-selector__label" style="background-color: #000000;"></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f6"
+                    value="blue"
+                    class="color-selector__input"
+                    checked
+                  />
+                  <label
+                    for="color-f6"
+                    class="color-selector__label"
+                    style="background-color: #063af5"
+                  ></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f7"
+                    value="purple"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f7"
+                    class="color-selector__label"
+                    style="background-color: #7d06f5"
+                  ></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f8"
+                    value="pink"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f8"
+                    class="color-selector__label"
+                    style="background-color: #f506a4"
+                  ></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f9"
+                    value="white"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f9"
+                    class="color-selector__label"
+                    style="background-color: #ffffff; border: 1px solid #ccc"
+                  ></label>
+                  <input
+                    type="radio"
+                    name="color-filter"
+                    id="color-f10"
+                    value="black"
+                    class="color-selector__input"
+                  />
+                  <label
+                    for="color-f10"
+                    class="color-selector__label"
+                    style="background-color: #000000"
+                  ></label>
+                </div>
               </div>
             </div>
-          </div>
 
-          <hr class="sidebar__divider">
+            <hr class="sidebar__divider" />
 
-          <!-- Size -->
-          <div class="filter-group">
-            <div class="filter-group__header js-filter-toggle">
-              <h3 class="filter-group__title">Size</h3>
-              <img src="assets/icons/icn-arrow-down.svg" class="filter-group__icon" alt="Toggle">
-            </div>
-            <div class="filter-group__content">
-              <div class="size-selector size-selector--grid">
-                <input type="radio" name="size-filter" id="size-f1" value="XX-Small" class="size-selector__input" />
-                <label for="size-f1" class="size-selector__label">XX-Small</label>
-                <input type="radio" name="size-filter" id="size-f2" value="X-Small" class="size-selector__input" />
-                <label for="size-f2" class="size-selector__label">X-Small</label>
-                <input type="radio" name="size-filter" id="size-f3" value="Small" class="size-selector__input" />
-                <label for="size-f3" class="size-selector__label">Small</label>
-                <input type="radio" name="size-filter" id="size-f4" value="Medium" class="size-selector__input" />
-                <label for="size-f4" class="size-selector__label">Medium</label>
-                <input type="radio" name="size-filter" id="size-f5" value="Large" class="size-selector__input"
-                  checked />
-                <label for="size-f5" class="size-selector__label">Large</label>
-                <input type="radio" name="size-filter" id="size-f6" value="X-Large" class="size-selector__input" />
-                <label for="size-f6" class="size-selector__label">X-Large</label>
-                <input type="radio" name="size-filter" id="size-f7" value="XX-Large" class="size-selector__input" />
-                <label for="size-f7" class="size-selector__label">XX-Large</label>
-                <input type="radio" name="size-filter" id="size-f8" value="3X-Large" class="size-selector__input" />
-                <label for="size-f8" class="size-selector__label">3X-Large</label>
-                <input type="radio" name="size-filter" id="size-f9" value="4X-Large" class="size-selector__input" />
-                <label for="size-f9" class="size-selector__label">4X-Large</label>
+            <!-- Size -->
+            <div class="filter-group">
+              <div class="filter-group__header js-filter-toggle">
+                <h3 class="filter-group__title">Size</h3>
+                <img
+                  src="assets/icons/icn-arrow-down.svg"
+                  class="filter-group__icon"
+                  alt="Toggle"
+                />
+              </div>
+              <div class="filter-group__content">
+                <div class="size-selector size-selector--grid">
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f1"
+                    value="XX-Small"
+                    class="size-selector__input"
+                  />
+                  <label for="size-f1" class="size-selector__label"
+                    >XX-Small</label
+                  >
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f2"
+                    value="X-Small"
+                    class="size-selector__input"
+                  />
+                  <label for="size-f2" class="size-selector__label"
+                    >X-Small</label
+                  >
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f3"
+                    value="Small"
+                    class="size-selector__input"
+                  />
+                  <label for="size-f3" class="size-selector__label"
+                    >Small</label
+                  >
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f4"
+                    value="Medium"
+                    class="size-selector__input"
+                  />
+                  <label for="size-f4" class="size-selector__label"
+                    >Medium</label
+                  >
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f5"
+                    value="Large"
+                    class="size-selector__input"
+                    checked
+                  />
+                  <label for="size-f5" class="size-selector__label"
+                    >Large</label
+                  >
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f6"
+                    value="X-Large"
+                    class="size-selector__input"
+                  />
+                  <label for="size-f6" class="size-selector__label"
+                    >X-Large</label
+                  >
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f7"
+                    value="XX-Large"
+                    class="size-selector__input"
+                  />
+                  <label for="size-f7" class="size-selector__label"
+                    >XX-Large</label
+                  >
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f8"
+                    value="3X-Large"
+                    class="size-selector__input"
+                  />
+                  <label for="size-f8" class="size-selector__label"
+                    >3X-Large</label
+                  >
+                  <input
+                    type="radio"
+                    name="size-filter"
+                    id="size-f9"
+                    value="4X-Large"
+                    class="size-selector__input"
+                  />
+                  <label for="size-f9" class="size-selector__label"
+                    >4X-Large</label
+                  >
+                </div>
               </div>
             </div>
-          </div>
 
-          <hr class="sidebar__divider">
+            <hr class="sidebar__divider" />
 
-          <!-- Dress Style -->
-          <div class="filter-group">
-            <div class="filter-group__header js-filter-toggle">
-              <h3 class="filter-group__title">Dress Style</h3>
-              <img src="assets/icons/icn-arrow-down.svg" class="filter-group__icon" alt="Toggle">
+            <!-- Dress Style -->
+            <div class="filter-group">
+              <div class="filter-group__header js-filter-toggle">
+                <h3 class="filter-group__title">Dress Style</h3>
+                <img
+                  src="assets/icons/icn-arrow-down.svg"
+                  class="filter-group__icon"
+                  alt="Toggle"
+                />
+              </div>
+              <div class="filter-group__content">
+                <ul class="filter-group__list">
+                  <li class="filter-group__item">
+                    <a href="#">Casual</a>
+                    <img
+                      src="assets/icons/vector-direct-right.svg"
+                      alt="Right"
+                    />
+                  </li>
+                  <li class="filter-group__item">
+                    <a href="#">Formal</a>
+                    <img
+                      src="assets/icons/vector-direct-right.svg"
+                      alt="Right"
+                    />
+                  </li>
+                  <li class="filter-group__item">
+                    <a href="#">Party</a>
+                    <img
+                      src="assets/icons/vector-direct-right.svg"
+                      alt="Right"
+                    />
+                  </li>
+                  <li class="filter-group__item">
+                    <a href="#">Gym</a>
+                    <img
+                      src="assets/icons/vector-direct-right.svg"
+                      alt="Right"
+                    />
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="filter-group__content">
-              <ul class="filter-group__list">
-                <li class="filter-group__item"><a href="#">Casual</a> <img src="assets/icons/icn-arrow-right.svg"
-                    alt="Right"
-                    onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-                <li class="filter-group__item"><a href="#">Formal</a> <img src="assets/icons/icn-arrow-right.svg"
-                    alt="Right"
-                    onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-                <li class="filter-group__item"><a href="#">Party</a> <img src="assets/icons/icn-arrow-right.svg"
-                    alt="Right"
-                    onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-                <li class="filter-group__item"><a href="#">Gym</a> <img src="assets/icons/icn-arrow-right.svg"
-                    alt="Right"
-                    onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'"></li>
-              </ul>
-            </div>
-          </div>
 
-          <button class="btn btn--apply-filter">Apply Filter</button>
-        </div>
-      </aside>
-
-      <!-- Product Grid Area -->
-      <section class="category-content">
-        <div class="category-content__header">
-          <h1 class="category-content__title">Casual</h1>
-          <div class="category-content__meta">
-            <span class="category-content__count">Showing 1-10 of 100 Products</span>
-            <div class="category-content__sort">
-              <span>Sort by:</span>
-              <select class="category-content__sort-select">
-                <option value="popular">Most Popular</option>
-                <option value="newest">Newest</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-grid" id="js-category-products">
-          <!-- JS will populate products here -->
-        </div>
-
-        <hr class="category-content__divider">
-
-        <div class="pagination">
-          <a href="#" class="pagination__btn pagination__btn--prev">
-            <img src="assets/icons/icn-arrow-left.svg" alt="Prev"
-              onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(90deg)'">
-            Previous
-          </a>
-          <div class="pagination__pages">
-            <a href="#" class="pagination__page pagination__page--active">1</a>
-            <a href="#" class="pagination__page">2</a>
-            <a href="#" class="pagination__page">3</a>
-            <span class="pagination__dots">...</span>
-            <a href="#" class="pagination__page">8</a>
-            <a href="#" class="pagination__page">9</a>
-            <a href="#" class="pagination__page">10</a>
-          </div>
-          <a href="#" class="pagination__btn pagination__btn--next">
-            Next
-            <img src="assets/icons/icn-arrow-right.svg" alt="Next"
-              onerror="this.src='assets/icons/icn-arrow-down.svg'; this.style.transform='rotate(-90deg)'">
-          </a>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer__newsletter">
-      <div class="container">
-        <div class="footer__newsletter-container">
-          <h2 class="footer__newsletter-title">
-            STAY UPTO DATE ABOUT OUR LATEST OFFERS
-          </h2>
-          <form class="footer__newsletter-form js-newsletter-form">
-            <div class="footer__newsletter-input-wrapper">
-              <input type="email" class="footer__newsletter-input" placeholder="Enter your email address" required />
-            </div>
-            <button type="submit" class="btn btn--newsletter">
-              Subscribe to Newsletter
+            <button class="btn btn--apply-filter js-apply-filter">
+              Apply Filter
             </button>
-          </form>
+          </div>
+        </aside>
+
+        <!-- Product Grid Area -->
+        <section class="category-content">
+          <div class="category-content__header">
+            <div class="category-content__header-left">
+              <h1 class="category-content__title">Casual</h1>
+              <div class="category-content__meta">
+                <span class="category-content__count"
+                  >Showing 1-10 of 100 Products</span
+                >
+                <div class="category-content__sort">
+                  <span>Sort by:</span>
+                  <select class="category-content__sort-select">
+                    <option value="popular">Most Popular</option>
+                    <option value="newest">Newest</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <button
+              class="js-mobile-filter-toggle btn btn--filter mobile-filter-toggle"
+            ></button>
+          </div>
+
+          <div class="product-grid" id="js-category-products">
+            <!-- JS will populate products here -->
+          </div>
+
+          <hr class="category-content__divider" />
+
+          <div class="pagination" id="js-pagination"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__newsletter">
+        <div class="container">
+          <div class="footer__newsletter-container">
+            <h2 class="footer__newsletter-title">
+              STAY UPTO DATE ABOUT OUR LATEST OFFERS
+            </h2>
+            <form class="footer__newsletter-form js-newsletter-form">
+              <div class="footer__newsletter-input-wrapper">
+                <input
+                  type="email"
+                  class="footer__newsletter-input"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn--newsletter">
+                Subscribe to Newsletter
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer__content">
-      <div class="container">
-        <div class="footer__main">
-          <div class="footer__brand">
-            <h2 class="footer__logo">SHOP.CO</h2>
-            <p class="footer__desc">
-              We have clothes that suits your style and which you're proud to
-              wear. From women to men.
+      <div class="footer__content">
+        <div class="container">
+          <div class="footer__main">
+            <div class="footer__brand">
+              <h2 class="footer__logo">SHOP.CO</h2>
+              <p class="footer__desc">
+                We have clothes that suits your style and which you're proud to
+                wear. From women to men.
+              </p>
+              <div class="footer__socials">
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <img
+                    src="assets/icons/icn-logo-twitter.svg"
+                    alt="Twitter logo"
+                    title="Twitter logo"
+                  />
+                </a>
+                <a href="#" class="social-link" aria-label="Facebook">
+                  <img
+                    src="assets/icons/icn-logo-fb.svg"
+                    alt="Facebook logo"
+                    title="Facebook logo"
+                  />
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                  <img
+                    src="assets/icons/icn-logo-insta.svg"
+                    alt="Instagram logo"
+                    title="Instagram logo"
+                  />
+                </a>
+                <a href="#" class="social-link" aria-label="GitHub">
+                  <img
+                    src="assets/icons/icn-logo-github.svg"
+                    alt="GitHub logo"
+                    title="GitHub logo"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="footer__links-group">
+              <div class="footer__col">
+                <h3 class="footer__col-title">COMPANY</h3>
+                <ul class="footer__list">
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">About</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Features</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Works</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Career</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h3 class="footer__col-title">HELP</h3>
+                <ul class="footer__list">
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Customer Support</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Delivery Details</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Terms & Conditions</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h3 class="footer__col-title">FAQ</h3>
+                <ul class="footer__list">
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Account</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Manage Deliveries</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Orders</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Payments</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h3 class="footer__col-title">RESOURCES</h3>
+                <ul class="footer__list">
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Free eBooks</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Development Tutorial</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">How to - Blog</a>
+                  </li>
+                  <li class="footer__item">
+                    <a href="#" class="footer__link">Youtube Playlist</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer__bottom">
+            <p class="footer__copyright">
+              Shop.co © 2000-2026, All Rights Reserved
             </p>
-            <div class="footer__socials">
-              <a href="#" class="social-link" aria-label="Twitter">
-                <img src="assets/icons/icn-logo-twitter.svg" alt="Twitter logo" title="Twitter logo" />
-              </a>
-              <a href="#" class="social-link" aria-label="Facebook">
-                <img src="assets/icons/icn-logo-fb.svg" alt="Facebook logo" title="Facebook logo" />
-              </a>
-              <a href="#" class="social-link" aria-label="Instagram">
-                <img src="assets/icons/icn-logo-insta.svg" alt="Instagram logo" title="Instagram logo" />
-              </a>
-              <a href="#" class="social-link" aria-label="GitHub">
-                <img src="assets/icons/icn-logo-github.svg" alt="GitHub logo" title="GitHub logo" />
-              </a>
-            </div>
+            <ul class="footer__payments">
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-visa.svg"
+                  alt="VISA payment"
+                  title="VISA payment"
+                />
+              </li>
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-mastercard.svg"
+                  alt="Mastercard payment"
+                  title="Mastercard payment"
+                />
+              </li>
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-paypal.svg"
+                  alt="Paypal payment"
+                  title="Paypal payment"
+                />
+              </li>
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-a-pay.svg"
+                  alt="Apple Pay payment"
+                  title="Apple Pay payment"
+                />
+              </li>
+              <li class="payment-item">
+                <img
+                  src="assets/icons/icn-g-pay.svg"
+                  alt="Google Pay payment"
+                  title="Google Pay payment"
+                />
+              </li>
+            </ul>
           </div>
-          <div class="footer__links-group">
-            <div class="footer__col">
-              <h3 class="footer__col-title">COMPANY</h3>
-              <ul class="footer__list">
-                <li class="footer__item">
-                  <a href="#" class="footer__link">About</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Features</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Works</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Career</a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer__col">
-              <h3 class="footer__col-title">HELP</h3>
-              <ul class="footer__list">
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Customer Support</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Delivery Details</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Terms & Conditions</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Privacy Policy</a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer__col">
-              <h3 class="footer__col-title">FAQ</h3>
-              <ul class="footer__list">
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Account</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Manage Deliveries</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Orders</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Payments</a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer__col">
-              <h3 class="footer__col-title">RESOURCES</h3>
-              <ul class="footer__list">
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Free eBooks</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Development Tutorial</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">How to - Blog</a>
-                </li>
-                <li class="footer__item">
-                  <a href="#" class="footer__link">Youtube Playlist</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer__bottom">
-          <p class="footer__copyright">
-            Shop.co © 2000-2026, All Rights Reserved
-          </p>
-          <ul class="footer__payments">
-            <li class="payment-item">
-              <img src="assets/icons/icn-visa.svg" alt="VISA payment" title="VISA payment" />
-            </li>
-            <li class="payment-item">
-              <img src="assets/icons/icn-mastercard.svg" alt="Mastercard payment" title="Mastercard payment" />
-            </li>
-            <li class="payment-item">
-              <img src="assets/icons/icn-paypal.svg" alt="Paypal payment" title="Paypal payment" />
-            </li>
-            <li class="payment-item">
-              <img src="assets/icons/icn-a-pay.svg" alt="Apple Pay payment" title="Apple Pay payment" />
-            </li>
-            <li class="payment-item">
-              <img src="assets/icons/icn-g-pay.svg" alt="Google Pay payment" title="Google Pay payment" />
-            </li>
-          </ul>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="js/load-data.js"></script>
-  <!-- MOCK JS cho Sidebar Filter Toggle Mobile -->
-  <script>
-    document.querySelectorAll('.js-filter-toggle').forEach(el => {
-      el.addEventListener('click', () => {
-        el.parentElement.classList.toggle('filter-group--open');
-      });
-    });
-  </script>
-</body>
-
+    <script src="js/load-data.js"></script>
+    <script type="module" src="js/components/range-slider.js"></script>
+    <script type="module" src="js/components/sidebar-filter.js"></script>
+    <script type="module" src="js/category-page.js"></script>
+  </body>
 </html>

@@ -2,7 +2,9 @@
 
 .range-slider {
   position: relative;
-  width: 100%;
+  // Ngăn chặn 2 thumb overflow ra ngoài container (thumb 20px = lệch 10px mỗi bên)
+  margin: 0 10px;
+  width: calc(100% - 20px);
   padding-top: 10px;
 
   &__track {
@@ -13,10 +15,11 @@
     position: relative;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
-      left: 20%;
-      right: 20%;
+      // Trỏ highlight line theo đúng tọa độ của thumb
+      left: var(--slider-min, 0%);
+      width: calc(var(--slider-max, 100%) - var(--slider-min, 0%));
       top: 0;
       bottom: 0;
       background-color: $text-color;
@@ -26,22 +29,21 @@
 
   &__thumb {
     position: absolute;
-    top: 0;
+    top: 10px;
     width: 20px;
     height: 20px;
     background-color: $black-color;
     border-radius: 50%;
     cursor: grab;
-    transform: translateY(-40%);
-    
+
     &--left {
-      left: 20%;
+      left: var(--slider-min, 0%);
       transform: translate(-50%, -40%);
     }
 
     &--right {
-      right: 20%;
-      transform: translate(50%, -40%);
+      left: var(--slider-max, 100%);
+      transform: translate(-50%, -40%);
     }
   }
 
@@ -51,5 +53,8 @@
     margin-top: 16px;
     font-size: 14px;
     font-weight: 500;
+    // Bù trừ lại phần margin của wrapper để text canh lề đúng với Sidebar
+    margin-left: -10px;
+    margin-right: -10px;
   }
 }

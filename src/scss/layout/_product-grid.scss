@@ -5,19 +5,31 @@
 
   &__header {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 24px;
 
+    &-left {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      @media (min-width: $tablet) {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+      }
+    }
+
     @media (min-width: $tablet) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+      .mobile-filter-toggle {
+        display: none; // Assuming toggle isn't needed on tablet/desktop if sidebar is visible
+      }
     }
   }
 
   &__title {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 700;
     margin: 0;
   }
@@ -27,7 +39,7 @@
     flex-direction: column;
     gap: 8px;
     color: rgba(0, 0, 0, 0.6);
-    font-size: 16px;
+    font-size: 14px;
 
     @media (min-width: $tablet) {
       flex-direction: row;
@@ -36,15 +48,19 @@
     }
   }
 
+  &__count {
+    padding-bottom: 6px;
+  }
+
   &__sort {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 8px;
 
     &-select {
       border: none;
       font-family: inherit;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
       color: $text-color;
       background: transparent;
@@ -54,6 +70,10 @@
       &:focus {
         border: none;
       }
+    }
+
+    @media (min-width: $tablet) {
+      display: flex;
     }
   }
 
@@ -66,12 +86,8 @@
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-
-  @media (min-width: 500px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   @media (min-width: $desktop) {
     grid-template-columns: repeat(3, 1fr);
