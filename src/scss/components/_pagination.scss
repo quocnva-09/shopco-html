@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 8px;
+    padding: 8px 14px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     background-color: transparent;
@@ -24,14 +24,11 @@
     cursor: pointer;
 
     span {
-      display: none;
+      display: inline;
     }
 
-    @media (min-width: $tablet) {
-      padding: 8px 14px;
-      span {
-        display: inline;
-      }
+    @media (max-width: $breakpoint) {
+      padding: 8px;
     }
 
     &:hover:not(&--disabled) {
@@ -56,8 +53,8 @@
   }
 
   &__page {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,18 +78,18 @@
       color: $text-color;
     }
 
-    @media (min-width: $tablet) {
-      width: 40px;
-      height: 40px;
+    @media (max-width: 767px) {
+      width: 32px;
+      height: 32px;
     }
   }
 
   &__dots {
     color: rgba(0, 0, 0, 0.5);
-    padding: 0 4px;
+    padding: 0 8px;
 
-    @media (min-width: $tablet) {
-      padding: 0 8px;
+    @media (max-width: 767px) {
+      padding: 0 4px;
     }
   }
 }

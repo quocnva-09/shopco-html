@@ -7,6 +7,7 @@
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
+  min-width: 0;
 
   &:last-child {
     border-bottom: none;
@@ -102,12 +103,12 @@
     align-items: center;
     background-color: #f0f0f0;
     border-radius: 24px;
-    padding: 6px 16px;
+    padding: 12px 20px;
     width: fit-content;
     gap: 8px;
 
     @media (max-width: $breakpoint) {
-      padding: 4px 12px;
+      padding: 8px 14px;
     }
   }
 

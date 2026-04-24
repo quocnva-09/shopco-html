@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../build/css/main.css" />
+  </head>
+  <body>
+    <header class="header"></header>
+
+    <main class="container">
+      <section class="banner-section">
+        <div class="main-banner">
+          <div class="main-banner__content">
+            <h1 class="main-banner__title">
+              FIND CLOTHES THAT MATCHES YOUR STYLE
+            </h1>
+            <p class="main-banner__desc">
+              Browse through our diverse range of meticulously crafted garments,
+              designed to bring out your individuality and cater to your sense
+              of style.
+            </p>
+            <button type="button" class="btn btn--primary">Shop Now</button>
+            <div class="main-banner__info">
+              <div class="main-banner__item">
+                <span class="main-banner__stat">200+</span>
+                <span class="main-banner__stat-label"
+                  >International Brands</span
+                >
+              </div>
+              <div class="main-banner__divider"></div>
+              <div class="main-banner__item">
+                <span class="main-banner__stat">2,000+</span>
+                <span class="main-banner__stat-label"
+                  >High-Quality Products</span
+                >
+              </div>
+              <div class="main-banner__divider"></div>
+              <div class="main-banner__item">
+                <span class="main-banner__stat">30,000+</span>
+                <span class="main-banner__stat-label">Happy Customers</span>
+              </div>
+            </div>
+          </div>
+          <figure class="main-banner__image">
+            <img src="assets/images/main-img.jpg" alt="Main banner image" />
+          </figure>
+        </div>
+        <figure class="brand-logo">
+          <div class="brand-logo__item">
+            <img src="assets/logo/logo-versace.svg" alt="Versace logo" />
+          </div>
+          <div class="brand-logo__item">
+            <img src="assets/logo/logo-zara.svg" alt="Zara logo" />
+          </div>
+          <div class="brand-logo__item">
+            <img src="assets/logo/logo-gucci.svg" alt="Gucci logo" />
+          </div>
+          <div class="brand-logo__item">
+            <img src="assets/logo/logo-prada.svg" alt="Prada logo" />
+          </div>
+          <div class="brand-logo__item">
+            <img src="assets/logo/logo-ck.svg" alt="Calvin Klein logo" />
+          </div>
+        </figure>
+      </section>
+      <section class="product-list">
+        <h2 class="product-list__title">NEW ARRIVALS</h2>
+        <div class="product-list__items js-new-arrivals">
+          <!--Will load list of product-card here-->
+        </div>
+        <button class="btn btn--secondary">View All</button>
+      </section>
+      <div class="page-divider"></div>
+      <section class="product-list">
+        <h2 class="product-list__title">TOP SELLING</h2>
+        <div class="product-list__items js-top-selling">
+          <!--Will load list of product-card here-->
+        </div>
+        <button class="btn btn--secondary">View All</button>
+      </section>
+
+      <div class="page-divider"></div>
+
+      <section class="lifestyle">
+        <h2 class="lifestyle__title">LIFESTYLE</h2>
+        <figure class="lifestyle__items">
+          <a class="lifestyle__item">
+            <img
+              src="assets/images/lifestyles/casual-style.png"
+              alt="Lifestyle image 1"
+            />
+            <p class="lifestyle__text">CASUAL STYLE</p>
+          </a>
+          <a class="lifestyle__item">
+            <img
+              src="assets/images/lifestyles/formal-style.png"
+              alt="Lifestyle image 2"
+            />
+            <p class="lifestyle__text">FORMAL STYLE</p>
+          </a>
+        </figure>
+        <figure class="lifestyle__items">
+          <a class="lifestyle__item">
+            <img
+              src="assets/images/lifestyles/party-style.png"
+              alt="Lifestyle image 3"
+            />
+            <p class="lifestyle__text">PARTY STYLE</p>
+          </a>
+          <a class="lifestyle__item">
+            <img
+              src="assets/images/lifestyles/gym-style.png"
+              alt="Lifestyle image 4"
+            />
+            <p class="lifestyle__text">GYM STYLE</p>
+          </a>
+        </figure>
+      </section>
+      <section class="feedback">
+        <div class="feedback__header">
+          <h2 class="feedback__title">WHAT OUR CUSTOMERS SAY</h2>
+          <div class="feedback__arrows">
+            <button
+              class="feedback__arrow feedback__arrow--prev js-feedback-prev"
+            >
+              <img src="assets/icons/icn-arrow-left.svg" alt="Prev Feedback" />
+            </button>
+            <button
+              class="feedback__arrow feedback__arrow--next js-feedback-next"
+            >
+              <img src="assets/icons/icn-arrow-right.svg" alt="Next Feedback" />
+            </button>
+          </div>
+        </div>
+        <div class="feedback__items js-feedback-items">
+          <!-- Will load a list of review-cards here -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"></footer>
+
+    <script src="js/layout/header.js"></script>
+    <script src="js/layout/footer.js"></script>
+  </body>
+</html>

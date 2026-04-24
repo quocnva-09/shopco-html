@@ -1,0 +1,40 @@
+@use "../abstracts" as *;
+
+// -----------------------------------------------------------------------------
+// Brand Logo layout
+// -----------------------------------------------------------------------------
+
+.brand-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $black-color;
+  padding: ($base-spacing * 2.5) 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background-color: $black-color;
+    z-index: -1;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-height: 32px;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+}

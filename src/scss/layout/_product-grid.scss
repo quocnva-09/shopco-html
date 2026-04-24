@@ -11,19 +11,28 @@
 
     &-left {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
 
-      @media (min-width: $tablet) {
+      @media (max-width: 767px) {
         flex-direction: row;
-        align-items: center;
-        gap: 16px;
+        margin-left: 0;
+        justify-content: flex-start;
+        gap: 8px;
       }
     }
 
-    @media (min-width: $tablet) {
-      .mobile-filter-toggle {
-        display: none; // Assuming toggle isn't needed on tablet/desktop if sidebar is visible
+    .mobile-filter-toggle {
+      display: none; // Assuming toggle isn't needed on tablet/desktop if sidebar is visible
+
+      @media (max-width: 767px) {
+        display: flex;
+        max-width: 32px;
+        min-height: 32px;
+        width: 100%;
+        height: auto;
       }
     }
   }
@@ -36,24 +45,25 @@
 
   &__meta {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
     color: rgba(0, 0, 0, 0.6);
     font-size: 14px;
+    margin-top: 5px;
 
-    @media (min-width: $tablet) {
-      flex-direction: row;
-      align-items: center;
-      gap: 16px;
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: 8px;
     }
   }
 
   &__count {
-    padding-bottom: 6px;
+    padding-bottom: 0;
   }
 
   &__sort {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 8px;
 
@@ -72,8 +82,8 @@
       }
     }
 
-    @media (min-width: $tablet) {
-      display: flex;
+    @media (max-width: 767px) {
+      display: none;
     }
   }
 
@@ -86,10 +96,10 @@
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 
-  @media (min-width: $desktop) {
-    grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

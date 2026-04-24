@@ -60,7 +60,7 @@ let productsData = [];
 let currentPage = 1;
 
 function getItemsPerPage() {
-  return window.innerWidth < 768 ? 6 : 9;
+  return window.innerWidth < 991 ? 6 : 9;
 }
 
 async function loadProducts() {
@@ -86,7 +86,7 @@ function showProducts() {
   let paginatedProducts = productsData;
   const isCategoryPage = productContainer.id === "js-category-products";
   const itemsPerPage = getItemsPerPage();
-  
+
   if (isCategoryPage) {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -164,11 +164,11 @@ function renderPagination() {
   }
 
   let html = "";
-  
+
   // Prev button
   const prevDisabled = currentPage === 1 ? "pagination__btn--disabled" : "";
   html += `
-    <button class="pagination__btn pagination__btn--prev ${prevDisabled}" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+    <button class="pagination__btn pagination__btn--prev ${prevDisabled}" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? "disabled" : ""}>
       <img
         src="assets/icons/icn-arrow-left.svg"
         alt="Prev"
@@ -185,25 +185,23 @@ function renderPagination() {
   // Page buttons
   for (let i = 1; i <= totalPages; i++) {
     if (
-      i === 1 || 
-      i === totalPages || 
+      i === 1 ||
+      i === totalPages ||
       (i >= currentPage - 1 && i <= currentPage + 1)
     ) {
       const activeClass = i === currentPage ? "pagination__page--active" : "";
       html += `<button class="pagination__page ${activeClass}" onclick="changePage(${i})">${i}</button>`;
-    } else if (
-      i === currentPage - 2 || 
-      i === currentPage + 2
-    ) {
+    } else if (i === currentPage - 2 || i === currentPage + 2) {
       html += `<span class="pagination__dots">...</span>`;
     }
   }
 
   // Next button
-  const nextDisabled = currentPage === totalPages ? "pagination__btn--disabled" : "";
+  const nextDisabled =
+    currentPage === totalPages ? "pagination__btn--disabled" : "";
   html += `
     </div>
-    <button class="pagination__btn pagination__btn--next ${nextDisabled}" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+    <button class="pagination__btn pagination__btn--next ${nextDisabled}" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? "disabled" : ""}>
       <span>Next</span>
       <img
         src="assets/icons/icn-arrow-right.svg"
@@ -219,25 +217,25 @@ function renderPagination() {
   paginationContainer.innerHTML = html;
 }
 
-window.changePage = function(page) {
+window.changePage = function (page) {
   const itemsPerPage = getItemsPerPage();
   const totalPages = Math.ceil(productsData.length / itemsPerPage);
   if (page < 1 || page > totalPages) return;
-  
+
   currentPage = page;
   showProducts();
-  
+
   // Scroll to top of product grid
   const productContainer = document.getElementById("js-category-products");
   if (productContainer) {
-    productContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    productContainer.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-}
+};
 
 let currentItemsPerPage = getItemsPerPage();
 window.addEventListener("resize", () => {
   if (!document.getElementById("js-category-products")) return;
-  
+
   const newItemsPerPage = getItemsPerPage();
   if (currentItemsPerPage !== newItemsPerPage) {
     currentItemsPerPage = newItemsPerPage;

@@ -1,0 +1,105 @@
+@use "../abstracts" as *;
+
+// -----------------------------------------------------------------------------
+// Main Banner layout
+// -----------------------------------------------------------------------------
+
+$bg-main-banner: #f2f0f0;
+
+.banner-section {
+  background-color: $bg-main-banner;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background-color: $white-cream-color;
+    z-index: -1;
+  }
+}
+
+.main-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__content {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 103px;
+    padding-bottom: 116px;
+  }
+
+  &__title {
+    font-family: $font-family-title;
+    font-size: 64px;
+    font-weight: 800;
+    color: $text-dark;
+    line-height: 1.1;
+    margin-top: 0;
+    margin-bottom: $base-spacing * 2;
+    text-transform: uppercase;
+  }
+
+  &__desc {
+    font-family: $text-font-stack;
+    font-size: $font-size-base;
+    color: $text-muted;
+    line-height: 1.5;
+    margin-bottom: $base-spacing * 2;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: $base-spacing * 2;
+    margin-top: $base-spacing * 3;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__stat {
+    font-family: $text-font-stack;
+    font-size: 40px;
+    font-weight: 700;
+    color: $text-dark;
+  }
+
+  &__stat-label {
+    font-family: $text-font-stack;
+    font-size: $font-size-mobile;
+    color: $text-muted;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 74px;
+    background-color: rgba($black-color, 0.1);
+  }
+
+  &__image {
+    flex: 0 0 50%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+      width: 100%; // Chiếm hết chiều rộng khung
+      aspect-ratio: 1 / 1; // Tạo khung hình vuông (có thể đổi thành 4/5, 16/9...)
+      object-fit: cover; // Cắt bỏ phần thừa, giữ nguyên tỷ lệ ảnh không bị méo
+      object-position: 70% 13%; // Giữ phần chính giữa của ảnh
+    }
+  }
+}

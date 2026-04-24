@@ -120,9 +120,9 @@
     },
     {
         "id": 10,
-        "name": "Polo with Contrast Trims 2",
+        "name": "Courage Graphic T-Shirt",
         "image": [
-            "assets/images/pic-polo-with-contrast-trims.png"
+            "assets/images/pic-courage-t-shirt.png"
         ],
         "rating": 4,
         "price": 212,
@@ -133,9 +133,9 @@
     },
     {
         "id": 11,
-        "name": "Gradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirtGradient Graphic T-shirt 2",
+        "name": "Checkered Shirt",
         "image": [
-            "assets/images/pic-gradient-graphic-t-shirt.png"
+            "assets/images/pic-checkered-shirt.png"
         ],
         "rating": 3.5,
         "price": 145,
@@ -144,9 +144,9 @@
     },
     {
         "id": 12,
-        "name": "Polo with Tipping Details 2",
+        "name": "Faded Jeans",
         "image": [
-            "assets/images/pic-polo-with-tipping-detail.png"
+            "assets/images/pic-faded-jeans.png"
         ],
         "rating": 4.5,
         "price": 180,
@@ -155,9 +155,9 @@
     },
     {
         "id": 13,
-        "name": "Black Striped T-shirt 2",
+        "name": "Shorts",
         "image": [
-            "assets/images/pic-black-sctrip-t-shirt.png"
+            "assets/images/pic-shorts.png"
         ],
         "rating": 5,
         "price": 12000,
@@ -168,9 +168,9 @@
     },
     {
         "id": 14,
-        "name": "Polo man 2",
+        "name": "Skinny Jeans",
         "image": [
-            "assets/images/pic-polo-with-contrast-trims.png"
+            "assets/images/pic-skinny-jeans.png"
         ],
         "rating": 5,
         "price": 120,
@@ -181,9 +181,9 @@
     },
     {
         "id": 15,
-        "name": "Wonderful T-Shirt 2",
+        "name": "Sleeve Striped T-shirt",
         "image": [
-            "assets/images/pic-gradient-graphic-t-shirt.png"
+            "assets/images/pic-sleeve-striped.png"
         ],
         "rating": 4,
         "price": 145,
@@ -192,9 +192,9 @@
     },
     {
         "id": 16,
-        "name": "Polo Details 2",
+        "name": "Polo with Tape Details",
         "image": [
-            "assets/images/pic-polo-with-tipping-detail.png"
+            "assets/images/pic-tape-details.png"
         ],
         "rating": 4.5,
         "price": 500,
