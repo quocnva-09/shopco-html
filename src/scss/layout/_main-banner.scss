@@ -35,7 +35,7 @@ $bg-main-banner: #f2f0f0;
     flex-direction: column;
     align-items: flex-start;
     padding-top: 103px;
-    padding-bottom: 116px;
+    padding-bottom: 110px;
   }
 
   &__title {
@@ -94,12 +94,44 @@ $bg-main-banner: #f2f0f0;
     margin: 0;
     display: flex;
     justify-content: flex-end;
+    position: relative;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    margin-top: 10px;
 
     img {
       width: 100%; // Chiếm hết chiều rộng khung
       aspect-ratio: 1 / 1; // Tạo khung hình vuông (có thể đổi thành 4/5, 16/9...)
       object-fit: cover; // Cắt bỏ phần thừa, giữ nguyên tỷ lệ ảnh không bị méo
-      object-position: 70% 13%; // Giữ phần chính giữa của ảnh
+      object-position: 70% 15%; // Giữ phần chính giữa của ảnh
+      overflow: hidden;
+      transform: scale(1.15);
+    }
+  }
+
+  &__image-effect {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    z-index: 2;
+
+    img {
+      width: 104px;
+      height: 104px;
+      object-fit: contain;
+    }
+
+    &--small {
+      top: 45%;
+      left: 0;
+      right: auto;
+
+      img {
+        width: 56px;
+        height: 56px;
+      }
     }
   }
 }

@@ -1431,7 +1431,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   padding-top: 103px;
-  padding-bottom: 116px;
+  padding-bottom: 110px;
 }
 .main-banner__title {
   font-family: "IntegralCF", "Inter", "Arial", sans-serif;
@@ -1482,12 +1482,39 @@ body {
   margin: 0;
   display: flex;
   justify-content: flex-end;
+  position: relative;
 }
-.main-banner__image img {
+.main-banner__image-wrapper {
+  width: 100%;
+  margin-top: 10px;
+}
+.main-banner__image-wrapper img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  object-position: 70% 13%;
+  object-position: 70% 15%;
+  overflow: hidden;
+  transform: scale(1.15);
+}
+.main-banner__image-effect {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 2;
+}
+.main-banner__image-effect img {
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+}
+.main-banner__image-effect--small {
+  top: 45%;
+  left: 0;
+  right: auto;
+}
+.main-banner__image-effect--small img {
+  width: 56px;
+  height: 56px;
 }
 
 .brand-logo {
