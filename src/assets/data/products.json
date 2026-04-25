@@ -10,7 +10,9 @@
         "oldPrice": 242,
         "discount": "-20%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 225,
+        "createdAt": "2026-03-08T18:09:06.006Z"
     },
     {
         "id": 2,
@@ -21,7 +23,9 @@
         "rating": 3.5,
         "price": 145,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 616,
+        "createdAt": "2026-04-03T18:09:06.006Z"
     },
     {
         "id": 3,
@@ -32,7 +36,9 @@
         "rating": 4.5,
         "price": 180,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 569,
+        "createdAt": "2026-02-26T18:09:06.006Z"
     },
     {
         "id": 4,
@@ -45,7 +51,9 @@
         "oldPrice": 150,
         "discount": "-3000%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 215,
+        "createdAt": "2026-04-22T18:09:06.006Z"
     },
     {
         "id": 5,
@@ -58,7 +66,9 @@
         "oldPrice": 150,
         "discount": "-30%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 229,
+        "createdAt": "2026-03-08T18:09:06.006Z"
     },
     {
         "id": 6,
@@ -69,7 +79,9 @@
         "rating": 4,
         "price": 145,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 669,
+        "createdAt": "2026-04-23T18:09:06.006Z"
     },
     {
         "id": 7,
@@ -80,7 +92,9 @@
         "rating": 4.5,
         "price": 500,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 334,
+        "createdAt": "2026-04-20T18:09:06.006Z"
     },
     {
         "id": 8,
@@ -91,7 +105,9 @@
         "rating": 5,
         "price": 120,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 973,
+        "createdAt": "2026-03-09T18:09:06.006Z"
     },
     {
         "id": 9,
@@ -116,7 +132,9 @@
             "M",
             "L",
             "XL"
-        ]
+        ],
+        "sold": 225,
+        "createdAt": "2026-03-18T18:09:06.006Z"
     },
     {
         "id": 10,
@@ -129,7 +147,9 @@
         "oldPrice": 242,
         "discount": "-20%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 991,
+        "createdAt": "2026-04-01T18:09:06.006Z"
     },
     {
         "id": 11,
@@ -140,7 +160,9 @@
         "rating": 3.5,
         "price": 145,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 912,
+        "createdAt": "2026-04-16T18:09:06.006Z"
     },
     {
         "id": 12,
@@ -151,7 +173,9 @@
         "rating": 4.5,
         "price": 180,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 35,
+        "createdAt": "2026-04-07T18:09:06.006Z"
     },
     {
         "id": 13,
@@ -164,7 +188,9 @@
         "oldPrice": 150,
         "discount": "-3000%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 407,
+        "createdAt": "2026-04-19T18:09:06.006Z"
     },
     {
         "id": 14,
@@ -177,7 +203,9 @@
         "oldPrice": 150,
         "discount": "-30%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 410,
+        "createdAt": "2026-04-01T18:09:06.006Z"
     },
     {
         "id": 15,
@@ -188,7 +216,9 @@
         "rating": 4,
         "price": 145,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 133,
+        "createdAt": "2026-04-06T18:09:06.006Z"
     },
     {
         "id": 16,
@@ -199,7 +229,9 @@
         "rating": 4.5,
         "price": 500,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 499,
+        "createdAt": "2026-03-08T18:09:06.006Z"
     },
     {
         "id": 17,
@@ -210,7 +242,9 @@
         "rating": 5,
         "price": 120,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 641,
+        "createdAt": "2026-04-03T18:09:06.006Z"
     },
     {
         "id": 18,
@@ -235,7 +269,9 @@
             "M",
             "L",
             "XL"
-        ]
+        ],
+        "sold": 393,
+        "createdAt": "2026-03-04T18:09:06.006Z"
     },
     {
         "id": 19,
@@ -248,7 +284,9 @@
         "oldPrice": 242,
         "discount": "-20%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 542,
+        "createdAt": "2026-04-04T18:09:06.006Z"
     },
     {
         "id": 20,
@@ -259,7 +297,9 @@
         "rating": 3.5,
         "price": 145,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 864,
+        "createdAt": "2026-03-03T18:09:06.006Z"
     },
     {
         "id": 21,
@@ -270,7 +310,9 @@
         "rating": 4.5,
         "price": 180,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 1,
+        "createdAt": "2026-04-25T18:09:06.006Z"
     },
     {
         "id": 22,
@@ -283,7 +325,9 @@
         "oldPrice": 150,
         "discount": "-3000%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 376,
+        "createdAt": "2026-04-05T18:09:06.006Z"
     },
     {
         "id": 23,
@@ -296,7 +340,9 @@
         "oldPrice": 150,
         "discount": "-30%",
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 435,
+        "createdAt": "2026-04-18T18:09:06.006Z"
     },
     {
         "id": 24,
@@ -307,7 +353,9 @@
         "rating": 4,
         "price": 145,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 834,
+        "createdAt": "2026-03-03T18:09:06.006Z"
     },
     {
         "id": 25,
@@ -318,7 +366,9 @@
         "rating": 4.5,
         "price": 500,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 884,
+        "createdAt": "2026-03-30T18:09:06.006Z"
     },
     {
         "id": 26,
@@ -329,7 +379,9 @@
         "rating": 5,
         "price": 120,
         "description": null,
-        "color": null
+        "color": null,
+        "sold": 356,
+        "createdAt": "2026-04-06T18:09:06.006Z"
     },
     {
         "id": 27,
@@ -354,6 +406,8 @@
             "M",
             "L",
             "XL"
-        ]
+        ],
+        "sold": 950,
+        "createdAt": "2026-03-18T18:09:06.006Z"
     }
 ]

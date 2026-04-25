@@ -37,9 +37,11 @@
     color: $primary-color;
     cursor: pointer;
     font-size: $font-size-base;
+
     @media (max-width: $breakpoint) {
       font-size: $font-size-mobile;
     }
+
     padding: 0;
 
     @media (max-width: $breakpoint) {
@@ -60,21 +62,6 @@
     @media (max-width: $breakpoint) {
       gap: 16px;
       padding: 20px 16px;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: $padding-left-right-full-layout;
-      right: $padding-left-right-full-layout;
-      height: 1px;
-      background-color: #e0e0e0;
-
-      @media (max-width: $breakpoint) {
-        left: $padding-left-right-mobile;
-        right: $padding-left-right-mobile;
-      }
     }
   }
 
@@ -176,6 +163,7 @@
       align-items: center;
       gap: 4px;
       font-size: $font-size-base;
+
       @media (max-width: $breakpoint) {
         font-size: $font-size-mobile;
       }
@@ -233,6 +221,7 @@
         outline: none;
         font-family: $font-family-base;
         font-size: $font-size-base;
+
         @media (max-width: $breakpoint) {
           font-size: $font-size-mobile;
         }
