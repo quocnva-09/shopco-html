@@ -68,7 +68,9 @@ async function loadProducts() {
     response.json(),
   );
   showCategoryProducts();
-  showRelatedProducts();
+  showProductCollection("js-new-arrivals", 4);
+  showProductCollection("js-top-selling", 4);
+  showProductCollection("js-related-products", 8);
 }
 
 function generateProductCardsHTML(products) {
@@ -143,8 +145,8 @@ function showCategoryProducts() {
   renderPagination();
 }
 
-function showRelatedProducts() {
-  const productContainer = document.getElementById("js-related-products");
+function showProductCollection(selector, limit = 8) {
+  const productContainer = document.getElementById(selector);
   if (!productContainer) return;
 
   if (!productsData || productsData.length === 0) {
@@ -153,9 +155,8 @@ function showRelatedProducts() {
     return;
   }
 
-  // For related products, show only first 8
-  const relatedProducts = productsData.slice(0, 8);
-  productContainer.innerHTML = generateProductCardsHTML(relatedProducts);
+  const products = productsData.slice(0, limit);
+  productContainer.innerHTML = generateProductCardsHTML(products);
 }
 
 function renderPagination() {
