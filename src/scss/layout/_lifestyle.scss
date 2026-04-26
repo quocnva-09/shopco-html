@@ -1,0 +1,106 @@
+@use "../abstracts" as *;
+
+.lifestyle {
+  background-color: $grey-color;
+  border-radius: $radius-pill;
+  padding: 70px 64px;
+  margin: 80px 0;
+
+  &__title {
+    font-family: $font-family-title;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    color: $black-color;
+    margin-top: 0;
+    margin-bottom: 64px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 20px;
+  }
+
+  &__card {
+    position: relative;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    background-color: $white-color;
+    max-height: 289px;
+
+    &--casual {
+      grid-column: span 4;
+
+      .lifestyle__image {
+        transform: scale(2.2);
+        transform-origin: 58% 35%;
+
+        &:hover {
+          transform: scale(2.25);
+        }
+      }
+    }
+
+    &--formal {
+      grid-column: span 6;
+
+      .lifestyle__image {
+        transform: scale(1.8);
+        transform-origin: 80% 58%;
+        object-position: center top;
+
+        &:hover {
+          transform: scale(1.85);
+        }
+      }
+    }
+
+    &--party {
+      grid-column: span 6;
+
+      .lifestyle__image {
+        transform: scale(1.1);
+        object-position: right center;
+        margin-left: 15%;
+        transform-origin: 90% 58%;
+
+        &:hover {
+          transform: scale(1.15);
+        }
+      }
+    }
+
+    &--gym {
+      grid-column: span 4;
+
+
+      .lifestyle__image {
+        transform: scale(1);
+        object-position: center 40%;
+        margin-left: 20%;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 24px;
+    left: 36px;
+    font-size: 36px;
+    font-weight: 700;
+    color: $black-color;
+    z-index: 1;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
