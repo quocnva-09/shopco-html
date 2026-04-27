@@ -28,6 +28,12 @@ $bg-main-banner: #f2f0f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $breakpoint) {
+    flex-direction: column;
+  }
 
   &__content {
     flex: 0 0 50%;
@@ -36,17 +42,32 @@ $bg-main-banner: #f2f0f0;
     align-items: flex-start;
     padding-top: 103px;
     padding-bottom: 110px;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: $breakpoint) {
+      flex: 0 0 100%; // Chiếm 100% chiều rộng trên mobile
+      width: 100%;
+      padding-top: 40px;
+      padding-bottom: 0;
+      align-items: stretch;
+    }
   }
 
   &__title {
     font-family: $font-family-title;
     font-size: 64px;
-    font-weight: 800;
+    font-weight: 700;
     color: $text-dark;
     line-height: 1.1;
     margin-top: 0;
     margin-bottom: $base-spacing * 2;
     text-transform: uppercase;
+
+    @media (max-width: $breakpoint) {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
   }
 
   &__desc {
@@ -55,6 +76,11 @@ $bg-main-banner: #f2f0f0;
     color: $text-muted;
     line-height: 1.5;
     margin-bottom: $base-spacing * 2;
+
+    @media (max-width: $breakpoint) {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
   }
 
   &__info {
@@ -63,11 +89,27 @@ $bg-main-banner: #f2f0f0;
     gap: $base-spacing * 2;
     margin-top: $base-spacing * 3;
     flex-wrap: wrap;
+
+    @media (max-width: $breakpoint) {
+      justify-content: center; // Thêm căn giữa cho toàn bộ khối trên mobile
+      gap: 28px;
+      row-gap: 12px;
+      margin-top: 20px;
+    }
   }
 
   &__item {
     display: flex;
     flex-direction: column;
+
+    @media (max-width: $breakpoint) {
+
+      // Nhắm vào Item cuối cùng (30,000+)
+      &:last-child {
+        flex: 0 0 100%; // Ép item này chiếm 100% chiều rộng để nó luôn rớt xuống 1 dòng riêng
+        align-items: center; // Căn giữa phần chữ bên trong nó
+      }
+    }
   }
 
   &__stat {
@@ -75,40 +117,89 @@ $bg-main-banner: #f2f0f0;
     font-size: 40px;
     font-weight: 700;
     color: $text-dark;
+
+    @media (max-width: $breakpoint) {
+      font-size: 24px;
+    }
   }
 
   &__stat-label {
     font-family: $text-font-stack;
     font-size: $font-size-mobile;
     color: $text-muted;
+
+    @media (max-width: $breakpoint) {
+      font-size: 12px;
+    }
   }
 
   &__divider {
     width: 1px;
     height: 74px;
     background-color: rgba($black-color, 0.1);
+
+    @media (max-width: $breakpoint) {
+      height: 52px; // (Tùy chọn) Thường trên mobile đường kẻ này nên ngắn lại một chút cho cân đối
+
+      // Ẩn đường kẻ divider thứ 2 (nằm trước item 30,000+)
+      // Nếu cấu trúc HTML của bạn là Item(1) - Div(2) - Item(3) - Div(4) - Item(5)
+      &:nth-child(4) {
+        display: none;
+      }
+    }
   }
 
   &__image {
     flex: 0 0 50%;
     margin: 0;
-    display: flex;
-    justify-content: flex-end;
     position: relative;
+    z-index: 1;
+
+    @media (max-width: $breakpoint) {
+      flex: 0 0 100%; // Chiếm 100% chiều rộng trên mobile
+      width: 100%;
+      max-width: none; // Bỏ giới hạn để tràn hẳn ra
+      margin: 0 auto; // 2. Căn giữa khối ảnh
+    }
   }
 
   &__image-wrapper {
     width: 100%;
     margin-top: 10px;
+    flex: 0 0 100%;
+    position: relative;
+    z-index: 1;
 
     img {
       width: 100%; // Chiếm hết chiều rộng khung
       aspect-ratio: 1 / 1; // Tạo khung hình vuông (có thể đổi thành 4/5, 16/9...)
       object-fit: cover; // Cắt bỏ phần thừa, giữ nguyên tỷ lệ ảnh không bị méo
       object-position: 70% 15%; // Giữ phần chính giữa của ảnh
-      overflow: hidden;
+
       transform: scale(1.15);
+
+
     }
+
+    @media (max-width: $breakpoint) {
+      // 1. Dùng margin âm để triệt tiêu padding của .container
+      // Giả sử padding mobile của bạn là 20px, thay $padding-mobile vào
+      margin-left: -$padding-left-right-mobile;
+      margin-right: -$padding-left-right-mobile;
+      overflow: hidden;
+
+      // 2. Ép chiều rộng chiếm trọn viewport
+      width: calc(100% + (#{$padding-left-right-mobile} * 2));
+
+      // 3. XÓA BỎ transform scale ở wrapper
+      transform: none;
+
+      img {
+        // Nếu muốn ảnh bớt to trên mobile thì chỉnh scale của IMG ở đây
+        transform: scale(1.05);
+      }
+    }
+
   }
 
   &__image-effect {
@@ -121,6 +212,11 @@ $bg-main-banner: #f2f0f0;
       width: 104px;
       height: 104px;
       object-fit: contain;
+
+      @media (max-width: $breakpoint) {
+        width: 76px;
+        height: 76px;
+      }
     }
 
     &--small {
@@ -131,6 +227,11 @@ $bg-main-banner: #f2f0f0;
       img {
         width: 56px;
         height: 56px;
+
+        @media (max-width: $breakpoint) {
+          width: 44px;
+          height: 44px;
+        }
       }
     }
   }

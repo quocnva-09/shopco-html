@@ -9,10 +9,17 @@
   justify-content: space-between;
   align-items: center;
   background-color: $black-color;
-  padding: ($base-spacing * 2.5) 0;
+  padding: 44px 0;
   margin: 0;
   position: relative;
   z-index: 1;
+
+  @media (max-width: $breakpoint) {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 39px 0;
+    gap: 20px 34px;
+  }
 
   &::before {
     content: "";
@@ -32,9 +39,13 @@
     justify-content: center;
 
     img {
-      max-height: 32px;
       width: auto;
-      object-fit: contain;
+
+      @media (max-width: $breakpoint) {
+        max-width: 28vw;
+        height: auto;
+        max-height: 27px;
+      }
     }
   }
 }

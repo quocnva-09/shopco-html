@@ -27,13 +27,13 @@
 
   &__list {
     @include flex-group(20px, flex-start, stretch);
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 100%;
     transition: transform 0.5s ease;
 
     @media (max-width: $breakpoint) {
       gap: 16px;
-      margin-left: 16px;
+      margin-left: 0;
     }
 
     .product-card {
@@ -59,6 +59,14 @@
   &__slider {
     overflow: hidden;
     width: 100%;
+
+    .product-collection__list {
+      flex-wrap: nowrap;
+
+      @media (max-width: $breakpoint) {
+        margin-left: 16px;
+      }
+    }
 
     @media (max-width: $breakpoint) {
       overflow-x: auto;

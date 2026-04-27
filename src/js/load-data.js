@@ -256,7 +256,73 @@ window.addEventListener("resize", () => {
   }
 });
 
+async function loadFeedbackSlider() {
+  const feedbackContainer = document.querySelector(".js-feedback-items");
+  if (!feedbackContainer) return;
+
+  let reviews = [];
+  try {
+    reviews = await fetch("./assets/data/reviews.json").then((response) =>
+      response.json(),
+    );
+  } catch (error) {
+    console.error("Error loading reviews for feedback slider:", error);
+    return;
+  }
+
+  // Lấy 8 thẻ đầu
+  const topReviews = reviews.slice(0, 8);
+
+  feedbackContainer.innerHTML = "";
+  topReviews.forEach((review) => {
+    feedbackContainer.innerHTML += `
+        <div class="review-card">
+          <div class="review-card__header">
+            <div class="rating-row">
+                <div class="rating">${renderRating(review.rating)}</div>
+            </div>
+            <button class="review-card__menu"></button>
+          </div>
+          <div class="review-card__name-wrapper">
+            <div class="review-card__name">
+              <span>${review.name}</span>
+              <span class="verified-icon"></span>
+            </div>
+            <div class="tooltip tooltip--review-card">
+              <span>${review.name}</span>
+              <span class="verified-icon"></span>
+            </div>
+          </div>
+          <div class="review-card__comment-wrapper">
+            <p class="review-card__comment">${review.comment}</p>
+            <div class="tooltip tooltip--comment">${review.comment}</div>
+          </div>
+          <time class="review-card__date">Posted ${review.date}</time>
+        </div>
+        `;
+  });
+
+  // Setup slider scroll event
+  const prevBtn = document.querySelector(".js-feedback-prev");
+  const nextBtn = document.querySelector(".js-feedback-next");
+  
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", () => {
+      const itemWidth = feedbackContainer.querySelector(".review-card")?.offsetWidth || 400;
+      const gap = parseInt(window.getComputedStyle(feedbackContainer).gap) || 20;
+      feedbackContainer.scrollBy({ left: -(itemWidth + gap), behavior: "smooth" });
+    });
+    
+    nextBtn.addEventListener("click", () => {
+      const itemWidth = feedbackContainer.querySelector(".review-card")?.offsetWidth || 400;
+      const gap = parseInt(window.getComputedStyle(feedbackContainer).gap) || 20;
+      feedbackContainer.scrollBy({ left: (itemWidth + gap), behavior: "smooth" });
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   showReviews();
   loadProducts();
+  loadFeedbackSlider();
 });

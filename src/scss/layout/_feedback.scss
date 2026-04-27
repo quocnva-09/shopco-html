@@ -1,0 +1,137 @@
+@use "../abstracts" as *;
+
+.feedback {
+  margin-bottom: 80px;
+
+  @media (max-width: $breakpoint) {
+    margin-bottom: 40px;
+  }
+
+  &__header {
+    @include flex-between;
+    align-items: flex-end;
+    margin-bottom: 20px; // Giảm 20px để bù cho padding-top của __items
+
+    @media (max-width: $breakpoint) {
+      margin-bottom: 4px; // Giảm 20px
+    }
+  }
+
+  &__title {
+    font-family: $font-family-title;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+
+    @media (max-width: $breakpoint) {
+      font-size: 32px;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $grey-color;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__slider {
+    position: relative;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+
+    // Pseudo elements tạo hiệu ứng blur
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      // Đảm bảo blur width luôn có ít nhất 100px đè vào content
+      width: max(calc(50vw - 50% + 100px), 100px);
+      pointer-events: none;
+      z-index: 2;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+
+      @media (max-width: $breakpoint) {
+        display: none;
+      }
+    }
+
+    &::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
+      mask-image: linear-gradient(to right, black 0%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+    }
+
+    &::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
+      mask-image: linear-gradient(to left, black 0%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, black 0%, transparent 100%);
+    }
+  }
+
+  &__items {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden; // Ngăn chặn thanh cuộn dọc
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    // Tăng mạnh padding-bottom để tooltip dài không bị cắt bởi overflow
+    padding: 20px calc(50vw - 50%) 250px calc(50vw - 50%);
+    margin-bottom: -230px; // Bù lại không gian thừa
+    pointer-events: none; // Vô hiệu hóa vùng padding thừa để không chặn click của footer
+
+    // Ẩn thanh cuộn
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    @media (max-width: $breakpoint) {
+      padding: 20px 16px 250px 16px;
+    }
+
+    .review-card {
+      pointer-events: auto; // Cho phép tương tác lại trên chính card
+      flex: 0 0 auto;
+      width: 400px;
+      max-width: 90vw;
+      scroll-snap-align: center;
+
+      @media (max-width: $breakpoint) {
+        width: 100%;
+      }
+    }
+  }
+}
