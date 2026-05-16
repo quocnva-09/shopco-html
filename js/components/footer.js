@@ -1,5 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+export function initFooter() {
   const footer = document.querySelector(".footer");
+  if (!footer) return;
   const footerHtml = `
       <div class="footer__newsletter">
         <div class="container">
@@ -180,4 +181,4 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 `;
   footer.innerHTML = footerHtml;
-});
+}

@@ -1,24 +1,3 @@
-// header.js
-function processHeader() {
-  const hamburger = document.querySelector(".js-hamburger");
-  const nav = document.querySelector(".js-nav");
-  const overlay = document.querySelector(".js-overlay");
-
-  if (hamburger && nav && overlay) {
-    hamburger.addEventListener("click", () => {
-      nav.classList.toggle("js-nav--active");
-      overlay.classList.toggle("js-overlay--active");
-      hamburger.classList.toggle("header__hamburger--hidden");
-    });
-
-    overlay.addEventListener("click", () => {
-      nav.classList.remove("js-nav--active");
-      overlay.classList.remove("js-overlay--active");
-      hamburger.classList.remove("header__hamburger--hidden");
-    });
-  }
-}
-
 // product-gallery.js
 function processGallery() {
   const mainImage = document.getElementById("js-main-image");
@@ -41,30 +20,7 @@ function processGallery() {
 // product-info.js
 function processProductInfo() {
   const quantityInput = document.querySelector(".js-qty-input");
-  const decreaseBtn = document.querySelector(".js-qty-decrease");
-  const increaseBtn = document.querySelector(".js-qty-increase");
   const addCartForm = document.getElementById("js-add-to-cart-form");
-
-  if (quantityInput && decreaseBtn && increaseBtn) {
-    decreaseBtn.addEventListener("click", () => {
-      let currentValue = parseInt(quantityInput.value) || 1;
-      if (currentValue > 1) {
-        quantityInput.value = currentValue - 1;
-      }
-    });
-
-    increaseBtn.addEventListener("click", () => {
-      let currentValue = parseInt(quantityInput.value) || 1;
-      quantityInput.value = currentValue + 1;
-    });
-
-    quantityInput.addEventListener("change", () => {
-      let currentValue = parseInt(quantityInput.value);
-      if (isNaN(currentValue) || currentValue < 1) {
-        quantityInput.value = 1;
-      }
-    });
-  }
 
   if (addCartForm) {
     addCartForm.addEventListener("submit", (e) => {
@@ -213,11 +169,10 @@ function productSlider() {
   startAutoSlide();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  processHeader();
+export function initProductPage() {
   processGallery();
   processProductInfo();
   processTabs();
   processFilter();
   productSlider();
-});
+}

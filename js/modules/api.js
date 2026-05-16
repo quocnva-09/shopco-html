@@ -321,8 +321,8 @@ async function loadFeedbackSlider() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initApiData() {
   showReviews();
   loadProducts();
   loadFeedbackSlider();
-});
+}

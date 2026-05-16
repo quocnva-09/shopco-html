@@ -1,0 +1,74 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+//font size
+$font-size-base: 16px;
+$font-size-mobile: 14px;
+
+//responsive
+$breakpoint: 991px;
+$mobile: 390px;
+$tablet: 768px;
+$desktop: 1024px;
+$large-desktop: 1440px;
+
+//width
+$max-width: 1440px;
+
+//font
+$font-family-base: "Satoshi", sans-serif;
+$font-family-title: "IntegralCF", "Inter", "Arial", sans-serif;
+$text-font-stack: "Satoshi", sans-serif;
+
+//color
+$primary-color: #fff;
+$danger-color: #ff3333;
+$white-color: #fff;
+$white-cream-color: #f0eeed;
+$grey-color: #f0f0f0;
+$grey-color-hover: #999;
+$black-color: #000;
+$text-color: #000;
+$text-muted: #999;
+$text-dark: #000;
+$label-danger-color: #ffebeb;
+
+//radius
+$radius-pill: 62px;
+$radius-lg: 20px;
+
+//space
+$base-spacing: 16px;
+
+//padding
+$padding-left-right-full-layout: 100px;
+$padding-left-right-mobile: 16px;
+
+//icon
+$icn-3-dot: url("../assets/icons/icn-3-dot.svg") no-repeat center/cover;
+$icn-arrow-down: url("../assets/icons/icn-arrow-down.svg") no-repeat
+  center/cover;
+$icn-filter: url("../assets/icons/icn-filter.svg") no-repeat center/cover;
+$icn-half-star: url("../assets/icons/icn-half-star.svg") no-repeat
+  center/cover;
+$icn-star: url("../assets/icons/icn-star.svg") no-repeat center/cover;
+$icn-tick: url("../assets/icons/icn-tick.svg") no-repeat center/cover;
+$icn-double-left: url("../assets/icons/icn-double-left.png") no-repeat
+  center/cover;
+$icn-double-right: url("../assets/icons/icn-double-right.png") no-repeat
+  center/cover;
+$icn-email-input: url("../assets/icons/icn-email-input.svg") no-repeat
+  center/cover;
+$icn-delete: url("../assets/icons/icn-delete.svg") no-repeat center/cover;
+$icn-voucher: url("../assets/icons/vector-voucher.svg") no-repeat center/cover;
+
+//image
+$img-black-sctrip: url("../assets/images/pic-black-sctrip-t-shirt.jpg")
+  no-repeat center/cover;
+$img-gradient-graphic: url("../assets/images/pic-gradient-graphic-t-shirt.jpg")
+  no-repeat center/cover;
+$img-polo-contrast: url("../assets/images/pic-polo-with-contrast-trims.jpg")
+  no-repeat center/cover;
+$img-polo-tipping: url("../assets/images/pic-polo-with-tipping-detail.jpg")
+  no-repeat center/cover;

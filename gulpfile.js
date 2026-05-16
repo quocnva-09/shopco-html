@@ -4,16 +4,16 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 
 function buildStyles() {
-  return src('src/scss/**/*.scss')
+  return src('scss/**/*.scss')
     //compress scss to css
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-    //export ra folder build/css
-    .pipe(dest('build/css'));
+    //export ra folder css
+    .pipe(dest('css'));
 }
 
 function watchTask() {
   //thiết lập trigger thay đổi scss sang css khi có thay đổi
-  watch(['src/scss/**/*.scss'], series(buildStyles));
+  watch(['scss/**/*.scss'], series(buildStyles));
 }
 
 //tạo lệnh default cho npx gulp với 2 hàm truyền vào
