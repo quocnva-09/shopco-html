@@ -9,11 +9,13 @@
  */
 html {
   box-sizing: border-box;
+  font-size: 62.5%; /* 1rem = 10px */
 }
 
 body {
   font-family: abstracts.$font-family-base;
-  color: abstracts.$primary-color;
+  color: abstracts.$text-color; /* Fixing primary-color to text-color since primary is #fff */
+  font-size: 1.4rem; /* 14px default */
   padding: 0;
 }
 

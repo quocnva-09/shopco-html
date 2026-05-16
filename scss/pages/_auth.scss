@@ -1,0 +1,199 @@
+@use "../abstracts/variables" as *;
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0;
+
+  @media (max-width: $tablet) {
+    padding: 2.4rem $padding-left-right-mobile;
+    flex-direction: column;
+  }
+
+  &__banner {
+    width: 50%;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    align-self: flex-start;
+
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-start;
+    max-width: 50rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__header {
+    margin-bottom: 3.2rem;
+  }
+
+  &__title {
+    font-family: $font-family-title;
+    font-size: 24px;
+    margin-bottom: 2.4rem;
+    text-transform: uppercase;
+    justify-self: center;
+
+    @media (max-width: $tablet) {
+      font-size: 2.8rem;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    background-color: $grey-color;
+    border-radius: $radius-pill;
+    padding: 0.6rem;
+    margin-bottom: 2.4rem;
+    margin-left: 35px;
+    margin-right: 35px;
+  }
+
+  &__tab {
+    flex: 1;
+    text-align: center;
+    padding: 1.2rem;
+    border-radius: $radius-pill;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $text-muted;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+
+    &--active {
+      background-color: $black-color;
+      color: $white-color;
+    }
+
+    &:not(.auth__tab--active):hover {
+      color: $text-dark;
+    }
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    color: $text-muted;
+
+    .auth__link {
+      color: $text-dark;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+  }
+
+  &__form {
+    margin-bottom: 2.4rem;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3.2rem;
+  }
+
+  &__forgot-password {
+    font-size: 1.4rem;
+    color: $text-muted;
+    text-decoration: underline;
+
+    &:hover {
+      color: $text-dark;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    padding: 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  &__divider {
+    text-align: center;
+    position: relative;
+    margin-bottom: 2.4rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #e0e0e0;
+      z-index: 1;
+    }
+
+    span {
+      position: relative;
+      z-index: 2;
+      background-color: $white-color;
+      padding: 0 1.6rem;
+      color: $text-muted;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.8rem;
+    height: 4.8rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $grey-color;
+    }
+
+    img {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+
+  // State handling for Login / Register modes
+  &[data-mode="login"] {
+    [data-show="register"] {
+      display: none !important;
+    }
+  }
+
+  &[data-mode="register"] {
+    [data-show="login"] {
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+@use "../abstracts";
+
+.form-group {
+  margin-bottom: 2.4rem;
+}
+
+.form-label {
+  display: block;
+  font-family: abstracts.$font-family-base;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  color: abstracts.$text-dark;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 1.4rem 1.6rem;
+  font-family: abstracts.$font-family-base;
+  font-size: 1.6rem;
+  color: abstracts.$text-color;
+  background-color: abstracts.$white-color;
+  border: 1px solid #e0e0e0;
+  border-radius: abstracts.$radius-pill;
+  transition: border-color 0.3s ease;
+  outline: none;
+
+  &::placeholder {
+    color: abstracts.$text-muted;
+  }
+
+  &:focus {
+    border-color: abstracts.$black-color;
+  }
+}
+
+.form-input-wrapper {
+  position: relative;
+
+  .form-input {
+    padding-right: 4.8rem; /* space for icon */
+  }
+}
+
+.form-input-icon {
+  position: absolute;
+  right: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  &__input {
+    width: 1.8rem;
+    height: 1.8rem;
+    cursor: pointer;
+    accent-color: abstracts.$black-color;
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    color: abstracts.$text-color;
+    cursor: pointer;
+    user-select: none;
+  }
+}

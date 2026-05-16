@@ -1,5 +1,6 @@
 import { initHeader } from './components/header.js';
 import { initFooter } from './components/footer.js';
+import { initAuth } from './modules/auth.js';
 import { initApiData } from './modules/api.js';
 import { initProductPage } from './modules/product-page.js';
 import { initCartPage } from './modules/cart-page.js';
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initFooter();
   initQuantitySelectors();
+  initAuth();
 
   // API data
   initApiData();
