@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login Page</title>
+  <title>Profile Page - Shop.co</title>
   <link rel="stylesheet" href="./css/main.css" />
 </head>
 
@@ -16,11 +16,74 @@
     <div class="breadcrumb">
       <a href="#" class="breadcrumb__item">Home</a>
       <span class="breadcrumb__separator">&#10095;</span>
-      <span class="breadcrumb__item breadcrumb__item--active">Login</span>
+      <span class="breadcrumb__item breadcrumb__item--active">Profile</span>
     </div>
 
-    <div class="profile">
+    <div class="profile profile__content">
+      <!-- User Card -->
+      <div class="user-card">
+        <div class="user-card__avatar">
+          <img src="./assets/images/user-avatar.jpg" alt="User Avatar" class="user-card__img" />
+        </div>
+        <div class="user-card__info">
+          <h2 class="user-card__name">Alex Morrison</h2>
+          <p class="user-card__email">alex.morrison@example.com</p>
+          <p class="user-card__date">Member since 2023</p>
+        </div>
+        <div class="user-card__actions">
+          <button type="button" class="btn btn--outline btn--icon">
+            <img src="./assets/icons/icn-setting.svg" alt="Settings" />
+            Edit Profile
+          </button>
+          <button type="button" class="btn btn--danger btn--icon">
+            Logout
+          </button>
+        </div>
+      </div>
 
+      <!-- Tabs -->
+      <div class="tabs tabs--profile">
+        <button class="tabs__item tabs__item--active">
+          <img src="./assets/icons/icn-user-profile.svg" alt="Profile" />
+          Personal Info
+        </button>
+        <button class="tabs__item">
+          <img src="./assets/icons/icn-order.svg" alt="Orders" />
+          My Orders
+        </button>
+        <button class="tabs__item">
+          <img src="./assets/icons/icn-setting.svg" alt="Settings" />
+          Account Settings
+        </button>
+      </div>
+
+      <!-- Profile Form -->
+      <form class="profile-form">
+        <div class="profile-form__header">
+          <h3 class="profile-form__title">Personal Information</h3>
+          <p class="profile-form__desc">Update your personal details and contact information.</p>
+        </div>
+        
+        <div class="form-group">
+          <label for="profile-name" class="form-label">Full Name</label>
+          <input type="text" id="profile-name" class="form-input" value="Alex Morrison" />
+        </div>
+        
+        <div class="form-group">
+          <label for="profile-email" class="form-label">Email Address</label>
+          <input type="email" id="profile-email" class="form-input" value="alex.morrison@example.com" />
+        </div>
+        
+        <div class="form-group">
+          <label for="profile-phone" class="form-label">Phone Number</label>
+          <input type="text" id="profile-phone" class="form-input" value="+1 (555) 123-4567" />
+        </div>
+        
+        <div class="profile-form__actions">
+          <button type="submit" class="btn btn--primary">Save Changes</button>
+          <button type="button" class="btn btn--outline">Cancel</button>
+        </div>
+      </form>
     </div>
   </main>
 

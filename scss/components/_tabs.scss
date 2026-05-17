@@ -52,5 +52,56 @@
         border-bottom: 2px solid $black-color;
       }
     }
+
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      margin-right: 8px;
+    }
+  }
+
+  &--profile {
+    background-color: #F2F0F1;
+    border-radius: $radius-pill;
+    padding: 10px;
+
+    .tabs__item{
+      padding: 10px 20px;
+      font-size: 0;
+    }
+
+
+    .tabs__item--active {
+      background-color: white;
+      color: $text-color;
+      font-weight: 500;
+      border-radius: $radius-pill;
+      font-size: 20px;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: $breakpoint) {
+
+      .tabs__item {
+        font-size: 0;
+
+        img {
+          width: 24px; 
+          height: 24px;
+          margin: 0; 
+        }
+
+        &:first-child,
+        &:nth-child(2),
+        &:last-child {
+          flex: 1;
+          justify-content: center;
+        }
+      }
+    }
   }
 }

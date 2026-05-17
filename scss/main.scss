@@ -39,10 +39,12 @@
 @use "components/pagination";
 @use "components/range-slider";
 @use "components/form";
+@use "components/user-card";
 // 5. Pages
 @use "pages/home";
 @use "pages/product-detail";
 @use "pages/category";
 @use "pages/auth";
+@use "pages/profile";
 // 6. Themes
 @use "themes/default";
