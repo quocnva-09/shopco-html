@@ -1,11 +1,11 @@
 import { ENV } from "../config/env.js";
 
 const BASE_URL = ENV.BASE_URL;
-const url = `${BASE_URL.replace(/\/$/, "")}/products/`;
+const API_PRODUCTS = `${BASE_URL.replace(/\/$/, "")}/products/`;
 
 export const ProductAPI = {
   getAll: async () => {
-    const response = await fetch(url, {
+    const response = await fetch(API_PRODUCTS, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

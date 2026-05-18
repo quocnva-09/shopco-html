@@ -1,10 +1,16 @@
 import { ProductService } from "../services/product.service.js";
+import { ReviewAPI } from "../api/review.api.js";
+import {
+  generateProductCardsHTML,
+  renderRating,
+} from "../components/product-card.js";
+import { generateReviewCardHTML } from "../components/review-card.js";
 
 // Render and load data functions
 async function showReviews(filterRating = 0) {
-  let reviews = await fetch("./assets/data/reviews.json").then((response) =>
-    response.json(),
-  );
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get("id") || 1;
+  let reviews = await ReviewAPI.getByProduct(productId);
 
   reviews =
     filterRating === 0
@@ -16,46 +22,8 @@ async function showReviews(filterRating = 0) {
 
   reviewContainer.innerHTML = "";
   reviews.forEach((review) => {
-    reviewContainer.innerHTML += `
-        <div class="review-card">
-          <div class="review-card__header">
-            <div class="rating-row">
-                <div class="rating">${renderRating(review.rating)}</div>
-            </div>
-            <button class="review-card__menu"></button>
-          </div>
-          <div class="review-card__name-wrapper">
-            <div class="review-card__name">
-              <span>${review.name}</span>
-              <span class="verified-icon"></span>
-            </div>
-            <div class="tooltip tooltip--review-card">
-              <span>${review.name}</span>
-              <span class="verified-icon"></span>
-            </div>
-          </div>
-          <div class="review-card__comment-wrapper">
-            <p class="review-card__comment">${review.comment}</p>
-            <div class="tooltip tooltip--comment">${review.comment}</div>
-          </div>
-          <time class="review-card__date">Posted ${review.date}</time>
-        </div>
-        `;
+    reviewContainer.innerHTML += generateReviewCardHTML(review);
   });
-}
-
-function renderRating(rating) {
-  let stars = "";
-  while (rating > 0) {
-    if (rating >= 1) {
-      stars += '<span class="rating__star"></span>';
-      rating -= 1;
-    } else {
-      stars += '<span class="rating__star--half"></span>';
-      rating -= 0.5;
-    }
-  }
-  return stars;
 }
 
 let productsData = [];
@@ -78,51 +46,7 @@ async function loadProducts() {
   showProductCollection("js-related-products", 8);
 }
 
-function generateProductCardsHTML(products) {
-  let htmlContent = "";
-  products.forEach((product) => {
-    let validImage = product.primaryImage;
-    if (!validImage || !/\.(jpg|jpeg|png|webp|avif|gif|svg)$/i.test(validImage)) {
-      validImage = "assets/images/default.png";
-    }
-
-    let parsedPrice = product.currentPrice || 0;
-
-    let oldPrice = "";
-    if (product.originalPrice > product.currentPrice) {
-      oldPrice = `<span class="product-card__price--old">$${product.originalPrice}</span>`;
-    }
-
-    let discount = "";
-    if (product.discountPercentage > 0) {
-      discount = `<span class="product-card__price--discount">-${product.discountPercentage}%</span>`;
-    }
-
-    htmlContent += `
-			<div class="product-card">
-				<figure class="product-card__image">
-					<img src="${validImage}" alt="${product.name}" title="${product.name}" onerror="this.onerror=null; this.src='assets/images/default.png';">
-				</figure>
-				<div class="product-card__name-wrapper">
-					<h3 class="product-card__name">${product.name}</h3>
-					<h3 class="tooltip tooltip--product-card">${product.name}</h3>
-				</div>
-				<div class="product-card__rating">
-					<div class="rating">${renderRating(product.rating)}</div>
-          <p>${product.rating}<span>/5</span></p>
-				</div>
-				<div class="product-card__price">
-					<span class="product-card__price--current">$${parsedPrice}</span>
-					${oldPrice}
-					${discount}
-				</div>
-			</div>
-			`;
-  });
-  return htmlContent;
-}
-
-function showCategoryProducts() {
+async function showCategoryProducts() {
   const productContainer = document.getElementById("js-category-products");
   if (!productContainer) return;
 
@@ -137,11 +61,12 @@ function showCategoryProducts() {
   const endIndex = startIndex + itemsPerPage;
   const paginatedProducts = productsData.slice(startIndex, endIndex);
 
-  productContainer.innerHTML = generateProductCardsHTML(paginatedProducts);
+  productContainer.innerHTML =
+    await generateProductCardsHTML(paginatedProducts);
   renderPagination();
 }
 
-function showProductCollection(selector, limit = 8) {
+async function showProductCollection(selector, limit = 8) {
   const productContainer = document.getElementById(selector);
   if (!productContainer) return;
 
@@ -152,7 +77,7 @@ function showProductCollection(selector, limit = 8) {
   }
 
   const products = productsData.slice(0, limit);
-  productContainer.innerHTML = generateProductCardsHTML(products);
+  productContainer.innerHTML = await generateProductCardsHTML(products);
 }
 
 function renderPagination() {
@@ -258,9 +183,7 @@ async function loadFeedbackSlider() {
 
   let reviews = [];
   try {
-    reviews = await fetch("./assets/data/reviews.json").then((response) =>
-      response.json(),
-    );
+    reviews = await ReviewAPI.getAll();
   } catch (error) {
     console.error("Error loading reviews for feedback slider:", error);
     return;
@@ -271,48 +194,31 @@ async function loadFeedbackSlider() {
 
   feedbackContainer.innerHTML = "";
   topReviews.forEach((review) => {
-    feedbackContainer.innerHTML += `
-        <div class="review-card">
-          <div class="review-card__header">
-            <div class="rating-row">
-                <div class="rating">${renderRating(review.rating)}</div>
-            </div>
-            <button class="review-card__menu"></button>
-          </div>
-          <div class="review-card__name-wrapper">
-            <div class="review-card__name">
-              <span>${review.name}</span>
-              <span class="verified-icon"></span>
-            </div>
-            <div class="tooltip tooltip--review-card">
-              <span>${review.name}</span>
-              <span class="verified-icon"></span>
-            </div>
-          </div>
-          <div class="review-card__comment-wrapper">
-            <p class="review-card__comment">${review.comment}</p>
-            <div class="tooltip tooltip--comment">${review.comment}</div>
-          </div>
-          <time class="review-card__date">Posted ${review.date}</time>
-        </div>
-        `;
+    feedbackContainer.innerHTML += generateReviewCardHTML(review);
   });
 
   // Setup slider scroll event
   const prevBtn = document.querySelector(".js-feedback-prev");
   const nextBtn = document.querySelector(".js-feedback-next");
-  
+
   if (prevBtn && nextBtn) {
     prevBtn.addEventListener("click", () => {
-      const itemWidth = feedbackContainer.querySelector(".review-card")?.offsetWidth || 400;
-      const gap = parseInt(window.getComputedStyle(feedbackContainer).gap) || 20;
-      feedbackContainer.scrollBy({ left: -(itemWidth + gap), behavior: "smooth" });
+      const itemWidth =
+        feedbackContainer.querySelector(".review-card")?.offsetWidth || 400;
+      const gap =
+        parseInt(window.getComputedStyle(feedbackContainer).gap) || 20;
+      feedbackContainer.scrollBy({
+        left: -(itemWidth + gap),
+        behavior: "smooth",
+      });
     });
-    
+
     nextBtn.addEventListener("click", () => {
-      const itemWidth = feedbackContainer.querySelector(".review-card")?.offsetWidth || 400;
-      const gap = parseInt(window.getComputedStyle(feedbackContainer).gap) || 20;
-      feedbackContainer.scrollBy({ left: (itemWidth + gap), behavior: "smooth" });
+      const itemWidth =
+        feedbackContainer.querySelector(".review-card")?.offsetWidth || 400;
+      const gap =
+        parseInt(window.getComputedStyle(feedbackContainer).gap) || 20;
+      feedbackContainer.scrollBy({ left: itemWidth + gap, behavior: "smooth" });
     });
   }
 }

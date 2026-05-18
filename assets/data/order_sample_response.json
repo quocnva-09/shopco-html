@@ -1,0 +1,221 @@
+{
+    "status": 200,
+    "message": "Order list retrieved successfully",
+    "data": [
+        {
+            "id": 6,
+            "user_id": 3,
+            "status": "paid",
+            "totalAmount": 380,
+            "created_at": "2026-05-18 07:08:27",
+            "updated_at": "2026-05-18 07:08:27",
+            "items": [
+                {
+                    "id": 9,
+                    "quantity": 3,
+                    "price": 50,
+                    "totalMoney": 150,
+                    "options": "{\"size\":\"M\",\"color\":\"Ice Blue\"}",
+                    "product": {
+                        "id": 12,
+                        "name": "Cool-Fabric Polo Shirt",
+                        "images": [
+                            {
+                                "id": 12,
+                                "url": null
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 10,
+                    "quantity": 3,
+                    "price": 50,
+                    "totalMoney": 150,
+                    "options": "{\"size\":\"L\",\"color\":\"White\\/Navy\"}",
+                    "product": {
+                        "id": 14,
+                        "name": "Polo With Contrast Trims",
+                        "images": [
+                            {
+                                "id": 14,
+                                "url": null
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 11,
+                    "quantity": 2,
+                    "price": 40,
+                    "totalMoney": 80,
+                    "options": "{\"size\":\"L\",\"color\":\"Blue\\/White\"}",
+                    "product": {
+                        "id": 20,
+                        "name": "Striped Shirt",
+                        "images": [
+                            {
+                                "id": 20,
+                                "url": null
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "user_id": 3,
+            "status": "paid",
+            "totalAmount": 25,
+            "created_at": "2026-05-18 07:08:27",
+            "updated_at": "2026-05-18 07:08:27",
+            "items": [
+                {
+                    "id": 12,
+                    "quantity": 1,
+                    "price": 25,
+                    "totalMoney": 25,
+                    "options": "{\"size\":\"S\",\"color\":\"Gray\"}",
+                    "product": {
+                        "id": 9,
+                        "name": "Essential V-Neck T-Shirt",
+                        "images": [
+                            {
+                                "id": 9,
+                                "url": null
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "user_id": 3,
+            "status": "paid",
+            "totalAmount": 277,
+            "created_at": "2026-05-18 07:08:27",
+            "updated_at": "2026-05-18 07:08:27",
+            "items": [
+                {
+                    "id": 13,
+                    "quantity": 2,
+                    "price": 50,
+                    "totalMoney": 100,
+                    "options": "{\"size\":\"S\",\"color\":\"Navy\"}",
+                    "product": {
+                        "id": 22,
+                        "name": "Oxford Button-Down Shirt",
+                        "images": [
+                            {
+                                "id": 22,
+                                "url": null
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 14,
+                    "quantity": 3,
+                    "price": 59,
+                    "totalMoney": 177,
+                    "options": "{\"size\":\"L\",\"color\":\"Faded Blue\"}",
+                    "product": {
+                        "id": 28,
+                        "name": "Faded Jeans",
+                        "images": [
+                            {
+                                "id": 28,
+                                "url": null
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "user_id": 3,
+            "status": "paid",
+            "totalAmount": 141,
+            "created_at": "2026-05-18 07:08:27",
+            "updated_at": "2026-05-18 07:08:27",
+            "items": [
+                {
+                    "id": 15,
+                    "quantity": 2,
+                    "price": 38,
+                    "totalMoney": 76,
+                    "options": "{\"size\":\"M\",\"color\":\"Black\\/White\"}",
+                    "product": {
+                        "id": 6,
+                        "name": "Black Striped T-Shirt",
+                        "images": [
+                            {
+                                "id": 6,
+                                "url": null
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 16,
+                    "quantity": 1,
+                    "price": 65,
+                    "totalMoney": 65,
+                    "options": "{\"size\":\"XL\",\"color\":\"Indigo\"}",
+                    "product": {
+                        "id": 27,
+                        "name": "Classic Straight Leg Jeans",
+                        "images": [
+                            {
+                                "id": 27,
+                                "url": null
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "user_id": 3,
+            "status": "pending",
+            "totalAmount": 120,
+            "created_at": "2026-05-18 07:08:27",
+            "updated_at": "2026-05-18 07:08:27",
+            "items": [
+                {
+                    "id": 17,
+                    "quantity": 3,
+                    "price": 40,
+                    "totalMoney": 120,
+                    "options": "{\"size\":\"L\",\"color\":\"Light Blue\"}",
+                    "product": {
+                        "id": 16,
+                        "name": "Striped Collar Polo",
+                        "images": [
+                            {
+                                "id": 16,
+                                "url": null
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "current_page": 1,
+        "last_page": 1,
+        "per_page": 15,
+        "total": 5
+    },
+    "links": {
+        "first": "http://localhost:8000/api/orders?page=1",
+        "last": "http://localhost:8000/api/orders?page=1",
+        "prev": null,
+        "next": null
+    }
+}
