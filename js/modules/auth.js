@@ -140,4 +140,29 @@ export function initAuth() {
   //     }
   //   });
   // }
+
+  // 3. Xử lý hiển thị mật khẩu
+  const togglePasswordBtns = document.querySelectorAll(".js-toggle-password");
+  togglePasswordBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const wrapper = btn.closest(".form-input-wrapper");
+      if (!wrapper) return;
+      
+      const input = wrapper.querySelector(".form-input");
+      const iconEye = btn.querySelector(".icon-eye");
+      const iconEyeOff = btn.querySelector(".icon-eye-off");
+
+      if (!input) return;
+
+      if (input.type === "password") {
+        input.type = "text";
+        if (iconEye) iconEye.style.display = "none";
+        if (iconEyeOff) iconEyeOff.style.display = "block";
+      } else {
+        input.type = "password";
+        if (iconEye) iconEye.style.display = "block";
+        if (iconEyeOff) iconEyeOff.style.display = "none";
+      }
+    });
+  });
 }

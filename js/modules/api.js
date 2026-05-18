@@ -1,3 +1,5 @@
+import { ProductService } from "../services/product.service.js";
+
 // Render and load data functions
 async function showReviews(filterRating = 0) {
   let reviews = await fetch("./assets/data/reviews.json").then((response) =>
@@ -64,9 +66,12 @@ function getItemsPerPage() {
 }
 
 async function loadProducts() {
-  productsData = await fetch("./assets/data/products.json").then((response) =>
-    response.json(),
-  );
+  try {
+    productsData = await ProductService.getAllProducts();
+  } catch (error) {
+    console.error("Failed to load products from API:", error);
+    productsData = [];
+  }
   showCategoryProducts();
   showProductCollection("js-new-arrivals", 4);
   showProductCollection("js-top-selling", 4);
@@ -76,30 +81,21 @@ async function loadProducts() {
 function generateProductCardsHTML(products) {
   let htmlContent = "";
   products.forEach((product) => {
-    let validImage = product.image[0];
-    if (!validImage || !/\.(jpg|jpeg|png)$/i.test(validImage)) {
+    let validImage = product.primaryImage;
+    if (!validImage || !/\.(jpg|jpeg|png|webp|avif|gif|svg)$/i.test(validImage)) {
       validImage = "assets/images/default.png";
     }
 
-    let parsedPrice = parseInt(product.price) || 0;
+    let parsedPrice = product.currentPrice || 0;
 
     let oldPrice = "";
-    if (product.oldPrice) {
-      let parsedOldPrice = parseInt(product.oldPrice);
-      if (!isNaN(parsedOldPrice)) {
-        oldPrice = `<span class="product-card__price--old">$${parsedOldPrice}</span>`;
-      }
+    if (product.originalPrice > product.currentPrice) {
+      oldPrice = `<span class="product-card__price--old">$${product.originalPrice}</span>`;
     }
 
     let discount = "";
-    if (product.discount) {
-      let parsedDiscount = parseInt(
-        String(product.discount).replace(/[^\d.-]/g, ""),
-      );
-      if (!isNaN(parsedDiscount)) {
-        let absDiscount = Math.abs(parsedDiscount);
-        discount = `<span class="product-card__price--discount">-${absDiscount}%</span>`;
-      }
+    if (product.discountPercentage > 0) {
+      discount = `<span class="product-card__price--discount">-${product.discountPercentage}%</span>`;
     }
 
     htmlContent += `

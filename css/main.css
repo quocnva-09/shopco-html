@@ -3224,6 +3224,12 @@ body {
   width: 2.4rem;
   height: 2.4rem;
   cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-checkbox {
