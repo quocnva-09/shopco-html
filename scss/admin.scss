@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+// 1. Core / Setup
+@use "abstracts/admin-variables";
+@use "base/admin-base";
+
+// 2. Layouts
+@use "layout/admin-layout";
+
+// 3. Components
+@use "components/admin-card";
+@use "components/admin-table";
+@use "components/admin-badge";
+
+// 4. Pages
+@use "pages/admin-dashboard";

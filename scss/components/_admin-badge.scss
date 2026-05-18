@@ -1,0 +1,35 @@
+@use "../abstracts/admin-variables" as *;
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $space-2;
+  border-radius: $radius-pill;
+  font-size: 1.2rem;
+  font-weight: 500;
+  white-space: nowrap;
+  
+  &--success {
+    background-color: $color-success-bg;
+    color: $color-success;
+    border: 1px solid rgba($color-success, 0.2);
+  }
+
+  &--pending {
+    background-color: #fff9e6;
+    color: #d97706;
+    border: 1px solid rgba(#d97706, 0.2);
+  }
+
+  &--danger {
+    background-color: $color-danger-bg;
+    color: $color-danger;
+    border: 1px solid rgba($color-danger, 0.2);
+  }
+  
+  &--neutral {
+    background-color: $color-canvas-soft;
+    color: $color-border-hover;
+    border: 1px solid $color-border;
+  }
+}

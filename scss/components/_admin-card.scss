@@ -1,0 +1,64 @@
+@use "../abstracts/admin-variables" as *;
+
+.admin-card {
+  background-color: $color-canvas;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  transition: box-shadow 0.2s ease;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: $shadow-card-hover;
+  }
+
+  &__header {
+    padding: $space-4 $space-6;
+    border-bottom: 1px solid $color-border;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $color-ink;
+  }
+
+  &__body {
+    padding: $space-6;
+  }
+
+  &__value {
+    font-size: 3.2rem;
+    font-weight: 700;
+    font-family: $font-mono;
+    letter-spacing: -0.02em;
+    margin-bottom: $space-1;
+  }
+
+  &__trend {
+    font-size: 1.3rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+
+    &--up {
+      color: $color-success;
+    }
+
+    &--down {
+      color: $color-danger;
+    }
+
+    &--neutral {
+      color: $color-border-hover;
+    }
+    
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

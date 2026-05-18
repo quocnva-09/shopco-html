@@ -1,0 +1,45 @@
+@use "../abstracts/admin-variables" as *;
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 1.4rem;
+
+  &-wrapper {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  th, td {
+    padding: $space-3 $space-6;
+    border-bottom: 1px solid $color-border;
+  }
+
+  th {
+    font-weight: 500;
+    color: $color-border-hover;
+    background-color: $color-canvas-soft;
+    white-space: nowrap;
+  }
+
+  td {
+    color: $color-ink;
+    vertical-align: middle;
+  }
+
+  tr {
+    &:last-child td {
+      border-bottom: none;
+    }
+    
+    &:hover {
+      background-color: $color-canvas-soft;
+    }
+  }
+
+  &__mono {
+    font-family: $font-mono;
+    font-size: 1.3rem;
+  }
+}
