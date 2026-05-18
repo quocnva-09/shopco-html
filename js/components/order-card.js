@@ -11,7 +11,7 @@ export const generateOrderCardHTML = (order) => {
   const itemsHTML = order.items.map(item => `
     <div class="order-card__item">
       <div class="order-card__image-wrap">
-        <img src="${item.product.imageUrl}" alt="${item.product.name}" class="order-card__image" />
+        <img src="${item.product.img_path}" alt="${item.product.name}" class="order-card__image" />
       </div>
       <div class="order-card__item-info">
         <h4 class="order-card__product-name">${item.product.name}</h4>

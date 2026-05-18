@@ -66,13 +66,13 @@ function switchTab(selectedTab, allTabs, allContents) {
   selectedTab.setAttribute("aria-selected", "true");
 
   allContents.forEach((content) => {
-    content.style.display = "none";
+    content.classList.remove("tab-content--active");
   });
 
   const targetId = selectedTab.getAttribute("data-tab");
   const targetContent = document.getElementById(targetId);
   if (targetContent) {
-    targetContent.style.display = "block";
+    targetContent.classList.add("tab-content--active");
   }
 }
 

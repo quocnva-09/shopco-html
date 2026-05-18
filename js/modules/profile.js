@@ -17,13 +17,24 @@ export function initProfile() {
     try {
       const user = JSON.parse(userString);
 
-      const nameEl = document.querySelector(".user-card__name");
-      const emailEl = document.querySelector(".user-card__email");
+      const nameEl = document.querySelector(".js-user-name");
+      const emailEl = document.querySelector(".js-user-email");
+      const avatar = document.querySelector(".js-user-avatar");
+      const dateEl = document.querySelector(".js-user-date");
       const inputName = document.getElementById("profile-name");
       const inputEmail = document.getElementById("profile-email");
 
       if (nameEl) nameEl.textContent = user.name || "User";
       if (emailEl) emailEl.textContent = user.email || "";
+      if (avatar) avatar.src = user.avatar || "./assets/images/default.png";
+      if (dateEl) {
+        if (user.createdAt) {
+          const year = new Date(user.createdAt).getFullYear();
+          dateEl.textContent = `Member since ${year}`;
+        } else {
+          dateEl.textContent = "Member";
+        }
+      }
       if (inputName) inputName.value = user.name || "User";
       if (inputEmail) inputEmail.value = user.email || "";
     } catch (e) {
@@ -51,27 +62,30 @@ export function initProfile() {
   initTabs();
 }
 
-// FIX TAB PANES
 function initTabs() {
   const tabButtons = document.querySelectorAll(".js-tabs-item");
-  const tabPanes = document.querySelectorAll(".js-tab-pane");
+  const tabContents = document.querySelectorAll(".js-tab-content");
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      // Remove active class from all buttons and panes
-      tabButtons.forEach((btn) => btn.classList.remove("tabs__item--active"));
-      tabPanes.forEach((pane) => {
-        pane.classList.remove("tab-pane--active");
+      // Remove active class from all buttons and contents
+      tabButtons.forEach((btn) => {
+        btn.classList.remove("tabs__item--active");
+        btn.setAttribute("aria-selected", "false");
+      });
+      tabContents.forEach((content) => {
+        content.classList.remove("tab-content--active");
       });
 
       // Add active class to clicked button
       button.classList.add("tabs__item--active");
+      button.setAttribute("aria-selected", "true");
 
-      // Show corresponding pane
+      // Show corresponding content
       const targetId = button.getAttribute("data-tab");
-      const targetPane = document.getElementById(targetId);
-      if (targetPane) {
-        targetPane.classList.add("tab-pane--active");
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) {
+        targetContent.classList.add("tab-content--active");
 
         // Load orders when the orders tab is active
         if (targetId === "tab-orders") {

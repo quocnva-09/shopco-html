@@ -6,7 +6,7 @@ export class OrderDTO {
     this.totalAmount = data.totalAmount;
     this.createdAt = new Date(data.created_at);
     this.updatedAt = new Date(data.updated_at);
-    
+
     this.items = (data.items || []).map(item => new OrderItemDTO(item));
   }
 
@@ -29,7 +29,7 @@ export class OrderItemDTO {
     this.quantity = data.quantity;
     this.price = data.price;
     this.totalMoney = data.totalMoney;
-    
+
     try {
       this.options = typeof data.options === 'string' ? JSON.parse(data.options) : data.options;
     } catch (e) {
@@ -39,7 +39,7 @@ export class OrderItemDTO {
     this.product = {
       id: data.product?.id,
       name: data.product?.name,
-      imageUrl: data.product?.images?.[0]?.url || './assets/images/default-product.jpg',
+      img_path: data.product?.img_path,
     };
   }
 

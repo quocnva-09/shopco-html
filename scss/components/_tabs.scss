@@ -107,11 +107,8 @@
 }
 
 .tab-content {
-  margin-top: 24px;
-}
-
-.tab-pane {
   display: none;
+  margin-top: 24px;
 
   &--active {
     display: block;

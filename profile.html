@@ -27,15 +27,15 @@
         <div class="user-card">
           <div class="user-card__avatar">
             <img
-              src="./assets/images/user-avatar.jpg"
+              src="./assets/images/default.png"
               alt="User Avatar"
-              class="user-card__img"
+              class="user-card__img js-user-avatar"
             />
           </div>
           <div class="user-card__info">
-            <h2 class="user-card__name">Alex Morrison</h2>
-            <p class="user-card__email">alex.morrison@example.com</p>
-            <p class="user-card__date">Member since 2023</p>
+            <h2 class="user-card__name js-user-name">Alex Morrison</h2>
+            <p class="user-card__email js-user-email">alex.morrison@example.com</p>
+            <p class="user-card__date js-user-date">Member since 2023</p>
           </div>
           <div class="user-card__actions">
             <button type="button" class="btn btn--outline btn--icon">
@@ -49,101 +49,108 @@
         </div>
 
         <!-- Tabs -->
-        <div class="tabs tabs--profile">
-          <button
-            class="tabs__item tabs__item--active js-tabs-item"
-            data-tab="tab-personal"
-          >
-            <img src="./assets/icons/icn-user-profile.svg" alt="Profile" />
-            Personal Info
-          </button>
-          <button class="tabs__item js-tabs-item" data-tab="tab-orders">
-            <img src="./assets/icons/icn-order.svg" alt="Orders" />
-            My Orders
-          </button>
-          <button class="tabs__item js-tabs-item" data-tab="tab-settings">
-            <img src="./assets/icons/icn-setting.svg" alt="Settings" />
-            Account Settings
-          </button>
-        </div>
-
-        <!-- HOT FIX TAB PANE -->
-        <!-- Tab Panes -->
-        <div class="tab-content">
-          <!-- Personal Info Tab -->
-          <div class="tab-pane tab-pane--active js-tab-pane" id="tab-personal">
-            <!-- Profile Form -->
-            <form class="profile-form">
-              <div class="profile-form__header">
-                <h3 class="profile-form__title">Personal Information</h3>
-                <p class="profile-form__desc">
-                  Update your personal details and contact information.
-                </p>
-              </div>
-
-              <div class="form-group">
-                <label for="profile-name" class="form-label">Full Name</label>
-                <input
-                  type="text"
-                  id="profile-name"
-                  class="form-input"
-                  value="Alex Morrison"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="profile-email" class="form-label"
-                  >Email Address</label
-                >
-                <input
-                  type="email"
-                  id="profile-email"
-                  class="form-input"
-                  value="alex.morrison@example.com"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="profile-phone" class="form-label"
-                  >Phone Number</label
-                >
-                <input
-                  type="text"
-                  id="profile-phone"
-                  class="form-input"
-                  value="+1 (555) 123-4567"
-                />
-              </div>
-
-              <div class="profile-form__actions">
-                <button type="submit" class="btn btn--primary">
-                  Save Changes
-                </button>
-                <button type="button" class="btn btn--outline">Cancel</button>
-              </div>
-            </form>
+        <div class="profile__tabs">
+          <div class="tabs tabs--profile" role="tablist">
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              class="tabs__item tabs__item--active js-tabs-item"
+              data-tab="tab-personal"
+            >
+              <img src="./assets/icons/icn-user-profile.svg" alt="Profile" />
+              Personal Info
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="tabs__item js-tabs-item" data-tab="tab-orders">
+              <img src="./assets/icons/icn-order.svg" alt="Orders" />
+              My Orders
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="tabs__item js-tabs-item" data-tab="tab-settings">
+              <img src="./assets/icons/icn-setting.svg" alt="Settings" />
+              Account Settings
+            </button>
           </div>
+
+          <!-- Tab Panes -->
+          <!-- Personal Info Tab -->
+          <section
+            class="tab-content tab-content--active js-tab-content"
+            id="tab-personal"
+          >
+            <!-- Profile Form -->
+              <form class="profile-form">
+                <div class="profile-form__header">
+                  <h3 class="profile-form__title">Personal Information</h3>
+                  <p class="profile-form__desc">
+                    Update your personal details and contact information.
+                  </p>
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-name" class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    id="profile-name"
+                    class="form-input"
+                    value="Alex Morrison"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-email" class="form-label"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="profile-email"
+                    class="form-input"
+                    value="alex.morrison@example.com"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-phone" class="form-label"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="text"
+                    id="profile-phone"
+                    class="form-input"
+                    value="+1 (555) 123-4567"
+                  />
+                </div>
+
+                <div class="profile-form__actions">
+                  <button type="submit" class="btn btn--primary">
+                    Save Changes
+                  </button>
+                  <button type="button" class="btn btn--outline">Cancel</button>
+                </div>
+              </form>
+          </section>
 
           <!-- Orders Tab -->
-          <div class="tab-pane js-tab-pane" id="tab-orders">
-            <div class="profile-form__header">
-              <h3 class="profile-form__title">My Orders</h3>
-              <p class="profile-form__desc">
-                View your recent orders and their status.
-              </p>
-            </div>
-            <div class="orders-list" id="js-orders-list">
-              <!-- Orders will be dynamically injected here -->
-            </div>
-          </div>
+          <section class="tab-content js-tab-content" id="tab-orders">
+              <div class="profile-form__header">
+                <h3 class="profile-form__title">My Orders</h3>
+                <p class="profile-form__desc">
+                  View your recent orders and their status.
+                </p>
+              </div>
+              <div class="orders-list" id="js-orders-list">
+                <!-- Orders will be dynamically injected here -->
+              </div>
+          </section>
 
           <!-- Settings Tab -->
-          <div class="tab-pane js-tab-pane" id="tab-settings">
+          <section class="tab-content js-tab-content" id="tab-settings">
             <div class="profile-form__header">
               <h3 class="profile-form__title">Account Settings</h3>
-              <p class="profile-form__desc">Manage your account preferences.</p>
+              <p class="profile-form__desc">
+                Manage your account preferences.
+              </p>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </main>

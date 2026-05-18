@@ -2328,13 +2328,10 @@ body {
 }
 
 .tab-content {
+  display: none;
   margin-top: 24px;
 }
-
-.tab-pane {
-  display: none;
-}
-.tab-pane--active {
+.tab-content--active {
   display: block;
 }
 
