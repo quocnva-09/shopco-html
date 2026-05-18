@@ -105,3 +105,15 @@
     }
   }
 }
+
+.tab-content {
+  margin-top: 24px;
+}
+
+.tab-pane {
+  display: none;
+
+  &--active {
+    display: block;
+  }
+}
