@@ -22,7 +22,7 @@ export function initHeader() {
           class="header__hamburger js-hamburger"
           aria-label="Menu"
         ></button>
-        <a href="#" class="header__logo">SHOP.CO</a>
+        <a href="index.html" class="header__logo">SHOP.CO</a>
 
         <nav class="header__nav js-nav">
           <ul class="header__menu">
@@ -75,7 +75,7 @@ export function initHeader() {
               title="Icon cart"
             />
           </button>
-          <button class="icon-btn" aria-label="User Profile">
+          <button class="icon-btn js-user-btn" aria-label="User Profile">
             <img
               src="assets/icons/icn-user.svg"
               alt="Icon user"
@@ -102,6 +102,18 @@ export function initHeader() {
       nav.classList.remove("js-nav--active");
       overlay.classList.remove("js-overlay--active");
       hamburger.classList.remove("header__hamburger--hidden");
+    });
+  }
+
+  const userBtn = header.querySelector(".js-user-btn");
+  if (userBtn) {
+    userBtn.addEventListener("click", () => {
+      const token = localStorage.getItem("access_token");
+      if (token) {
+        window.location.href = "/profile.html";
+      } else {
+        window.location.href = "/auth.html";
+      }
     });
   }
 }
