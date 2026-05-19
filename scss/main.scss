@@ -41,11 +41,15 @@
 @use "components/form";
 @use "components/user-card";
 @use "components/order-card";
+@use "components/order-item";
+@use "components/order-success";
+@use "components/order-summary";
 // 5. Pages
 @use "pages/home";
 @use "pages/product-detail";
 @use "pages/category";
 @use "pages/auth";
 @use "pages/profile";
+@use "pages/order";
 // 6. Themes
 @use "themes/default";

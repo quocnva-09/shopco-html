@@ -243,11 +243,9 @@ export async function initCartPage() {
   const checkoutBtn = document.querySelector(".cart-summary__checkout");
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", () => {
-      alert("Proceeding to checkout workflow!");
-      // Typically window.location.href = '/checkout.html' or similar
+      window.location.href = "/order.html";
     });
   }
-
   // Initial load
   await loadAndRenderCart();
 }

@@ -1,0 +1,88 @@
+@use "../abstracts/variables" as *;
+
+.order {
+  &__title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-bottom: 2.4rem;
+    text-transform: uppercase;
+    font-family: $font-family-title;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+
+    @media (max-width: $breakpoint) {
+      flex-direction: row;
+      align-items: flex-start;
+
+      .order-section {
+        flex: 1;
+      }
+
+      .order-summary {
+        width: 40%;
+        max-width: 400px;
+      }
+    }
+  }
+}
+
+.order-section {
+  background-color: $white-color;
+  border-radius: $radius-lg;
+  padding: 2.4rem;
+  border: 1px solid $grey-color;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid $grey-color;
+  }
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: $black-color;
+  }
+
+  &__input {
+    padding: 1.2rem 1.6rem;
+    border: 1px solid $grey-color;
+    border-radius: $radius-md;
+    font-size: 1.4rem;
+    outline: none;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: $black-color;
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

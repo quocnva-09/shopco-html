@@ -5,6 +5,7 @@ import { initProfile } from './modules/profile.js';
 import { initApiData } from './modules/api.js';
 import { initProductPage } from './modules/product-page.js';
 import { initCartPage } from './modules/cart-page.js';
+import { initOrderPage } from './modules/order.js';
 import RangeSlider from './components/range-slider.js';
 import SidebarFilter from './components/sidebar-filter.js';
 import { processMobileFilter } from './components/filter.js';
@@ -40,4 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   processMobileFilter();
+
+  // Order Page Specific logic
+  initOrderPage();
 });

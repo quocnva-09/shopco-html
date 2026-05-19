@@ -23,4 +23,27 @@ export const OrderAPI = {
 
     return response.json();
   },
+
+  createOrder: async () => {
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+      throw new Error("No access token found");
+    }
+
+    const response = await fetch(`${BASE_URL}/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      // create order based on current cart items stored in backend
+      body: JSON.stringify({}),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create order");
+    }
+
+    return response.json();
+  },
 };

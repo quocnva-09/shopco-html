@@ -1,0 +1,41 @@
+@use "abstracts/variables" as *;
+
+.order-summary {
+  background-color: $white-color;
+  border-radius: $radius-lg;
+  padding: 2.4rem;
+  border: 1px solid $grey-color;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+
+    &--total {
+      margin-top: 1.6rem;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
+
+  &__label {
+    font-size: 1.6rem;
+    color: $black-color;
+  }
+
+  &__value {
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    &--discount {
+      color: $color-error;
+    }
+  }
+}

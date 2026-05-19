@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart Page</title>
+    <title>Order Page</title>
+    <script src="./js/middleware/order.guard.js"></script>
     <link rel="stylesheet" href="./css/main.css" />
   </head>
 
@@ -17,15 +18,98 @@
     <main class="container">
       <div class="page-divider"></div>
       <div class="breadcrumb">
-        <a href="#" class="breadcrumb__item">Home</a>
+        <a href="/" class="breadcrumb__item">Home</a>
         <span class="breadcrumb__separator">&#10095;</span>
-        <span class="breadcrumb__item breadcrumb__item--active">Order</span>
+        <span class="breadcrumb__item breadcrumb__item--active">Checkout</span>
       </div>
 
-      <h1 class="order__title">YOUR ORDER</h1>
+      <h1 class="order__title">CHECKOUT</h1>
 
-      <div class="order__wrapper">
-        <h2 class="order__number">Order number: 40176</h2>
+      <div class="order__wrapper js-order-wrapper">
+        <!-- Shipping Information -->
+        <section class="order-section">
+          <h2 class="order-section__title">Shipping Information</h2>
+          <form class="order-form js-order-form">
+            <div class="order-form__group">
+              <label for="address" class="order-form__label">Address</label>
+              <input
+                type="text"
+                id="address"
+                class="order-form__input js-order-address"
+                required
+                placeholder="Enter your shipping address"
+              />
+            </div>
+            <div class="order-form__group">
+              <label for="phone" class="order-form__label">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                class="order-form__input js-order-phone"
+                required
+                placeholder="Enter your phone number"
+              />
+            </div>
+          </form>
+        </section>
+
+        <!-- Order Summary -->
+        <section class="order-section">
+          <h2 class="order-section__title">Order Summary</h2>
+          <div class="order-items js-order-items">
+            <!-- Items will be rendered here via JS -->
+            <p class="order-items__empty">Loading items...</p>
+          </div>
+        </section>
+
+        <!-- Order Totals -->
+        <section class="order-summary">
+          <h2 class="order-summary__title">Order Total</h2>
+          <div class="order-summary__row">
+            <span class="order-summary__label"
+              >Subtotal (<span class="js-order-total-items">0</span>
+              items)</span
+            >
+            <span class="order-summary__value js-order-subtotal">$0</span>
+          </div>
+          <!-- <div class="order-summary__row">
+            <span class="order-summary__label">Discount (-20%)</span>
+            <span
+              class="order-summary__value order-summary__value--discount js-order-discount"
+              >-$0</span
+            >
+          </div> -->
+          <div class="order-summary__row">
+            <span class="order-summary__label">Delivery Fee</span>
+            <span class="order-summary__value js-order-delivery">$15</span>
+          </div>
+          <div class="page-divider"></div>
+          <div class="order-summary__row order-summary__row--total">
+            <span class="order-summary__label">Total</span>
+            <span class="order-summary__value js-order-total">$0</span>
+          </div>
+          <button class="btn btn--primary js-checkout-btn">
+            Go to Checkout &rarr;
+          </button>
+        </section>
+      </div>
+
+      <!-- Success Overlay Component -->
+      <div
+        class="order-success-overlay js-order-success-overlay"
+        style="display: none"
+      >
+        <div class="order-success">
+          <div class="order-success__icon">✓</div>
+          <h2 class="order-success__title">Order Successful!</h2>
+          <p class="order-success__message">
+            Thank you for your purchase. Please check your email for the order
+            details.
+          </p>
+          <a href="/" class="btn btn--primary order-success__button"
+            >Continue Shopping</a
+          >
+        </div>
       </div>
     </main>
 

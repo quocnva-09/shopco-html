@@ -5,17 +5,39 @@ export const OrderService = {
   getUserOrders: async (page = 1) => {
     try {
       const response = await OrderAPI.getUserOrders(page);
-      
+
       if (response && response.data) {
-        const orders = response.data.map(orderData => new OrderDTO(orderData));
+        const orders = response.data.map(
+          (orderData) => new OrderDTO(orderData),
+        );
         return {
           success: true,
           orders: orders,
           meta: response.meta,
-          links: response.links
+          links: response.links,
         };
       }
       return { success: false, error: "Invalid response format" };
+    } catch (error) {
+      console.error("OrderService Error:", error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  createOrder: async () => {
+    try {
+      const response = await OrderAPI.createOrder();
+      if (response && response.status === 201) {
+        return {
+          success: true,
+          order: new OrderDTO(response.data),
+          message: response.message,
+        };
+      }
+      return {
+        success: false,
+        error: response.message || "Failed to create order",
+      };
     } catch (error) {
       console.error("OrderService Error:", error);
       return { success: false, error: error.message };
