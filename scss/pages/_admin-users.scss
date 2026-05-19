@@ -1,0 +1,192 @@
+@use "../abstracts/admin-variables" as *;
+
+// ============================================================
+// _admin-users.scss — Page-level styles for User Management
+// ============================================================
+
+// User table wrapper (extends .admin-table pattern)
+.user-table {
+  &__actions-col {
+    width: 120px;
+    text-align: right;
+  }
+
+  &__name-cell {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__email {
+    font-size: 1.2rem;
+    color: $color-mute;
+  }
+}
+
+// Avatar circle
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: $color-canvas-soft;
+  border: 1px solid $color-border;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: $color-mute;
+  text-transform: uppercase;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Row action icon buttons
+.user-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background-color: transparent;
+  color: $color-mute;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  &:hover {
+    background-color: $color-canvas-soft;
+    border-color: $color-border-hover;
+    color: $color-ink;
+  }
+
+  &--danger {
+    &:hover {
+      background-color: $color-danger-bg;
+      border-color: rgba($color-danger, 0.3);
+      color: $color-danger;
+    }
+  }
+
+  &--success {
+    &:hover {
+      background-color: $color-success-bg;
+      border-color: rgba($color-success, 0.3);
+      color: $color-success;
+    }
+  }
+}
+
+// Row action group
+.user-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $space-1;
+}
+
+// Empty state for when no users are found
+.user-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-16 $space-6;
+  color: $color-mute;
+  gap: $space-3;
+
+  &__icon {
+    svg {
+      width: 48px;
+      height: 48px;
+      stroke-width: 1;
+    }
+  }
+
+  &__text {
+    font-size: 1.4rem;
+  }
+}
+
+// Loading skeleton row
+.user-skeleton {
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  &__cell {
+    height: 16px;
+    border-radius: $radius-xs;
+    background: linear-gradient(90deg, $color-border 25%, $color-canvas-soft 50%, $color-border 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+  }
+}
+
+// Delete confirm dialog overlay
+.user-confirm {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  align-items: center;
+  justify-content: center;
+  padding: $space-6;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+
+  &--open {
+    display: flex;
+  }
+
+  &__panel {
+    width: 100%;
+    max-width: 400px;
+    background-color: $color-canvas;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    padding: $space-6;
+    animation: modalSlideIn 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $color-ink;
+    margin: 0;
+  }
+
+  &__message {
+    font-size: 1.4rem;
+    color: $color-mute;
+    margin: 0;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-2;
+  }
+}

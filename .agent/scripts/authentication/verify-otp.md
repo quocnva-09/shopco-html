@@ -4,7 +4,7 @@ http://localhost:8000/api
 
 ## Endpoint:
 
-/verify-otp
+/api/verify-otp
 
 ## Method:
 
@@ -12,7 +12,7 @@ POST
 
 ## Authentication:
 
-N/A
+No Authentication Required
 
 ## Request:
 
@@ -20,13 +20,13 @@ N/A
 {
   "otp": "123456",
   "type": "forget",
-  "email": "example@gmail.com",
+  "email": "kenjiprovip@gmail.com",
   "password": "password",
   "password_confirmation": "password"
 }
 ```
 
-## Response
+## Response:
 
 ```json
 {
@@ -35,3 +35,4 @@ N/A
   "data": true
 }
 ```
+

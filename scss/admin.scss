@@ -11,6 +11,13 @@
 @use "components/admin-card";
 @use "components/admin-table";
 @use "components/admin-badge";
+@use "components/admin-btn";
+@use "components/user-toolbar";
+@use "components/user-modal";
+@use "components/user-toast";
+@use "components/user-pagination";
 
 // 4. Pages
 @use "pages/admin-dashboard";
+@use "pages/admin-users";
+

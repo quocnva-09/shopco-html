@@ -4,7 +4,7 @@ http://localhost:8000/api
 
 ## Endpoint:
 
-/forget-password
+/api/forget-password
 
 ## Method:
 
@@ -12,17 +12,17 @@ POST
 
 ## Authentication:
 
-N/A
+No Authentication Required
 
 ## Request:
 
 ```json
 {
-  "email": "example@gmail.com"
+  "email": "kenjiprovip@gmail.com"
 }
 ```
 
-## Response
+## Response:
 
 ```json
 {
@@ -31,3 +31,4 @@ N/A
   "data": true
 }
 ```
+

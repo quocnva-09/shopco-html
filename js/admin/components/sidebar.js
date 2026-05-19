@@ -1,12 +1,36 @@
 /**
- * Initializes the admin sidebar component and injects it into the DOM.
- * 
- * @param {HTMLElement} container - The DOM element where the sidebar should be rendered.
+ * Admin Sidebar Component
+ *
+ * Injects the sidebar HTML, re-initializes Lucide icons,
+ * and automatically sets the active nav link based on the current page.
+ *
+ * Active-link detection uses the page filename mapped against a config table.
+ * Each entry maps a pathname fragment → the js- selector of the nav link to activate.
  */
-export function initSidebar(container) {
-  if (!container) return;
 
-  const sidebarHTML = `
+// ─────────────────────────────────────────────────────────────
+// Nav route config
+// Maps page filename fragments to the corresponding js-nav-* class.
+// ─────────────────────────────────────────────────────────────
+
+/**
+ * @type {Array<{ match: string, selector: string }>}
+ */
+const NAV_ROUTES = [
+  { match: 'admin-users', selector: '.js-nav-customers' },
+  { match: 'admin-orders', selector: '.js-nav-orders' },
+  { match: 'admin-products', selector: '.js-nav-products' },
+  { match: 'admin-categories', selector: '.js-nav-categories' },
+  { match: 'admin-reviews', selector: '.js-nav-reviews' },
+];
+
+// ─────────────────────────────────────────────────────────────
+// Sidebar HTML template
+// ─────────────────────────────────────────────────────────────
+
+/** @returns {string} */
+function buildSidebarHTML() {
+  return `
     <aside class="admin-sidebar js-admin-sidebar-el">
       <div class="admin-sidebar__logo">
         SHOP.CO
@@ -17,51 +41,111 @@ export function initSidebar(container) {
       <nav class="admin-sidebar__nav">
         <ul class="admin-sidebar__list">
           <li class="admin-sidebar__item">
-            <a href="#" class="admin-sidebar__link admin-sidebar__link--active">
+            <a href="admin-dashboard.html" class="admin-sidebar__link js-nav-overview">
               <i data-lucide="layout-dashboard"></i> Overview
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="#" class="admin-sidebar__link">
+            <a href="admin-orders.html" class="admin-sidebar__link js-nav-orders">
               <i data-lucide="shopping-cart"></i> Orders
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="#" class="admin-sidebar__link">
+            <a href="admin-products.html" class="admin-sidebar__link js-nav-products">
               <i data-lucide="package"></i> Products
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="#" class="admin-sidebar__link">
+            <a href="admin-users.html" class="admin-sidebar__link js-nav-customers">
               <i data-lucide="users"></i> Customers
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="#" class="admin-sidebar__link">
-              <i data-lucide="bar-chart-3"></i> Analytics
+            <a href="admin-categories.html" class="admin-sidebar__link js-nav-categories">
+              <i data-lucide="tag"></i> Categories
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="#" class="admin-sidebar__link">
-              <i data-lucide="settings"></i> Settings
+            <a href="admin-reviews.html" class="admin-sidebar__link js-nav-reviews">
+              <i data-lucide="star"></i> Reviews
             </a>
           </li>
         </ul>
       </nav>
     </aside>
   `;
+}
 
-  container.innerHTML = sidebarHTML;
+// ─────────────────────────────────────────────────────────────
+// Active-link detection
+// ─────────────────────────────────────────────────────────────
 
-  // Re-initialize Lucide icons for the newly injected HTML
+/**
+ * Returns the nav selector that matches the current page pathname,
+ * or null if no match is found (defaults to Overview).
+ *
+ * @returns {string|null}
+ */
+function resolveActiveSelector() {
+  const path = window.location.pathname;
+
+  for (const route of NAV_ROUTES) {
+    if (path.includes(route.match)) {
+      return route.selector;
+    }
+  }
+
+  return null; // Falls back to Overview
+}
+
+/**
+ * Applies the --active modifier to the correct nav link.
+ * Removes any hardcoded active class first to avoid duplicates.
+ *
+ * @param {HTMLElement} container
+ */
+function setActiveNavLink(container) {
+  // Clear all active states
+  container.querySelectorAll('.admin-sidebar__link').forEach((link) => {
+    link.classList.remove('admin-sidebar__link--active');
+  });
+
+  const selector = resolveActiveSelector();
+
+  const activeLink = selector
+    ? container.querySelector(selector)
+    : container.querySelector('.js-nav-overview');
+
+  if (activeLink) {
+    activeLink.classList.add('admin-sidebar__link--active');
+  }
+}
+
+
+/**
+ * Initializes the admin sidebar component.
+ * Injects HTML, sets the active nav link, re-runs Lucide icons,
+ * and binds the mobile close button.
+ *
+ * @param {HTMLElement} container - Wrapper element (e.g. .js-admin-sidebar-container).
+ */
+export function initSidebar(container) {
+  if (!container) return;
+
+  container.innerHTML = buildSidebarHTML();
+
+  // Set active link based on current page
+  setActiveNavLink(container);
+
+  // Re-initialize Lucide icons for newly injected HTML
   if (window.lucide) {
     window.lucide.createIcons();
   }
 
-  // Handle close event
+  // Mobile close button
   const closeBtn = container.querySelector('.js-sidebar-close');
   const sidebarEl = container.querySelector('.js-admin-sidebar-el');
-  
+
   if (closeBtn && sidebarEl) {
     closeBtn.addEventListener('click', () => {
       sidebarEl.classList.remove('admin-sidebar--open');

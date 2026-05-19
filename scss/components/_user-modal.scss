@@ -1,0 +1,197 @@
+@use "../abstracts/admin-variables" as *;
+
+// ============================================================
+// .user-modal — Create / Edit modal overlay + panel
+// ============================================================
+
+.user-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: $space-6;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+
+  &--open {
+    display: flex;
+  }
+
+  &__panel {
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: $color-canvas;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg, inset 0 0 0 1px $color-border;
+    display: flex;
+    flex-direction: column;
+    animation: modalSlideIn 0.2s ease;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-6;
+    border-bottom: 1px solid $color-border;
+    position: sticky;
+    top: 0;
+    background-color: $color-canvas;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $color-ink;
+    margin: 0;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: $radius-sm;
+    background-color: transparent;
+    color: $color-mute;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background-color: $color-canvas-soft;
+      color: $color-ink;
+    }
+  }
+
+  &__body {
+    padding: $space-6;
+    flex: 1;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-2;
+    padding: $space-4 $space-6;
+    border-top: 1px solid $color-border;
+    position: sticky;
+    bottom: 0;
+    background-color: $color-canvas;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// ============================================================
+// .user-form — Form layout inside modal
+// ============================================================
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-4;
+
+    @media (max-width: $bp-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $space-4;
+  }
+
+  &__label {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: $color-ink;
+    margin-bottom: $space-1;
+  }
+
+  &__input,
+  &__select,
+  &__textarea {
+    height: 40px;
+    padding: 0 $space-3;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    font-family: $font-sans;
+    font-size: 1.4rem;
+    color: $color-ink;
+    background-color: $color-canvas;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::placeholder {
+      color: $color-mute;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent;
+      box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+    }
+
+    &--error {
+      border-color: $color-danger;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($color-danger, 0.1);
+      }
+    }
+  }
+
+  &__textarea {
+    height: auto;
+    min-height: 80px;
+    padding: $space-2 $space-3;
+    resize: vertical;
+  }
+
+  &__select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $space-3 center;
+    padding-right: $space-8;
+    cursor: pointer;
+  }
+
+  &__error {
+    font-size: 1.2rem;
+    color: $color-danger;
+    margin-top: $space-1;
+    display: none;
+
+    &--visible {
+      display: block;
+    }
+  }
+}
