@@ -21,4 +21,22 @@ export const ProductAPI = {
 
     return data;
   },
+
+  getById: async (id) => {
+    const response = await fetch(`${API_PRODUCTS}${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to fetch product");
+    }
+
+    return data;
+  },
 };

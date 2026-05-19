@@ -20,4 +20,19 @@ export const ProductService = {
       throw error;
     }
   },
+
+  getProductById: async (id) => {
+    try {
+      const rawData = await ProductAPI.getById(id);
+
+      if (rawData.status !== 200) {
+        throw new Error(rawData.message || "Failed to fetch product");
+      }
+
+      return new ProductDTO(rawData.data);
+    } catch (error) {
+      console.error(`Error in ProductService.getProductById(${id}):`, error);
+      throw error;
+    }
+  },
 };

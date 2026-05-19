@@ -14,7 +14,7 @@
     height: 36px;
     border-radius: 50%;
     cursor: pointer;
-    border: 2px solid transparent;
+    border: 1px solid $grey-color;
     display: inline-block;
     position: relative;
 
@@ -24,15 +24,16 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 16px;
-      height: 16px;
-      background: url("../../src/assets/icons/vector-tick.svg") no-repeat center/contain;
+      width: 14px;
+      height: 11px;
+      background: $icn-vector-tick;
       opacity: 0;
       transition: opacity 0.2s ease;
+      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.8));
     }
   }
 
-  &__input:checked+&__label::after {
+  &__input:checked + &__label::after {
     opacity: 1;
   }
 }

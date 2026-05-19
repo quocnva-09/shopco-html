@@ -1,4 +1,12 @@
-// product-gallery.js
+import { ProductService } from "../services/product.service.js";
+import { CartService } from "../services/cart.service.js";
+import { formatPrice } from "../utils/format.js";
+import { toast } from "../utils/toast.js";
+
+// State to hold the current product ID
+let currentProductId = null;
+
+// product-gallery.js logic
 function processGallery() {
   const mainImage = document.getElementById("js-main-image");
   const thumbnails = document.querySelectorAll(".product-detail__thumbnail");
@@ -17,34 +25,46 @@ function processGallery() {
   });
 }
 
-// product-info.js
+// product-info.js logic
 function processProductInfo() {
   const quantityInput = document.querySelector(".js-qty-input");
   const addCartForm = document.getElementById("js-add-to-cart-form");
 
   if (addCartForm) {
-    addCartForm.addEventListener("submit", (e) => {
+    addCartForm.addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      if (!currentProductId) {
+        toast.show("Product ID not found", "error");
+        return;
+      }
 
       const formData = new FormData(addCartForm);
       const selectedColor = formData.get("color");
       const selectedSize = formData.get("size");
-      const quantity = quantityInput ? quantityInput.value : 1;
+      const quantity = quantityInput ? parseInt(quantityInput.value, 10) : 1;
 
-      console.log("Added to Cart:", {
-        color: selectedColor,
-        size: selectedSize,
-        quantity: quantity,
-      });
+      try {
+        const btnSubmit = addCartForm.querySelector('button[type="submit"]');
+        if (btnSubmit) btnSubmit.disabled = true;
 
-      alert(
-        `Added ${quantity} item(s) to cart!\nColor: ${selectedColor}\nSize: ${selectedSize}`,
-      );
+        await CartService.addItem(currentProductId, quantity, {
+          colors: selectedColor,
+          sizes: selectedSize,
+        });
+
+        toast.show(`Added ${quantity} item(s) to cart!`, "success");
+      } catch (error) {
+        toast.show(error.message || "Failed to add to cart", "error");
+      } finally {
+        const btnSubmit = addCartForm.querySelector('button[type="submit"]');
+        if (btnSubmit) btnSubmit.disabled = false;
+      }
     });
   }
 }
 
-// product-review.js
+// product-review.js logic
 function processTabs() {
   const tabs = document.querySelectorAll(".tabs__item");
   const tabContents = document.querySelectorAll(".js-tab-content");
@@ -144,7 +164,7 @@ function productSlider() {
   function updateSlider() {
     const list = document.getElementById("js-related-products");
     const firstCard = list.querySelector(".product-card");
-    if (!firstCard) return;
+    if (!firstCard || !list) return;
 
     const slideDistance = firstCard.offsetWidth + 20;
 
@@ -163,14 +183,153 @@ function productSlider() {
     }, 30000);
   }
   function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+    }
   }
 
   startAutoSlide();
 }
 
-export function initProductPage() {
-  processGallery();
+/**
+ * Render product details dynamically
+ * @param {import('../models/product.dto.js').ProductDTO} product
+ */
+function renderProduct(product) {
+  // Main and Thumbnail Images
+  const mainImage = document.getElementById("js-main-image");
+  const thumbnailsContainer = document.querySelector(
+    ".product-detail__thumbnails",
+  );
+
+  if (mainImage && product.primaryImage) {
+    mainImage.src = product.primaryImage;
+    mainImage.alt = product.name;
+  }
+
+  if (thumbnailsContainer && product.images.length > 0) {
+    thumbnailsContainer.innerHTML = product.images
+      .map(
+        (img, idx) => `
+        <img
+          src="${img.img_path}"
+          class="product-detail__thumbnail ${idx === 0 ? "product-detail__thumbnail--active" : ""}"
+          alt="${product.name} - Thumbnail ${idx + 1}"
+          title="${product.name} - Thumbnail ${idx + 1}"
+        />
+      `,
+      )
+      .join("");
+
+    processGallery(); // Re-bind gallery events
+  }
+
+  // Text Information
+  const titleEl = document.querySelector(".product-card__name");
+  const descEl = document.querySelector(".product-detail__description");
+  const priceCurrentEl = document.querySelector(
+    ".product-card__price--current",
+  );
+  const priceOldEl = document.querySelector(".product-card__price--old");
+  const priceDiscountEl = document.querySelector(
+    ".product-card__price--discount",
+  );
+  const ratingTextEl = document.querySelector(".product-card__rating-text");
+
+  if (titleEl) titleEl.textContent = product.name;
+  if (descEl) descEl.textContent = product.description;
+  if (priceCurrentEl)
+    priceCurrentEl.textContent = formatPrice(product.currentPrice);
+
+  if (priceOldEl) {
+    if (product.discountPercentage > 0) {
+      priceOldEl.textContent = formatPrice(product.originalPrice);
+      priceOldEl.style.display = "inline";
+    } else {
+      priceOldEl.style.display = "none";
+    }
+  }
+
+  if (priceDiscountEl) {
+    if (product.discountPercentage > 0) {
+      priceDiscountEl.textContent = `-${product.discountPercentage}%`;
+      priceDiscountEl.style.display = "inline";
+    } else {
+      priceDiscountEl.style.display = "none";
+    }
+  }
+
+  if (ratingTextEl) {
+    ratingTextEl.innerHTML = `${product.rating}<span class="product-card__rating-text--muted">/5</span>`;
+  }
+
+  // Colors
+  const colorSelector = document.querySelector(".color-selector");
+  if (colorSelector && product.colors.length > 0) {
+    colorSelector.innerHTML = product.colors
+      .map(
+        (color, idx) => `
+        <input
+          type="radio"
+          name="color"
+          id="color-${idx}"
+          value="${color}"
+          ${idx === 0 ? "checked" : ""}
+          class="color-selector__input"
+        />
+        <label
+          for="color-${idx}"
+          class="color-selector__label"
+          style="background-color: ${color}"
+          title="${color}"
+        ></label>
+      `,
+      )
+      .join("");
+  }
+
+  // Sizes
+  const sizeSelector = document.querySelector(".size-selector");
+  if (sizeSelector && product.sizes.length > 0) {
+    sizeSelector.innerHTML = product.sizes
+      .map(
+        (size, idx) => `
+        <input
+          type="radio"
+          name="size"
+          id="size-${idx}"
+          value="${size}"
+          ${idx === 0 ? "checked" : ""}
+          class="size-selector__input"
+        />
+        <label for="size-${idx}" class="size-selector__label">${size}</label>
+      `,
+      )
+      .join("");
+  }
+}
+
+export async function initProductPage() {
+  const productDetailSection = document.querySelector(".product-detail");
+  if (!productDetailSection) return; // Not on the product page
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  if (id) {
+    currentProductId = id;
+    try {
+      const product = await ProductService.getProductById(id);
+      renderProduct(product);
+    } catch (error) {
+      console.error("Failed to load product details:", error);
+      toast.show("Failed to load product details.", "error");
+    }
+  } else {
+    // Optionally handle case where there is no ID in URL
+    console.warn("No product ID found in URL");
+  }
+
   processProductInfo();
   processTabs();
   processFilter();
