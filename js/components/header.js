@@ -68,7 +68,7 @@ export function initHeader() {
         </div>
 
         <div class="header__actions">
-          <button class="icon-btn" aria-label="Cart">
+          <button class="icon-btn js-cart-btn" aria-label="Cart">
             <img
               src="assets/icons/icn-cart.svg"
               alt="Icon cart"
@@ -111,6 +111,18 @@ export function initHeader() {
       const token = localStorage.getItem("access_token");
       if (token) {
         window.location.href = "/profile.html";
+      } else {
+        window.location.href = "/auth.html";
+      }
+    });
+  }
+
+  const cartBtn = header.querySelector(".js-cart-btn");
+  if (cartBtn) {
+    cartBtn.addEventListener("click", () => {
+      const token = localStorage.getItem("access_token");
+      if (token) {
+        window.location.href = "/cart.html";
       } else {
         window.location.href = "/auth.html";
       }

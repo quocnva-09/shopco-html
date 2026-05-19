@@ -1,157 +1,193 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cart Page</title>
-  <link rel="stylesheet" href="./css/main.css" />
-</head>
+  <body
+    oncontextmenu="return false;"
+    ondragstart="return false;"
+    ondrop="return false;"
+  >
+    <header class="header"></header>
 
-<body oncontextmenu="return false;" ondragstart="return false;" ondrop="return false;">
-  <header class="header"></header>
-
-  <main class="container">
-    <div class="page-divider"></div>
-    <div class="breadcrumb">
-      <a href="#" class="breadcrumb__item">Home</a>
-      <span class="breadcrumb__separator">&#10095;</span>
-      <span class="breadcrumb__item breadcrumb__item--active">Cart</span>
-    </div>
-
-    <h1 class="cart__title">YOUR CART</h1>
-
-    <div class="cart">
-      <div class="cart__items">
-        <article class="cart-item">
-          <div class="cart-item__image-wrap">
-            <img src="assets/images/pic-gradient-graphic-t-shirt.png" alt="Gradient Graphic T-shirt"
-              title="Gradient Graphic T-shirt" class="cart-item__image" />
-          </div>
-          <div class="cart-item__info">
-            <h2 class="cart-item__name">
-              Gradient Graphic T-shirt Gradient Graphic T-shirt Gradient
-              Graphic T-shirt
-            </h2>
-            <p class="cart-item__variant">
-              Size: <span class="cart-item__variant-value">Large</span>
-            </p>
-            <p class="cart-item__variant">
-              Color: <span class="cart-item__variant-value">White</span>
-            </p>
-            <p class="cart-item__price">$145</p>
-          </div>
-          <div class="cart-item__actions">
-            <button class="btn btn--delete" aria-label="Remove item"></button>
-            <div class="cart-item__quantity">
-              <button type="button" class="btn btn--qty-btn js-qty-decrease">
-                -
-              </button>
-              <input type="number" class="cart-item__qty-input js-qty-input" value="1" min="1" aria-label="Quantity" />
-              <button type="button" class="btn btn--qty-btn js-qty-increase">
-                +
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="cart-item">
-          <div class="cart-item__image-wrap">
-            <img src="assets/images/pic-black-sctrip-t-shirt.png" alt="Checkered Shirt" title="Checkered Shirt"
-              class="cart-item__image" />
-          </div>
-          <div class="cart-item__info">
-            <h2 class="cart-item__name">Checkered Shirt</h2>
-            <p class="cart-item__variant">
-              Size: <span class="cart-item__variant-value">Medium</span>
-            </p>
-            <p class="cart-item__variant">
-              Color: <span class="cart-item__variant-value">Red</span>
-            </p>
-            <p class="cart-item__price">$180</p>
-          </div>
-          <div class="cart-item__actions">
-            <button class="btn btn--delete" aria-label="Remove item"></button>
-            <div class="cart-item__quantity">
-              <button type="button" class="btn btn--qty-btn js-qty-decrease">
-                -
-              </button>
-              <input type="number" class="cart-item__qty-input js-qty-input" value="1" min="1" aria-label="Quantity" />
-              <button type="button" class="btn btn--qty-btn js-qty-increase">
-                +
-              </button>
-            </div>
-          </div>
-        </article>
-        <article class="cart-item">
-          <div class="cart-item__image-wrap">
-            <img src="assets/images/pic-black-sctrip-t-shirt.png" alt="Checkered Shirt" title="Checkered Shirt"
-              class="cart-item__image" />
-          </div>
-          <div class="cart-item__info">
-            <h2 class="cart-item__name">Checkered Shirt</h2>
-            <p class="cart-item__variant">
-              Size: <span class="cart-item__variant-value">Medium</span>
-            </p>
-            <p class="cart-item__variant">
-              Color: <span class="cart-item__variant-value">Red</span>
-            </p>
-            <p class="cart-item__price">$180</p>
-          </div>
-          <div class="cart-item__actions">
-            <button class="btn btn--delete" aria-label="Remove item"></button>
-            <div class="cart-item__quantity">
-              <button type="button" class="btn btn--qty-btn js-qty-decrease">
-                -
-              </button>
-              <input type="number" class="cart-item__qty-input js-qty-input" value="1" min="1" aria-label="Quantity" />
-              <button type="button" class="btn btn--qty-btn js-qty-increase">
-                +
-              </button>
-            </div>
-          </div>
-        </article>
+    <main class="container">
+      <div class="page-divider"></div>
+      <div class="breadcrumb">
+        <a href="#" class="breadcrumb__item">Home</a>
+        <span class="breadcrumb__separator">&#10095;</span>
+        <span class="breadcrumb__item breadcrumb__item--active">Cart</span>
       </div>
 
-      <div class="cart__summary">
-        <aside class="cart-summary">
-          <h2 class="cart-summary__title">Order Summary</h2>
-          <ul class="cart-summary__list">
-            <li class="cart-summary__item">
-              <span class="cart-summary__label">Subtotal</span>
-              <span class="cart-summary__value">$565</span>
-            </li>
-            <li class="cart-summary__item cart-summary__item--discount">
-              <span class="cart-summary__label">Discount (-20%)</span>
-              <span class="cart-summary__value">-$113</span>
-            </li>
-            <li class="cart-summary__item">
-              <span class="cart-summary__label">Delivery Fee</span>
-              <span class="cart-summary__value">$15</span>
-            </li>
-          </ul>
-          <div class="cart-summary__total">
-            <span class="cart-summary__label">Total</span>
-            <span class="cart-summary__value">$467</span>
-          </div>
-          <form class="cart-summary__promo">
-            <div class="cart-summary__promo-input-wrapper">
-              <input type="text" class="cart-summary__promo-input" placeholder="Add promo code" />
+      <h1 class="cart__title">YOUR CART</h1>
+
+      <div class="cart">
+        <div class="cart__items">
+          <article class="cart-item">
+            <div class="cart-item__image-wrap">
+              <img
+                src="assets/images/pic-gradient-graphic-t-shirt.png"
+                alt="Gradient Graphic T-shirt"
+                title="Gradient Graphic T-shirt"
+                class="cart-item__image"
+              />
             </div>
-            <button type="submit" class="btn btn--apply">Apply</button>
-          </form>
-          <button class="btn btn--add-to-cart cart-summary__checkout">
-            Go to Checkout
-            <span class="cart-summary__checkout-arrow">&#8594;</span>
-          </button>
-        </aside>
+            <div class="cart-item__info">
+              <h2 class="cart-item__name">
+                Gradient Graphic T-shirt Gradient Graphic T-shirt Gradient
+                Graphic T-shirt
+              </h2>
+              <p class="cart-item__variant">
+                Size: <span class="cart-item__variant-value">Large</span>
+              </p>
+              <p class="cart-item__variant">
+                Color: <span class="cart-item__variant-value">White</span>
+              </p>
+              <p class="cart-item__price">$145</p>
+            </div>
+            <div class="cart-item__actions">
+              <button class="btn btn--delete" aria-label="Remove item"></button>
+              <div class="cart-item__quantity">
+                <button type="button" class="btn btn--qty-btn js-qty-decrease">
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="cart-item__qty-input js-qty-input"
+                  value="1"
+                  min="1"
+                  aria-label="Quantity"
+                />
+                <button type="button" class="btn btn--qty-btn js-qty-increase">
+                  +
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cart-item">
+            <div class="cart-item__image-wrap">
+              <img
+                src="assets/images/pic-black-sctrip-t-shirt.png"
+                alt="Checkered Shirt"
+                title="Checkered Shirt"
+                class="cart-item__image"
+              />
+            </div>
+            <div class="cart-item__info">
+              <h2 class="cart-item__name">Checkered Shirt</h2>
+              <p class="cart-item__variant">
+                Size: <span class="cart-item__variant-value">Medium</span>
+              </p>
+              <p class="cart-item__variant">
+                Color: <span class="cart-item__variant-value">Red</span>
+              </p>
+              <p class="cart-item__price">$180</p>
+            </div>
+            <div class="cart-item__actions">
+              <button class="btn btn--delete" aria-label="Remove item"></button>
+              <div class="cart-item__quantity">
+                <button type="button" class="btn btn--qty-btn js-qty-decrease">
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="cart-item__qty-input js-qty-input"
+                  value="1"
+                  min="1"
+                  aria-label="Quantity"
+                />
+                <button type="button" class="btn btn--qty-btn js-qty-increase">
+                  +
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="cart-item">
+            <div class="cart-item__image-wrap">
+              <img
+                src="assets/images/pic-black-sctrip-t-shirt.png"
+                alt="Checkered Shirt"
+                title="Checkered Shirt"
+                class="cart-item__image"
+              />
+            </div>
+            <div class="cart-item__info">
+              <h2 class="cart-item__name">Checkered Shirt</h2>
+              <p class="cart-item__variant">
+                Size: <span class="cart-item__variant-value">Medium</span>
+              </p>
+              <p class="cart-item__variant">
+                Color: <span class="cart-item__variant-value">Red</span>
+              </p>
+              <p class="cart-item__price">$180</p>
+            </div>
+            <div class="cart-item__actions">
+              <button class="btn btn--delete" aria-label="Remove item"></button>
+              <div class="cart-item__quantity">
+                <button type="button" class="btn btn--qty-btn js-qty-decrease">
+                  -
+                </button>
+                <input
+                  type="number"
+                  class="cart-item__qty-input js-qty-input"
+                  value="1"
+                  min="1"
+                  aria-label="Quantity"
+                />
+                <button type="button" class="btn btn--qty-btn js-qty-increase">
+                  +
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cart__summary">
+          <aside class="cart-summary">
+            <h2 class="cart-summary__title">Order Summary</h2>
+            <ul class="cart-summary__list">
+              <li class="cart-summary__item">
+                <span class="cart-summary__label">Subtotal</span>
+                <span class="cart-summary__value"></span>
+              </li>
+              <li class="cart-summary__item cart-summary__item--discount">
+                <span class="cart-summary__label">Discount</span>
+                <span class="cart-summary__value"></span>
+              </li>
+              <li class="cart-summary__item">
+                <span class="cart-summary__label">Delivery Fee</span>
+                <span class="cart-summary__value"></span>
+              </li>
+            </ul>
+            <div class="cart-summary__total">
+              <span class="cart-summary__label">Total</span>
+              <span class="cart-summary__value"></span>
+            </div>
+            <form class="cart-summary__promo">
+              <div class="cart-summary__promo-input-wrapper">
+                <input
+                  type="text"
+                  class="cart-summary__promo-input"
+                  placeholder="Add promo code"
+                />
+              </div>
+              <button type="submit" class="btn btn--apply">Apply</button>
+            </form>
+            <button class="btn btn--add-to-cart cart-summary__checkout">
+              Go to Checkout
+              <span class="cart-summary__checkout-arrow">&#8594;</span>
+            </button>
+          </aside>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="footer"></footer>
+    <footer class="footer"></footer>
 
-  <script type="module" src="./js/main.js"></script>
-</body>
-
+    <script type="module" src="./js/main.js"></script>
+  </body>
 </html>
