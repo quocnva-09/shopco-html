@@ -184,15 +184,37 @@
     }
   }
 
-  // State handling for Login / Register modes
+  // State handling for modes
   &[data-mode="login"] {
-    [data-show="register"] {
+    [data-show]:not([data-show~="login"]) {
       display: none !important;
     }
   }
 
   &[data-mode="register"] {
-    [data-show="login"] {
+    [data-show]:not([data-show~="register"]) {
+      display: none !important;
+    }
+  }
+
+  &[data-mode="forget"] {
+    [data-show]:not([data-show~="forget"]) {
+      display: none !important;
+    }
+    .auth__divider,
+    .auth__social,
+    .auth__tabs {
+      display: none !important;
+    }
+  }
+
+  &[data-mode="otp"] {
+    [data-show]:not([data-show~="otp"]) {
+      display: none !important;
+    }
+    .auth__divider,
+    .auth__social,
+    .auth__tabs {
       display: none !important;
     }
   }

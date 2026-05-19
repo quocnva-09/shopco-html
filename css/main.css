@@ -3991,10 +3991,26 @@ body {
   width: 2.4rem;
   height: 2.4rem;
 }
-.auth[data-mode=login] [data-show=register] {
+.auth[data-mode=login] [data-show]:not([data-show~=login]) {
   display: none !important;
 }
-.auth[data-mode=register] [data-show=login] {
+.auth[data-mode=register] [data-show]:not([data-show~=register]) {
+  display: none !important;
+}
+.auth[data-mode=forget] [data-show]:not([data-show~=forget]) {
+  display: none !important;
+}
+.auth[data-mode=forget] .auth__divider,
+.auth[data-mode=forget] .auth__social,
+.auth[data-mode=forget] .auth__tabs {
+  display: none !important;
+}
+.auth[data-mode=otp] [data-show]:not([data-show~=otp]) {
+  display: none !important;
+}
+.auth[data-mode=otp] .auth__divider,
+.auth[data-mode=otp] .auth__social,
+.auth[data-mode=otp] .auth__tabs {
   display: none !important;
 }
 

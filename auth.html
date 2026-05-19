@@ -81,8 +81,8 @@
               />
             </div>
 
-            <!-- Email Field (Both) -->
-            <div class="form-group">
+            <!-- Email Field -->
+            <div class="form-group" data-show="login register forget">
               <label for="email" class="form-label">Email</label>
               <input
                 type="email"
@@ -90,6 +90,17 @@
                 class="form-input"
                 placeholder="Enter your email"
                 required
+              />
+            </div>
+
+            <!-- OTP Field (OTP Only) -->
+            <div class="form-group" data-show="otp">
+              <label for="otp" class="form-label">OTP Code</label>
+              <input
+                type="text"
+                id="otp"
+                class="form-input"
+                placeholder="Enter 6-digit OTP code"
               />
             </div>
 
@@ -104,9 +115,12 @@
               />
             </div>
 
-            <!-- Password Field (Both) -->
-            <div class="form-group">
-              <label for="password" class="form-label">Password</label>
+            <!-- Password / New Password Field -->
+            <div class="form-group" data-show="login register otp">
+              <label for="password" class="form-label">
+                <span data-show="login register">Password</span>
+                <span data-show="otp">New Password</span>
+              </label>
               <div class="form-input-wrapper">
                 <input
                   type="password"
@@ -144,8 +158,8 @@
               </div>
             </div>
 
-            <!-- Confirm Password Field (Register Only) -->
-            <div class="form-group" data-show="register">
+            <!-- Confirm Password Field (Register and OTP) -->
+            <div class="form-group" data-show="register otp">
               <label for="confirm-password" class="form-label"
                 >Confirm Password</label
               >
@@ -196,7 +210,7 @@
                   >Remember me</label
                 >
               </div>
-              <a href="#" class="auth__forgot-password">Forgot Password ?</a>
+              <a href="#" class="auth__forgot-password js-forgot-password">Forgot Password ?</a>
             </div>
 
             <button
@@ -205,6 +219,8 @@
             >
               <span data-show="login">Login</span>
               <span data-show="register">Register</span>
+              <span data-show="forget">Send OTP</span>
+              <span data-show="otp">Reset Password</span>
             </button>
           </form>
 

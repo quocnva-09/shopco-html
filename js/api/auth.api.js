@@ -58,4 +58,42 @@ export const AuthAPI = {
 
     return data;
   },
+
+  requestResetOTP: async (email) => {
+    const response = await fetch(`${BASE_URL}/forget-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Lỗi kết nối đến server");
+    }
+
+    return data;
+  },
+
+  verifyOTP: async (payload) => {
+    const response = await fetch(`${BASE_URL}/verify-otp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Lỗi kết nối đến server");
+    }
+
+    return data;
+  },
 };

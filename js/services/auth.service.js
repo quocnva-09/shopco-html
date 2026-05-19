@@ -69,4 +69,55 @@ export const AuthService = {
       redirectUrl: "/login.html",
     };
   },
+
+  requestResetOTP: async (email) => {
+    if (!email.includes("@")) {
+      throw new Error("Email không hợp lệ");
+    }
+
+    const rawData = await AuthAPI.requestResetOTP(email);
+
+    if (rawData.status !== 200) {
+      throw new Error(rawData.message);
+    }
+
+    // Save email temporarily for verify step
+    localStorage.setItem("reset_email", email);
+
+    return {
+      success: true,
+      message: rawData.message,
+    };
+  },
+
+  verifyOTP: async (otp, newPassword, confirmPassword) => {
+    const email = localStorage.getItem("reset_email");
+    if (!email) {
+      throw new Error("Không tìm thấy email, vui lòng yêu cầu lại mã OTP");
+    }
+
+    if (newPassword !== confirmPassword) {
+      throw new Error("Mật khẩu xác nhận không khớp!");
+    }
+
+    const rawData = await AuthAPI.verifyOTP({
+      otp,
+      type: "forget",
+      email,
+      password: newPassword,
+      password_confirmation: confirmPassword,
+    });
+
+    if (rawData.status !== 200) {
+      throw new Error(rawData.message);
+    }
+
+    // Clear reset email upon success
+    localStorage.removeItem("reset_email");
+
+    return {
+      success: true,
+      message: rawData.message,
+    };
+  },
 };
