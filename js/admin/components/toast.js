@@ -18,12 +18,12 @@ let toastContainer = null;
 /**
  * Lazily creates and returns the singleton toast container element.
  *
- * @returns {HTMLElement} The .user-toast container appended to <body>.
+ * @returns {HTMLElement} The .toast container appended to <body>.
  */
 function getContainer() {
   if (!toastContainer) {
     toastContainer = document.createElement('div');
-    toastContainer.className = 'user-toast';
+    toastContainer.className = 'toast';
     toastContainer.setAttribute('aria-live', 'polite');
     toastContainer.setAttribute('aria-atomic', 'true');
     document.body.appendChild(toastContainer);
@@ -40,11 +40,11 @@ export function showToast({ message, type = 'success' }) {
   const container = getContainer();
 
   const item = document.createElement('div');
-  item.className = `user-toast__item user-toast__item--${type}`;
+  item.className = `toast__item toast__item--${type}`;
   item.setAttribute('role', 'alert');
   item.innerHTML = `
-    <span class="user-toast__icon">${TOAST_ICONS[type] || ''}</span>
-    <span class="user-toast__message">${message}</span>
+    <span class="toast__icon">${TOAST_ICONS[type] || ''}</span>
+    <span class="toast__message">${message}</span>
   `;
 
   container.appendChild(item);
@@ -61,7 +61,7 @@ export function showToast({ message, type = 'success' }) {
 function dismissToast(item) {
   if (!item || !item.parentNode) return;
 
-  item.classList.add('user-toast__item--exit');
+  item.classList.add('toast__item--exit');
 
   item.addEventListener('animationend', () => {
     if (item.parentNode) {

@@ -12,10 +12,10 @@
 @use "components/admin-table";
 @use "components/admin-badge";
 @use "components/admin-btn";
-@use "components/user-toolbar";
+@use "components/toolbar";
 @use "components/modal";
-@use "components/user-toast";
-@use "components/user-pagination";
+@use "components/admin-form";
+@use "components/toast";
 
 // 4. Pages
 @use "pages/admin-dashboard";

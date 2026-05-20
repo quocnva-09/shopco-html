@@ -1,10 +1,10 @@
 @use "../abstracts/admin-variables" as *;
 
 // ============================================================
-// .user-toolbar — Search + Tab filter + Create button strip
+// .toolbar  ESearch + Tab filter + Create button strip
 // ============================================================
 
-.user-toolbar {
+.toolbar {
   display: flex;
   align-items: center;
   gap: $space-4;
@@ -78,7 +78,7 @@
     cursor: pointer;
     transition: background-color 0.15s ease, color 0.15s ease;
 
-    &:hover:not(.user-toolbar__tab--active) {
+    &:hover:not(.toolbar__tab--active) {
       background-color: $color-canvas;
       color: $color-ink;
     }

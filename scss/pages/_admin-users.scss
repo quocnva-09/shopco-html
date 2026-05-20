@@ -1,11 +1,11 @@
 @use "../abstracts/admin-variables" as *;
 
 // ============================================================
-// _admin-users.scss — Page-level styles for User Management
+// _admin-users.scss  EPage-level styles for User Management
 // ============================================================
 
 // User table wrapper (extends .admin-table pattern)
-.user-table {
+.data-table {
   &__actions-col {
     width: 120px;
     text-align: right;
@@ -54,7 +54,7 @@
 }
 
 // Row action icon buttons
-.user-action-btn {
+.action-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +96,7 @@
 }
 
 // Row action group
-.user-actions {
+.action-group {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -104,7 +104,7 @@
 }
 
 // Empty state for when no users are found
-.user-empty {
+.empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,7 +127,7 @@
 }
 
 // Loading skeleton row
-.user-skeleton {
+.skeleton {
   @keyframes shimmer {
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
@@ -143,7 +143,7 @@
 }
 
 // Delete confirm dialog overlay
-.user-confirm {
+.confirm-dialog {
   display: none;
   position: fixed;
   inset: 0;

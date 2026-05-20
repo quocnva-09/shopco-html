@@ -1,16 +1,18 @@
-import { initUserTable, refreshUserTable } from '../components/user-table.js';
 import { Modal } from '../components/modal.js';
+import { DataTable } from '../components/table.js';
 import { buildUserFormLayout, buildUserFormFooter } from '../layouts/user-form.layout.js';
+import { buildUserRow, buildTrashedUserRow } from '../layouts/user-table.layout.js';
 import { UserService } from '../../services/user.service.js';
-import { showToast } from '../components/user-toast.js';
+import { showToast } from '../components/toast.js';
 
 let userModal = null;
+let dataTable = null;
 let currentMode = 'create';
 let currentUserId = null;
 
 /**
  * Initializes the User Module.
- * Connects the user table with the modal component and handles form submissions.
+ * Connects the generic DataTable with the User Modal and handles API orchestration.
  *
  * @param {HTMLElement} container - The container for the user table.
  */
@@ -36,47 +38,104 @@ export function initUserModule(container) {
     form.addEventListener('submit', handleFormSubmit);
   }
 
-  // Initialize the user table and pass modal trigger callbacks
-  initUserTable(container, {
-    onCreateUser: handleCreateUser,
-    onEditUser: handleEditUser
+  // Initialize the generic data table
+  dataTable = new DataTable(container, {
+    columns: [
+      { label: 'User', className: '' },
+      { label: 'Role', className: '' },
+      { label: 'Phone', className: '' },
+      { label: 'Joined', className: '' },
+      { label: 'Actions', className: 'data-table__actions-col' }
+    ],
+    searchPlaceholder: 'Search by name or email…',
+    actionBtnText: '+ Create User',
+    fetchData: async (params) => {
+      let result;
+      if (params.tab === 'trashed') {
+        result = await UserService.fetchTrashedUsers(params);
+      } else {
+        result = await UserService.fetchUsers(params);
+      }
+      return { items: result.users, meta: result.meta, error: result.error };
+    },
+    renderRow: (user, tab) => {
+      if (tab === 'trashed') return buildTrashedUserRow(user);
+      return buildUserRow(user);
+    },
+    onAction: handleTableAction
   });
 }
 
 // ─────────────────────────────────────────────────────────────
-// Modal Handlers
+// Action Handlers
 // ─────────────────────────────────────────────────────────────
 
-function handleCreateUser() {
-  currentMode = 'create';
-  currentUserId = null;
-  
-  userModal.setTitle('Create User');
-  document.querySelector('.js-password-row').style.display = '';
-  
-  userModal.open();
-}
+async function handleTableAction(action, dataset) {
+  switch (action) {
+    case 'create':
+      currentMode = 'create';
+      currentUserId = null;
+      userModal.setTitle('Create User');
+      document.querySelector('.js-password-row').style.display = '';
+      userModal.open();
+      break;
 
-async function handleEditUser(userData) {
-  currentMode = 'edit';
-  currentUserId = userData.id;
+    case 'edit':
+      currentMode = 'edit';
+      currentUserId = dataset.id;
+      userModal.setTitle('Edit User');
+      document.querySelector('.js-password-row').style.display = 'none';
 
-  userModal.setTitle('Edit User');
-  document.querySelector('.js-password-row').style.display = 'none';
+      // Load form data
+      const fillData = dataset || {};
+      if (currentUserId && !dataset.name) {
+        const { user, error } = await UserService.fetchUser(currentUserId);
+        if (error) {
+          showToast({ message: `Failed to load user: ${error}`, type: 'error' });
+          return;
+        }
+        Object.assign(fillData, user);
+      }
+      fillForm(fillData);
+      userModal.open();
+      break;
 
-  // Fetch full user data if needed, or just fill with dataset
-  const fillData = userData || {};
-  if (currentUserId && !userData) {
-    const { user, error } = await UserService.fetchUser(currentUserId);
-    if (error) {
-      showToast({ message: `Failed to load user: ${error}`, type: 'error' });
-      return;
-    }
-    Object.assign(fillData, user);
+    case 'delete':
+      dataTable.showConfirm(`Move "${dataset.name}" to trash?`, async () => {
+        const { error } = await UserService.trashUser(dataset.id);
+        if (error) {
+          showToast({ message: error, type: 'error' });
+        } else {
+          showToast({ message: 'User moved to trash', type: 'success' });
+          dataTable.refresh();
+        }
+      });
+      break;
+
+    case 'restore':
+      dataTable.showConfirm(`Restore user "${dataset.name}"?`, async () => {
+        const { error } = await UserService.recoverUser(dataset.id);
+        if (error) {
+          showToast({ message: error, type: 'error' });
+        } else {
+          showToast({ message: 'User restored successfully', type: 'success' });
+          dataTable.refresh();
+        }
+      });
+      break;
+
+    case 'force-delete':
+      dataTable.showConfirm(`Permanently delete "${dataset.name}"? This action cannot be undone.`, async () => {
+        const { error } = await UserService.destroyUser(dataset.id);
+        if (error) {
+          showToast({ message: error, type: 'error' });
+        } else {
+          showToast({ message: 'User permanently deleted', type: 'success' });
+          dataTable.refresh();
+        }
+      });
+      break;
   }
-  
-  fillForm(fillData);
-  userModal.open();
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -120,7 +179,7 @@ async function handleFormSubmit(e) {
   });
   
   userModal.close();
-  refreshUserTable();
+  dataTable.refresh();
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -165,10 +224,10 @@ function showErrors(errors) {
   Object.entries(errors).forEach(([field, message]) => {
     const input = document.querySelector(`[name="${field}"]`);
     const errorEl = document.querySelector(`.js-field-error[data-field="${field}"]`);
-    if (input) input.classList.add('user-form__input--error');
+    if (input) input.classList.add('admin-form__input--error');
     if (errorEl) {
       errorEl.textContent = message;
-      errorEl.classList.add('user-form__error--visible');
+      errorEl.classList.add('admin-form__error--visible');
     }
   });
 }
@@ -176,15 +235,15 @@ function showErrors(errors) {
 function clearErrors() {
   document.querySelectorAll('.js-field-error').forEach(el => {
     el.textContent = '';
-    el.classList.remove('user-form__error--visible');
+    el.classList.remove('admin-form__error--visible');
   });
-  document.querySelectorAll('.user-form__input--error').forEach(el => {
-    el.classList.remove('user-form__input--error');
+  document.querySelectorAll('.admin-form__input--error').forEach(el => {
+    el.classList.remove('admin-form__input--error');
   });
 }
 
 function resetFormState() {
-  const form = document.querySelector('.js-user-form');
+  const form = document.querySelector('.js-admin-form');
   if (form) form.reset();
   clearErrors();
   currentUserId = null;
