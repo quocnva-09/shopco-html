@@ -1,234 +1,179 @@
-import { Modal } from '../components/modal.js';
-import { DataTable } from '../components/table.js';
-import { buildProductFormLayout, buildProductFormFooter } from '../layouts/product-form.layout.js';
-import { buildProductRow, buildTrashedProductRow } from '../layouts/product-table.layout.js';
+import { BaseCrudManager } from '../controller/BaseCrudManager.js';
+import {
+    buildProductFormLayout,
+    buildProductFormFooter
+} from '../layouts/product-form.layout.js';
+import {
+    buildProductRow,
+    buildTrashedProductRow
+} from '../layouts/product-table.layout.js';
 import { ProductService } from '../../services/product.service.js';
 import { CategoryService } from '../../services/category.service.js';
-import { showToast } from '../components/toast.js';
-import { serializeForm, showErrors, clearErrors, resetFormState } from '../../utils/admin-form.util.js';
 
-let productModal = null;
-let dataTable = null;
-let currentMode = 'create';
-let currentProductId = null;
-
+/**
+ * Initializes the Product Module using the Reusable CRUD Manager.
+ *
+ * @param {HTMLElement} container - The container element to mount the table.
+ */
 export function initProductModule(container) {
-  if (!container) return;
+    if (!container) return;
 
-  const formId = 'product-modal-form';
-  const submitBtnId = 'modal-save-btn';
-  const cancelBtnId = 'modal-cancel-btn';
+    const formId = 'product-modal-form';
 
-  productModal = new Modal({
-    id: 'product-modal',
-    title: 'Create Product',
-    bodyHTML: buildProductFormLayout(formId),
-    footerHTML: buildProductFormFooter(formId, submitBtnId, cancelBtnId),
-    onClose: resetFormState
-  });
+    const productCrud = new BaseCrudManager({
+        entityName: 'Product',
+        formId: formId,
 
-  const form = document.getElementById(formId);
-  if (form) {
-    form.addEventListener('submit', handleFormSubmit);
-  }
+        service: {
+            fetchAll: ProductService.getAdminProducts,
+            fetchTrashed: ProductService.getTrashedProducts,
+            fetchOne: ProductService.getProductById,
+            create: ProductService.createProduct,
+            update: ProductService.updateProduct,
+            trash: ProductService.deleteProduct,
+            recover: ProductService.restoreProduct,
+            destroy: ProductService.forceDeleteProduct
+        },
 
-  // Preload categories for the form select
-  loadCategoriesIntoSelect();
+        layouts: {
+            formBody: buildProductFormLayout(formId),
+            formFooter: buildProductFormFooter(
+                formId,
+                'modal-save-btn',
+                'modal-cancel-btn'
+            ),
+            row: buildProductRow,
+            trashedRow: buildTrashedProductRow
+        },
 
-  dataTable = new DataTable(container, {
-    columns: [
-      { label: 'Product', className: '' },
-      { label: 'Price', className: '' },
-      { label: 'Category', className: '' },
-      { label: 'Status', className: '' },
-      { label: 'Actions', className: 'data-table__actions-col' }
-    ],
-    searchPlaceholder: 'Search products...',
-    actionBtnText: '+ Create Product',
-    fetchData: async (params) => {
-      let result;
-      if (params.tab === 'trashed') {
-        result = await ProductService.getTrashedProducts(params);
-      } else {
-        result = await ProductService.getAdminProducts(params);
-      }
-      return { items: result.products, meta: result.meta, error: result.error };
-    },
-    renderRow: (product, tab) => {
-      if (tab === 'trashed') return buildTrashedProductRow(product);
-      return buildProductRow(product);
-    },
-    onAction: handleTableAction
-  });
-}
+        columns: [
+            { label: 'Product', className: '' },
+            { label: 'Price', className: '' },
+            { label: 'Category', className: '' },
+            { label: 'Status', className: '' },
+            { label: 'Actions', className: 'data-table__actions-col' }
+        ],
 
-async function loadCategoriesIntoSelect() {
-  const select = document.getElementById('field-category');
-  if (!select) return;
+        tableOptions: {
+            searchPlaceholder: 'Search products...',
+            actionBtnText: '+ Create Product'
+        },
 
-  const { success, categories } = await CategoryService.getAdminCategories({ limit: 100 });
-  if (success && categories) {
-    categories.forEach(cat => {
-      const option = document.createElement('option');
-      option.value = cat.id;
-      option.textContent = cat.name;
-      select.appendChild(option);
+        formatUpdateData: (data) => {
+            const {
+                name,
+                slug,
+                category_id,
+                price,
+                price_discount,
+                description,
+                is_active
+            } = data;
+            return {
+                name,
+                slug,
+                category_id,
+                price,
+                price_discount,
+                description,
+                is_active
+            };
+        },
+
+        validator: validateProductForm,
+        fillForm: fillProductForm
     });
-  }
+
+    productCrud.init(container);
+
+    // Preload categories into select dropdown
+    loadCategoriesIntoSelect();
 }
 
-async function handleTableAction(action, dataset) {
-  switch (action) {
-    case 'create':
-      currentMode = 'create';
-      currentProductId = null;
-      productModal.setTitle('Create Product');
-      productModal.open();
-      break;
+/**
+ * Preloads categories from the database and inserts them into the select.
+ *
+ * @returns {Promise<void>}
+ */
+async function loadCategoriesIntoSelect() {
+    const select = document.getElementById('field-category');
+    if (!select) return;
 
-    case 'edit':
-      currentMode = 'edit';
-      currentProductId = dataset.id;
-      productModal.setTitle('Edit Product');
+    const { success, categories } = await CategoryService.getAdminCategories({
+        limit: 100
+    });
 
-      const fillData = dataset || {};
-      if (currentProductId && !dataset.name) {
-        try {
-          const product = await ProductService.getProductById(currentProductId);
-          Object.assign(fillData, product);
-          fillData.category_id = product.category ? product.category.id : '';
-        } catch (error) {
-          showToast({ message: `Failed to load product: ${error.message}`, type: 'error' });
-          return;
-        }
-      } else {
-         // ensure boolean string conversion
-         fillData.is_active = fillData.is_active === 'true' || fillData.is_active === true;
-      }
-      fillForm(fillData);
-      productModal.open();
-      break;
-
-    case 'delete':
-      dataTable.showConfirm(`Move "${dataset.name}" to trash?`, async () => {
-        const { error } = await ProductService.deleteProduct(dataset.id);
-        if (error) {
-          showToast({ message: error, type: 'error' });
-        } else {
-          showToast({ message: 'Product moved to trash', type: 'success' });
-          dataTable.refresh();
-        }
-      });
-      break;
-
-    case 'restore':
-      dataTable.showConfirm(`Restore product "${dataset.name}"?`, async () => {
-        const { error } = await ProductService.restoreProduct(dataset.id);
-        if (error) {
-          showToast({ message: error, type: 'error' });
-        } else {
-          showToast({ message: 'Product restored successfully', type: 'success' });
-          dataTable.refresh();
-        }
-      });
-      break;
-
-    case 'force-delete':
-      dataTable.showConfirm(`Permanently delete "${dataset.name}"? This action cannot be undone.`, async () => {
-        const { error } = await ProductService.forceDeleteProduct(dataset.id);
-        if (error) {
-          showToast({ message: error, type: 'error' });
-        } else {
-          showToast({ message: 'Product permanently deleted', type: 'success' });
-          dataTable.refresh();
-        }
-      });
-      break;
-  }
+    if (success && categories) {
+        categories.forEach((cat) => {
+            const option = document.createElement('option');
+            option.value = cat.id;
+            option.textContent = cat.name;
+            select.appendChild(option);
+        });
+    }
 }
 
-async function handleFormSubmit(e) {
-  e.preventDefault();
+/**
+ * Validates the product form data.
+ *
+ * @param {Object} data - The form data to validate.
+ * @returns {Object} An object containing validation error messages.
+ */
+function validateProductForm(data) {
+    const errors = {};
 
-  const form = e.target;
-  const data = serializeForm(form);
-  
-  // Convert boolean fields
-  data.is_active = !!form.elements['is_active'].checked;
+    // Map boolean value for is_active from checkbox state directly
+    const isActiveEl = document.querySelector('[name="is_active"]');
+    data.is_active = isActiveEl ? isActiveEl.checked : false;
 
-  const errors = validateForm(data);
+    if (!data.name) {
+        errors.name = 'Product name is required.';
+    }
 
-  if (Object.keys(errors).length > 0) {
-    showErrors(errors);
-    return;
-  }
+    if (!data.slug) {
+        errors.slug = 'Slug is required.';
+    } else if (!/^[a-z0-9-]+$/.test(data.slug)) {
+        errors.slug = 'Slug can only contain letters, numbers, and hyphens.';
+    }
 
-  productModal.setLoading(true);
+    if (!data.price) {
+        errors.price = 'Original price is required.';
+    } else if (isNaN(data.price) || Number(data.price) < 0) {
+        errors.price = 'Price must be a positive number.';
+    }
 
-  let result;
-  if (currentMode === 'create') {
-    result = await ProductService.createProduct(data);
-  } else {
-    result = await ProductService.updateProduct(currentProductId, data);
-  }
-
-  productModal.setLoading(false, 'Saving…', currentMode === 'create' ? 'Submit' : 'Save Changes');
-
-  if (result.error) {
-    showToast({ message: result.error, type: 'error' });
-    return;
-  }
-
-  showToast({ 
-    message: currentMode === 'create' ? 'Product created successfully' : 'Product updated successfully', 
-    type: 'success' 
-  });
-  
-  productModal.close();
-  dataTable.refresh();
+    return errors;
 }
 
-// Form Utilities
+/**
+ * Fills the product form with existing product data for editing.
+ *
+ * @param {Object} product - The product data.
+ */
+function fillProductForm(product) {
+    const categoryId = product.category_id ||
+        (product.category ? product.category.id : '');
 
-function validateForm(data) {
-  const errors = {};
+    // Ensure status is correctly converted to boolean
+    const isActive = product.is_active === 'true' ||
+        product.is_active === true;
 
-  if (!data.name) {
-    errors.name = 'Product name is required.';
-  }
+    const fieldMap = {
+        name: product.name || '',
+        slug: product.slug || '',
+        category_id: categoryId || '',
+        price: product.price || '',
+        price_discount: product.price_discount || '',
+        description: product.description || ''
+    };
 
-  if (!data.slug) {
-    errors.slug = 'Slug is required.';
-  } else if (!/^[a-z0-9-]+$/.test(data.slug)) {
-    errors.slug = 'Slug can only contain lowercase letters, numbers, and hyphens.';
-  }
+    Object.entries(fieldMap).forEach(([name, value]) => {
+        const el = document.querySelector(`[name="${name}"]`);
+        if (el) el.value = value;
+    });
 
-  if (!data.price) {
-    errors.price = 'Original price is required.';
-  } else if (isNaN(data.price) || Number(data.price) < 0) {
-    errors.price = 'Price must be a positive number.';
-  }
-
-  return errors;
-}
-
-function fillForm(product) {
-  const fieldMap = {
-    name: product.name || '',
-    slug: product.slug || '',
-    category_id: product.category_id || '',
-    price: product.price || '',
-    price_discount: product.price_discount || '',
-    description: product.description || ''
-  };
-
-  Object.entries(fieldMap).forEach(([name, value]) => {
-    const el = document.querySelector(`[name="${name}"]`);
-    if (el) el.value = value;
-  });
-
-  const isActiveEl = document.querySelector('[name="is_active"]');
-  if (isActiveEl) {
-    isActiveEl.checked = product.is_active;
-  }
+    const isActiveEl = document.querySelector('[name="is_active"]');
+    if (isActiveEl) {
+        isActiveEl.checked = isActive;
+    }
 }

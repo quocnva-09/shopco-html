@@ -2,20 +2,22 @@ import { OrderAPI } from "../api/order.api.js";
 import { OrderDTO } from "../models/order.dto.js";
 
 export const OrderService = {
-  getUserOrders: async (page = 1) => {
+  getUserOrders: async (params = 1) => {
     try {
+      const page = typeof params === 'object' ? (params.page || 1) : params;
       const queryString = `page=${page}`;
       const response = await OrderAPI.getUserOrders(queryString);
 
       if (response && response.data) {
         const orders = response.data.map(
-          (orderData) => new OrderDTO(orderData),
+          (orderData) => new OrderDTO(orderData)
         );
         return {
           success: true,
           orders: orders,
+          items: orders,
           meta: response.meta,
-          links: response.links,
+          links: response.links
         };
       }
       return { success: false, error: "Invalid response format" };
@@ -25,20 +27,22 @@ export const OrderService = {
     }
   },
 
-  getAllOrders: async (page = 1) => {
+  getAllOrders: async (params = 1) => {
     try {
+      const page = typeof params === 'object' ? (params.page || 1) : params;
       const queryString = `page=${page}`;
       const response = await OrderAPI.getAllOrders(queryString);
 
       if (response && response.data) {
         const orders = response.data.map(
-          (orderData) => new OrderDTO(orderData),
+          (orderData) => new OrderDTO(orderData)
         );
         return {
           success: true,
           orders: orders,
+          items: orders,
           meta: response.meta,
-          links: response.links,
+          links: response.links
         };
       }
       return { success: false, error: "Invalid response format" };
@@ -55,12 +59,12 @@ export const OrderService = {
         return {
           success: true,
           order: new OrderDTO(response.data || response),
-          message: response.message,
+          message: response.message
         };
       }
       return {
         success: false,
-        error: response.message || "Failed to create order",
+        error: response.message || "Failed to create order"
       };
     } catch (error) {
       console.error("OrderService Error:", error);
@@ -74,7 +78,7 @@ export const OrderService = {
       if (response && (response.status === 200 || response.data)) {
         return {
           success: true,
-          order: new OrderDTO(response.data || response),
+          order: new OrderDTO(response.data || response)
         };
       }
       return { success: false, error: response.message || "Failed to update" };
@@ -88,9 +92,11 @@ export const OrderService = {
     try {
       const response = await OrderAPI.getOrderById(orderId);
       if (response && (response.status === 200 || response.data)) {
+        const order = new OrderDTO(response.data || response);
         return {
           success: true,
-          order: new OrderDTO(response.data || response),
+          order: order,
+          data: order
         };
       }
       return { success: false, error: response.message || "Failed to get order" };

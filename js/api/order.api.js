@@ -4,6 +4,7 @@ import { getAuthHeaders } from "../utils/handleHeader.js";
 
 const BASE_URL = ENV.BASE_URL;
 const API_ORDERS = `${BASE_URL.replace(/\/$/, "")}/orders`;
+const API_ORDERS_ADMIN = `${BASE_URL.replace(/\/$/, "")}/admin/orders`;
 
 export const OrderAPI = {
   /**
@@ -52,7 +53,7 @@ export const OrderAPI = {
    */
   async getAllOrders(queryString = "") {
     try {
-      const response = await fetch(`${API_ORDERS}${queryString ? `?${queryString}` : ""}`, {
+      const response = await fetch(`${API_ORDERS_ADMIN}${queryString ? `?${queryString}` : ""}`, {
         method: "GET",
         headers: getAuthHeaders(),
       });
@@ -72,8 +73,8 @@ export const OrderAPI = {
    */
   async updateStatus(orderId, status) {
     try {
-      const response = await fetch(`${API_ORDERS}/${orderId}/status`, {
-        method: "PUT",
+      const response = await fetch(`${API_ORDERS_ADMIN}/${orderId}/status`, {
+        method: "PATCH",
         headers: getAuthHeaders(),
         body: JSON.stringify({ status }),
       });
