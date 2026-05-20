@@ -2,7 +2,7 @@ import { initSidebar } from './components/sidebar.js';
 import { initHeader } from './components/header.js';
 import { initMetricsCards } from './components/metrics-card.js';
 import { initOrderTags } from './components/order-tags.js';
-import { initUserTable } from './components/user-table.js';
+import { initUserModule } from './modules/user.module.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Admin Components
@@ -16,6 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (headerContainer) initHeader(headerContainer);
   if (metricsContainer) initMetricsCards(metricsContainer);
   if (orderTagsContainer) initOrderTags(orderTagsContainer);
-  if (usersContainer) initUserTable(usersContainer);
+  if (usersContainer) initUserModule(usersContainer);
 });
 

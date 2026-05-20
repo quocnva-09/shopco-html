@@ -14,8 +14,10 @@
  */
 
 import { UserService } from '../../services/user.service.js';
-import { initUserModal, openModal } from './user-modal.js';
 import { showToast } from './user-toast.js';
+
+let onCreateUserCallback = null;
+let onEditUserCallback = null;
 
 // ─────────────────────────────────────────────────────────────
 // State
@@ -47,9 +49,15 @@ let searchInputEl = null;
  * Must be called once with the wrapper container element.
  *
  * @param {HTMLElement} container
+ * @param {Object} options
+ * @param {Function} [options.onCreateUser]
+ * @param {Function} [options.onEditUser]
  */
-export function initUserTable(container) {
+export function initUserTable(container, options = {}) {
   if (!container) return;
+  
+  onCreateUserCallback = options.onCreateUser || null;
+  onEditUserCallback = options.onEditUser || null;
   containerEl = container;
 
   // Render structural shell
@@ -59,9 +67,6 @@ export function initUserTable(container) {
   tbodyEl = container.querySelector('.js-user-tbody');
   paginationEl = container.querySelector('.js-user-pagination');
   searchInputEl = container.querySelector('.js-user-search');
-
-  // Initialize modal (injected to <body>)
-  initUserModal(refreshTable);
 
   // Bind toolbar events
   bindToolbarEvents(container);
@@ -443,7 +448,7 @@ function bindToolbarEvents(container) {
   // Create user button
   container.addEventListener('click', (e) => {
     if (e.target.closest('.js-create-user-btn')) {
-      openModal('create');
+      if (onCreateUserCallback) onCreateUserCallback();
     }
   });
 }
@@ -459,7 +464,7 @@ function bindTableEvents(container) {
     const editBtn = e.target.closest('.js-edit-user');
     if (editBtn) {
       const { id, name, email, phone, address, bio, role } = editBtn.dataset;
-      openModal('edit', { id, name, email, phone, address, bio, role });
+      if (onEditUserCallback) onEditUserCallback({ id, name, email, phone, address, bio, role });
       return;
     }
 
@@ -640,4 +645,11 @@ function formatDate(dateStr) {
   } catch {
     return dateStr;
   }
+}
+
+/**
+ * Publicly expose refreshTable so the parent module can call it.
+ */
+export async function refreshUserTable() {
+  return refreshTable();
 }

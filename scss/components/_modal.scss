@@ -1,10 +1,10 @@
 @use "../abstracts/admin-variables" as *;
 
 // ============================================================
-// .user-modal — Create / Edit modal overlay + panel
+// .modal  ECreate / Edit modal overlay + panel
 // ============================================================
 
-.user-modal {
+.modal {
   display: none;
   position: fixed;
   inset: 0;
@@ -104,7 +104,7 @@
 }
 
 // ============================================================
-// .user-form — Form layout inside modal
+// .user-form  EForm layout inside modal
 // ============================================================
 
 .user-form {

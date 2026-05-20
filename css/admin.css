@@ -469,7 +469,7 @@ ul {
   margin-left: auto;
 }
 
-.user-modal {
+.modal {
   display: none;
   position: fixed;
   inset: 0;
@@ -480,10 +480,10 @@ ul {
   background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
 }
-.user-modal--open {
+.modal--open {
   display: flex;
 }
-.user-modal__panel {
+.modal__panel {
   width: 100%;
   max-width: 560px;
   max-height: 90vh;
@@ -495,7 +495,7 @@ ul {
   flex-direction: column;
   animation: modalSlideIn 0.2s ease;
 }
-.user-modal__header {
+.modal__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -506,13 +506,13 @@ ul {
   background-color: #ffffff;
   z-index: 1;
 }
-.user-modal__title {
+.modal__title {
   font-size: 1.6rem;
   font-weight: 600;
   color: #171717;
   margin: 0;
 }
-.user-modal__close {
+.modal__close {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -525,19 +525,19 @@ ul {
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
-.user-modal__close svg {
+.modal__close svg {
   width: 18px;
   height: 18px;
 }
-.user-modal__close:hover {
+.modal__close:hover {
   background-color: #fafafa;
   color: #171717;
 }
-.user-modal__body {
+.modal__body {
   padding: 24px;
   flex: 1;
 }
-.user-modal__footer {
+.modal__footer {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
