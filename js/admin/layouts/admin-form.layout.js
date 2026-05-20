@@ -2,7 +2,7 @@
  * User Form Layout
  * Returns the HTML for the user form content inside the modal.
  */
-export function buildUserFormLayout(formId) {
+export function buildAdminFormLayout(formId) {
   return `
     <form class="admin-form js-admin-form" novalidate id="${formId}">
       <div class="admin-form__row">
@@ -52,7 +52,7 @@ export function buildUserFormLayout(formId) {
   `;
 }
 
-export function buildUserFormFooter(formId, submitBtnId, cancelBtnId) {
+export function buildAdminFormFooter(formId, submitBtnId, cancelBtnId) {
   return `
     <button class="admin-btn admin-btn--ghost js-modal-close" type="button" id="${cancelBtnId}">Cancel</button>
     <button class="admin-btn admin-btn--primary js-modal-submit" type="submit" form="${formId}" id="${submitBtnId}">

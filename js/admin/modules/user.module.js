@@ -1,9 +1,10 @@
 import { Modal } from '../components/modal.js';
 import { DataTable } from '../components/table.js';
-import { buildUserFormLayout, buildUserFormFooter } from '../layouts/user-form.layout.js';
+import { buildAdminFormLayout, buildAdminFormFooter } from '../layouts/admin-form.layout.js';
 import { buildUserRow, buildTrashedUserRow } from '../layouts/user-table.layout.js';
 import { UserService } from '../../services/user.service.js';
 import { showToast } from '../components/toast.js';
+import { serializeForm, showErrors, clearErrors, resetFormState } from '../../utils/admin-form.util.js';
 
 let userModal = null;
 let dataTable = null;
@@ -27,8 +28,8 @@ export function initUserModule(container) {
   userModal = new Modal({
     id: 'user-modal',
     title: 'Create User',
-    bodyHTML: buildUserFormLayout(formId),
-    footerHTML: buildUserFormFooter(formId, submitBtnId, cancelBtnId),
+    bodyHTML: buildAdminFormLayout(formId),
+    footerHTML: buildAdminFormFooter(formId, submitBtnId, cancelBtnId),
     onClose: resetFormState
   });
 
@@ -182,18 +183,7 @@ async function handleFormSubmit(e) {
   dataTable.refresh();
 }
 
-// ─────────────────────────────────────────────────────────────
-// Utilities
-// ─────────────────────────────────────────────────────────────
-
-function serializeForm(form) {
-  const data = {};
-  const formData = new FormData(form);
-  formData.forEach((value, key) => {
-    data[key] = value.trim();
-  });
-  return data;
-}
+// Utils
 
 function validateForm(data, mode) {
   const errors = {};
@@ -217,36 +207,6 @@ function validateForm(data, mode) {
   }
 
   return errors;
-}
-
-function showErrors(errors) {
-  clearErrors();
-  Object.entries(errors).forEach(([field, message]) => {
-    const input = document.querySelector(`[name="${field}"]`);
-    const errorEl = document.querySelector(`.js-field-error[data-field="${field}"]`);
-    if (input) input.classList.add('admin-form__input--error');
-    if (errorEl) {
-      errorEl.textContent = message;
-      errorEl.classList.add('admin-form__error--visible');
-    }
-  });
-}
-
-function clearErrors() {
-  document.querySelectorAll('.js-field-error').forEach(el => {
-    el.textContent = '';
-    el.classList.remove('admin-form__error--visible');
-  });
-  document.querySelectorAll('.admin-form__input--error').forEach(el => {
-    el.classList.remove('admin-form__input--error');
-  });
-}
-
-function resetFormState() {
-  const form = document.querySelector('.js-admin-form');
-  if (form) form.reset();
-  clearErrors();
-  currentUserId = null;
 }
 
 function fillForm(user) {

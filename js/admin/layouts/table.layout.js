@@ -67,29 +67,29 @@ export function buildPaginationHTML(meta) {
     if (i === 1 || i === total || Math.abs(i - current) <= 1) {
       pages += `
         <button
-          class="pagination__btn${i === current ? ' pagination__page--active' : ''} js-page-btn"
+          class="admin-pagination__btn${i === current ? ' admin-pagination__btn--active' : ''} js-page-btn"
           type="button"
           data-page="${i}"
           aria-label="Page ${i}"
           ${i === current ? 'aria-current="page"' : ''}
         >${i}</button>`;
     } else if (Math.abs(i - current) === 2) {
-      pages += `<span class="pagination__dots">…</span>`;
+      pages += `<span class="admin-pagination__dots">…</span>`;
     }
   }
 
   return `
-    <div class="pagination js-table-pagination" role="navigation" aria-label="Pagination">
-      <button class="pagination__btn js-prev-btn" type="button" aria-label="Previous page" ${current <= 1 ? 'disabled' : ''}>
+    <div class="admin-pagination js-table-pagination" role="navigation" aria-label="Pagination">
+      <button class="admin-pagination__btn js-prev-btn" type="button" aria-label="Previous page" ${current <= 1 ? 'disabled' : ''}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
-      <div class="pagination__pages">
+      <div class="admin-pagination__pages">
         ${pages}
       </div>
-      <button class="pagination__btn js-next-btn" type="button" aria-label="Next page" ${current >= total ? 'disabled' : ''}>
+      <button class="admin-pagination__btn js-next-btn" type="button" aria-label="Next page" ${current >= total ? 'disabled' : ''}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
-      <span class="pagination__info">Page ${current} of ${total}</span>
+      <span class="admin-pagination__info">Page ${current} of ${total}</span>
     </div>
   `;
 }

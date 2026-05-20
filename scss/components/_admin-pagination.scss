@@ -1,0 +1,73 @@
+@use "../abstracts/admin-variables" as *;
+
+// ============================================================
+// .admin-pagination — Pagination bar for admin tables
+// ============================================================
+
+.admin-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-1;
+  padding: $space-4 0;
+  flex-wrap: wrap;
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 $space-2;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    font-family: $font-sans;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: $color-ink;
+    background-color: $color-canvas;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    &:hover:not(:disabled):not(.admin-pagination__page--active) {
+      background-color: $color-canvas-soft;
+      border-color: $color-border-hover;
+    }
+
+    &--active {
+      background-color: $color-ink;
+      border-color: $color-ink;
+      color: $color-canvas;
+      pointer-events: none;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__info {
+    font-size: 1.3rem;
+    color: $color-mute;
+    padding: 0 $space-2;
+  }
+
+  &__dots {
+    font-size: 1.3rem;
+    color: $color-mute;
+    padding: 0 $space-1;
+    line-height: 36px;
+  }
+}
