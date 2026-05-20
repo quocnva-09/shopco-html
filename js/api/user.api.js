@@ -1,57 +1,9 @@
 import { ENV } from "../config/env.js";
+import { handleResponse } from "../utils/handleResponse.js";
+import { getAuthHeaders } from "../utils/handleHeader.js";
 
 const BASE_URL = ENV.BASE_URL;
-
-// ─────────────────────────────────────────────────────────────
-// Shared fetch wrapper
-// ─────────────────────────────────────────────────────────────
-
-/**
- * Shared authenticated fetch wrapper.
- * Returns a normalized { data, meta, error } object — never throws.
- *
- * @param {string} endpoint - Path relative to BASE_URL (e.g. '/admin/users').
- * @param {RequestInit} [options={}] - Fetch options (method, body, etc.).
- * @returns {Promise<{ data: any, meta: any, error: string|null }>}
- */
-async function apiFetch(endpoint, options = {}) {
-  const token = localStorage.getItem("access_token");
-
-  const defaultHeaders = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    ...(token ? { Authorization: `Bearer ${token}` } : {}),
-  };
-
-  try {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
-      ...options,
-      headers: {
-        ...defaultHeaders,
-        ...(options.headers || {}),
-      },
-    });
-
-    const json = await response.json();
-
-    if (!response.ok) {
-      const message = json?.message || `Request failed with status ${response.status}`;
-      return { data: null, meta: null, error: message };
-    }
-
-    return {
-      data: json?.data ?? json,
-      meta: json?.meta ?? null,
-      error: null,
-    };
-  } catch (err) {
-    return { data: null, meta: null, error: err.message || "Network error" };
-  }
-}
-
-// ─────────────────────────────────────────────────────────────
-// User-facing endpoints
-// ─────────────────────────────────────────────────────────────
+const API_USERS = `${BASE_URL.replace(/\/$/, "")}`;
 
 /**
  * Updates a user's own profile.
@@ -62,30 +14,46 @@ async function apiFetch(endpoint, options = {}) {
  * @returns {Promise<{ data: Object, meta: null, error: string|null }>}
  */
 export async function updateUserProfile(id, data) {
-  return apiFetch(`/users/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch(`${API_USERS}/users/${id}`, {
+      method: "PUT",
+      headers: getAuthHeaders(),
+      body: JSON.stringify(data),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error(`Failed to update user profile for ID ${id}:`, error);
+    return { data: null, meta: null, error: error.message || "Failed to update profile" };
+  }
 }
-
-// ─────────────────────────────────────────────────────────────
-// Admin endpoints
-// ─────────────────────────────────────────────────────────────
 
 /**
  * Fetches a paginated list of active users (admin).
  *
- * @param {{ page?: number, per_page?: number, search?: string, sort_by?: string, sort_dir?: string }} [params={}]
+ * @param {string} [queryString=""]
  * @returns {Promise<{ data: Array, meta: Object, error: string|null }>}
  */
-export async function getUsers(params = {}) {
-  const query = new URLSearchParams(
-    Object.fromEntries(
-      Object.entries(params).filter(([, v]) => v !== "" && v !== null && v !== undefined)
-    )
-  ).toString();
-
-  return apiFetch(`/admin/users${query ? `?${query}` : ""}`);
+export async function getUsers(queryString = "") {
+  try {
+    const response = await fetch(`${API_USERS}/admin/users${queryString ? `?${queryString}` : ""}`, {
+      method: "GET",
+      headers: getAuthHeaders(),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
+    return { data: null, meta: null, error: error.message || "Failed to fetch users" };
+  }
 }
 
 /**
@@ -95,7 +63,21 @@ export async function getUsers(params = {}) {
  * @returns {Promise<{ data: Object, meta: null, error: string|null }>}
  */
 export async function getUser(id) {
-  return apiFetch(`/admin/users/${id}`);
+  try {
+    const response = await fetch(`${API_USERS}/admin/users/${id}`, {
+      method: "GET",
+      headers: getAuthHeaders(),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error(`Failed to fetch user by ID ${id}:`, error);
+    return { data: null, meta: null, error: error.message || "Failed to fetch user" };
+  }
 }
 
 /**
@@ -105,10 +87,22 @@ export async function getUser(id) {
  * @returns {Promise<{ data: Object, meta: null, error: string|null }>}
  */
 export async function createUser(data) {
-  return apiFetch("/admin/users", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch(`${API_USERS}/admin/users`, {
+      method: "POST",
+      headers: getAuthHeaders(),
+      body: JSON.stringify(data),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error("Failed to create user:", error);
+    return { data: null, meta: null, error: error.message || "Failed to create user" };
+  }
 }
 
 /**
@@ -120,10 +114,22 @@ export async function createUser(data) {
  * @returns {Promise<{ data: Object, meta: null, error: string|null }>}
  */
 export async function updateUser(id, data) {
-  return apiFetch(`/users/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch(`${API_USERS}/users/${id}`, {
+      method: "PUT",
+      headers: getAuthHeaders(),
+      body: JSON.stringify(data),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error(`Failed to update user ID ${id}:`, error);
+    return { data: null, meta: null, error: error.message || "Failed to update user" };
+  }
 }
 
 /**
@@ -133,25 +139,45 @@ export async function updateUser(id, data) {
  * @returns {Promise<{ data: Object, meta: null, error: string|null }>}
  */
 export async function deleteUser(id) {
-  return apiFetch(`/admin/users/${id}`, {
-    method: "DELETE",
-  });
+  try {
+    const response = await fetch(`${API_USERS}/admin/users/${id}`, {
+      method: "DELETE",
+      headers: getAuthHeaders(),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error(`Failed to delete user ID ${id}:`, error);
+    return { data: null, meta: null, error: error.message || "Failed to delete user" };
+  }
 }
 
 /**
  * Fetches a paginated list of soft-deleted (trashed) users (admin).
  *
- * @param {{ page?: number, per_page?: number, search?: string }} [params={}]
+ * @param {string} [queryString=""]
  * @returns {Promise<{ data: Array, meta: Object, error: string|null }>}
  */
-export async function getTrashedUsers(params = {}) {
-  const query = new URLSearchParams(
-    Object.fromEntries(
-      Object.entries(params).filter(([, v]) => v !== "" && v !== null && v !== undefined)
-    )
-  ).toString();
-
-  return apiFetch(`/admin/users/trashed${query ? `?${query}` : ""}`);
+export async function getTrashedUsers(queryString = "") {
+  try {
+    const response = await fetch(`${API_USERS}/admin/users/trashed${queryString ? `?${queryString}` : ""}`, {
+      method: "GET",
+      headers: getAuthHeaders(),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error("Failed to fetch trashed users:", error);
+    return { data: null, meta: null, error: error.message || "Failed to fetch trashed users" };
+  }
 }
 
 /**
@@ -161,9 +187,21 @@ export async function getTrashedUsers(params = {}) {
  * @returns {Promise<{ data: Object, meta: null, error: string|null }>}
  */
 export async function restoreUser(id) {
-  return apiFetch(`/admin/users/${id}/restore`, {
-    method: "PATCH",
-  });
+  try {
+    const response = await fetch(`${API_USERS}/admin/users/${id}/restore`, {
+      method: "PATCH",
+      headers: getAuthHeaders(),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error(`Failed to restore user ID ${id}:`, error);
+    return { data: null, meta: null, error: error.message || "Failed to restore user" };
+  }
 }
 
 /**
@@ -173,7 +211,31 @@ export async function restoreUser(id) {
  * @returns {Promise<{ data: Object, meta: null, error: string|null }>}
  */
 export async function forceDeleteUser(id) {
-  return apiFetch(`/admin/users/${id}/force-delete`, {
-    method: "DELETE",
-  });
+  try {
+    const response = await fetch(`${API_USERS}/admin/users/${id}/force-delete`, {
+      method: "DELETE",
+      headers: getAuthHeaders(),
+    });
+    const json = await handleResponse(response);
+    return {
+      data: json?.data ?? json,
+      meta: json?.meta ?? null,
+      error: null,
+    };
+  } catch (error) {
+    console.error(`Failed to force delete user ID ${id}:`, error);
+    return { data: null, meta: null, error: error.message || "Failed to force delete user" };
+  }
 }
+
+export const UserAPI = {
+  updateUserProfile,
+  getUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
+  getTrashedUsers,
+  restoreUser,
+  forceDeleteUser,
+};

@@ -74,7 +74,12 @@ async function updateProfile(id, data) {
  * @returns {Promise<{ users: UserDTO[], meta: Object|null, error: string|null }>}
  */
 async function fetchUsers(params = {}) {
-  const { data, meta, error } = await getUsers(params);
+  const query = new URLSearchParams(
+    Object.fromEntries(
+      Object.entries(params).filter(([, v]) => v !== "" && v !== null && v !== undefined)
+    )
+  ).toString();
+  const { data, meta, error } = await getUsers(query);
   return {
     users: toDTOList(data),
     meta,
@@ -143,7 +148,12 @@ async function trashUser(id) {
  * @returns {Promise<{ users: UserDTO[], meta: Object|null, error: string|null }>}
  */
 async function fetchTrashedUsers(params = {}) {
-  const { data, meta, error } = await getTrashedUsers(params);
+  const query = new URLSearchParams(
+    Object.fromEntries(
+      Object.entries(params).filter(([, v]) => v !== "" && v !== null && v !== undefined)
+    )
+  ).toString();
+  const { data, meta, error } = await getTrashedUsers(query);
   return {
     users: toDTOList(data),
     meta,

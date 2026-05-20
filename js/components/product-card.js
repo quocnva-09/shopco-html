@@ -1,4 +1,4 @@
-import { ReviewAPI } from "../api/review.api.js";
+import { ReviewService } from "../services/review.service.js";
 
 export function renderRating(rating) {
   let stars = "";
@@ -40,7 +40,7 @@ export async function generateProductCardsHTML(products) {
       // Process load product and get avg review rating for product
       let reviews = [];
       try {
-        reviews = await ReviewAPI.getByProduct(product.id);
+        reviews = await ReviewService.getByProduct(product.id);
       } catch (err) {
         console.error(`Failed to load reviews for product ${product.id}`);
       }

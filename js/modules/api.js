@@ -1,5 +1,5 @@
 import { ProductService } from "../services/product.service.js";
-import { ReviewAPI } from "../api/review.api.js";
+import { ReviewService } from "../services/review.service.js";
 import {
   generateProductCardsHTML,
   renderRating,
@@ -10,7 +10,7 @@ import { generateReviewCardHTML } from "../components/review-card.js";
 async function showReviews(filterRating = 0) {
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id") || 1;
-  let reviews = await ReviewAPI.getByProduct(productId);
+  let reviews = await ReviewService.getByProduct(productId);
 
   reviews =
     filterRating === 0
@@ -183,7 +183,7 @@ async function loadFeedbackSlider() {
 
   let reviews = [];
   try {
-    reviews = await ReviewAPI.getAll();
+    reviews = await ReviewService.getAll();
   } catch (error) {
     console.error("Error loading reviews for feedback slider:", error);
     return;

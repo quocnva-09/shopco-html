@@ -17,9 +17,10 @@
  * @type {Array<{ match: string, selector: string }>}
  */
 const NAV_ROUTES = [
-  { match: 'admin-users', selector: '.js-nav-customers' },
+  { match: 'admin-dashboard', selector: '.js-nav-overview' },
   { match: 'admin-orders', selector: '.js-nav-orders' },
   { match: 'admin-products', selector: '.js-nav-products' },
+  { match: 'admin-users', selector: '.js-nav-users' },
   { match: 'admin-categories', selector: '.js-nav-categories' },
   { match: 'admin-reviews', selector: '.js-nav-reviews' },
 ];
@@ -56,8 +57,8 @@ function buildSidebarHTML() {
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="admin-users.html" class="admin-sidebar__link js-nav-customers">
-              <i data-lucide="users"></i> Customers
+            <a href="admin-users.html" class="admin-sidebar__link js-nav-users">
+              <i data-lucide="users"></i> Users
             </a>
           </li>
           <li class="admin-sidebar__item">

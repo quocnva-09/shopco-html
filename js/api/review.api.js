@@ -1,8 +1,13 @@
-import { ReviewDTO } from "../models/review.dto.js";
+
 import { ENV } from "../config/env.js";
+import { handleResponse } from "../utils/handleResponse.js";
+import { getAuthHeaders } from "../utils/handleHeader.js";
+import { getNoAcceptHeader } from "../utils/handleHeader.js";
 
 const BASE_URL = ENV.BASE_URL;
 const API_REVIEWS = `${BASE_URL.replace(/\/$/, "")}`;
+
+
 
 export const ReviewAPI = {
   /**
@@ -10,17 +15,16 @@ export const ReviewAPI = {
    * @param {number|string} productId
    * @returns {Promise<ReviewDTO[]>}
    */
-  async getByProduct(productId) {
+  async getByProduct(productId, queryString = "") {
     try {
       const response = await fetch(
-        `${API_REVIEWS}/products/${productId}/reviews?limit=6`,
+        `${API_REVIEWS}/products/${productId}/reviews${queryString ? `?${queryString}` : ""}`,
+        {
+          method: "GET",
+          headers: getNoAcceptHeader(),
+        }
       );
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-      const data = await response.json();
-      // Map raw API responses to ReviewDTO objects
-      return data.data.map((review) => new ReviewDTO(review));
+      return await handleResponse(response);
     } catch (error) {
       console.error("Failed to fetch product reviews:", error);
       return [];
@@ -31,18 +35,70 @@ export const ReviewAPI = {
    * Fetch all approved reviews (e.g. for homepage slider).
    * @returns {Promise<ReviewDTO[]>}
    */
-  async getAll() {
+  async getAll(queryString = "") {
     try {
-      const response = await fetch(`${API_REVIEWS}/reviews?limit=8`);
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-      const data = await response.json();
-      // Map raw API responses to ReviewDTO objects
-      return data.data.map((review) => new ReviewDTO(review));
+      const response = await fetch(`${API_REVIEWS}/reviews${queryString ? `?${queryString}` : ""}`, {
+        method: "GET",
+        headers: getNoAcceptHeader(),
+      });
+      return await handleResponse(response);
     } catch (error) {
       console.error("Failed to fetch reviews:", error);
       return [];
+    }
+  },
+
+  async createReview(reviewData) {
+    try {
+      const response = await fetch(`${API_REVIEWS}/reviews`, {
+        method: "POST",
+        headers: getAuthHeaders(),
+        body: JSON.stringify(reviewData),
+      });
+      return await handleResponse(response);
+    } catch (error) {
+      console.error("Failed to create review:", error);
+      return null;
+    }
+  },
+
+  async getById(reviewId) {
+    try {
+      const response = await fetch(`${API_REVIEWS}/reviews/${reviewId}`, {
+        method: "GET",
+        headers: getNoAcceptHeader(),
+      });
+      return await handleResponse(response);
+    } catch (error) {
+      console.error("Failed to fetch review:", error);
+      return null;
+    }
+  },
+
+  async approveReview(reviewId) {
+    try {
+      const response = await fetch(`${API_REVIEWS}/reviews/${reviewId}/approve`, {
+        method: "PATCH",
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ is_approved: true }),
+      });
+      return await handleResponse(response);
+    } catch (error) {
+      console.error("Failed to approve review:", error);
+      return null;
+    }
+  },
+
+  async deleteReview(reviewId) {
+    try {
+      const response = await fetch(`${API_REVIEWS}/reviews/${reviewId}`, {
+        method: "DELETE",
+        headers: getAuthHeaders(),
+      });
+      return await handleResponse(response);
+    } catch (error) {
+      console.error("Failed to delete review:", error);
+      return null;
     }
   },
 };
