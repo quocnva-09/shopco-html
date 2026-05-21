@@ -37,11 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
     new RangeSlider(rangeSliderEl);
   }
 
-  const sidebarFilterEl = document.querySelector('.js-sidebar-filter');
-  if (sidebarFilterEl) {
-    new SidebarFilter(sidebarFilterEl);
-  }
-
   processMobileFilter();
 
   // Order Page Specific logic

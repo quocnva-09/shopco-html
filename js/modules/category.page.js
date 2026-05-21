@@ -1,31 +1,6 @@
 import { ProductService } from "../services/product.service.js";
-import { CategoryService } from "../services/category.service.js";
+import SidebarFilter from "../components/sidebar-filter.js";
 import { generateProductCardsHTML } from "../components/product-card.js";
-
-const COLORS = [
-  { name: "green", hex: "#00c12b" },
-  { name: "red", hex: "#f50606" },
-  { name: "yellow", hex: "#f5dd06" },
-  { name: "orange", hex: "#f57906" },
-  { name: "cyan", hex: "#06caf5" },
-  { name: "blue", hex: "#063af5", checked: true },
-  { name: "purple", hex: "#7d06f5" },
-  { name: "pink", hex: "#f506a4" },
-  { name: "white", hex: "#ffffff", border: true },
-  { name: "black", hex: "#000000" }
-];
-
-const SIZES = [
-  { value: "XXS", label: "XX-Small" },
-  { value: "XS", label: "X-Small" },
-  { value: "S", label: "Small" },
-  { value: "M", label: "Medium" },
-  { value: "L", label: "Large", checked: true },
-  { value: "XL", label: "X-Large" },
-  { value: "XXL", label: "XX-Large" },
-  { value: "3XL", label: "3X-Large" },
-  { value: "4XL", label: "4X-Large" }
-];
 
 let productsData = [];
 let currentPage = 1;
@@ -144,106 +119,25 @@ window.changePage = function (page) {
   }
 };
 
-async function initFilters() {
-  // Load categories
-  const categoriesContainer = document.querySelector(".js-categories-filter .filter-group__list");
-  if (categoriesContainer) {
-    try {
-      const categoriesData = await CategoryService.getPublicCategories();
-      const categories = categoriesData.data || categoriesData;
-      if (Array.isArray(categories)) {
-        categoriesContainer.innerHTML = categories.map(cat => `
-          <li class="filter-group__item">
-            <a href="#" class="js-category-link" data-id="${cat.id}">${cat.name}</a>
-            <img src="assets/icons/vector-direct-right.svg" alt="Right" />
-          </li>
-        `).join("");
-        
-        // Add click event for category links to select them
-        const categoryLinks = categoriesContainer.querySelectorAll('.js-category-link');
-        categoryLinks.forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Toggle active state
-            const isActive = link.classList.contains('active-category');
-            categoryLinks.forEach(l => l.classList.remove('active-category', 'font-weight-bold'));
-            if (!isActive) {
-              link.classList.add('active-category', 'font-weight-bold');
-            }
-          });
-        });
-      }
-    } catch (error) {
-      console.error("Failed to load categories:", error);
-    }
-  }
-
-  // Render colors
-  const colorSelector = document.querySelector(".js-color-selector");
-  if (colorSelector) {
-    colorSelector.innerHTML = COLORS.map((color, idx) => `
-      <input type="radio" name="color-filter" id="color-f${idx}" value="${color.name}" class="color-selector__input" ${color.checked ? 'checked' : ''} />
-      <label for="color-f${idx}" class="color-selector__label" style="background-color: ${color.hex}; ${color.border ? 'border: 1px solid #ccc' : ''}"></label>
-    `).join("");
-  }
-
-  // Render sizes
-  const sizeSelector = document.querySelector(".js-size-selector");
-  if (sizeSelector) {
-    sizeSelector.innerHTML = SIZES.map((size, idx) => `
-      <input type="radio" name="size-filter" id="size-f${idx}" value="${size.value}" class="size-selector__input" ${size.checked ? 'checked' : ''} />
-      <label for="size-f${idx}" class="size-selector__label">${size.label}</label>
-    `).join("");
-  }
-
-  // Handle Apply Filter
-  const btnApply = document.querySelector(".js-apply-filter");
-  if (btnApply) {
-    btnApply.addEventListener("click", () => {
-      const params = {};
-
-      // Category
-      const activeCategory = document.querySelector('.js-category-link.active-category');
-      if (activeCategory) {
-        params.category_id = activeCategory.getAttribute('data-id');
-      }
-
-      // Range Slider
-      const rangeSlider = document.querySelector(".js-range-slider");
-      if (rangeSlider) {
-        params.minPrice = rangeSlider.getAttribute("data-current-min") || rangeSlider.getAttribute("data-min");
-        params.maxPrice = rangeSlider.getAttribute("data-current-max") || rangeSlider.getAttribute("data-max");
-      }
-
-      // Color
-      const selectedColor = document.querySelector('input[name="color-filter"]:checked');
-      if (selectedColor) {
-        params.color = selectedColor.value;
-      }
-
-      // Size
-      const selectedSize = document.querySelector('input[name="size-filter"]:checked');
-      if (selectedSize) {
-        params.size = selectedSize.value;
-      }
-
-      // Reset page and reload
-      currentPage = 1;
-      loadCategoryProducts(params);
-    });
-  }
-}
-
 export function initCategoryPage() {
   const productContainer = document.getElementById("js-category-products");
   if (!productContainer) return; // Only run if we are on the category page
 
-  initFilters();
-  loadCategoryProducts();
+  const sidebarFilterEl = document.querySelector('.js-sidebar-filter');
+  if (sidebarFilterEl) {
+    new SidebarFilter(sidebarFilterEl, (params) => {
+      currentPage = 1;
+      loadCategoryProducts(params);
+    });
+  }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialParams = Object.fromEntries(urlParams.entries());
+  loadCategoryProducts(initialParams);
 
   window.addEventListener("resize", () => {
     if (!document.getElementById("js-category-products")) return;
-  
+
     const newItemsPerPage = getItemsPerPage();
     if (currentItemsPerPage !== newItemsPerPage) {
       currentItemsPerPage = newItemsPerPage;

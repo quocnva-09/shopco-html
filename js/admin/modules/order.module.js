@@ -99,15 +99,9 @@ function fillOrderForm(order) {
     const totalEl = document.getElementById('field-total-amount');
     const statusEl = document.getElementById('field-status');
 
-    if (idEl) {
-        idEl.value = order.id ? `#${order.id}` : '';
-    }
-    if (totalEl) {
-        totalEl.value = order.totalAmount ? `$${order.totalAmount}` : '';
-    }
-    if (statusEl) {
-        statusEl.value = order.status || 'pending';
-    }
+    if (idEl) idEl.value = order.id ? `#${order.id}` : '';
+    if (totalEl) totalEl.value = order.totalAmount ? `$${order.totalAmount}` : '';
+    if (statusEl) statusEl.value = order.status || 'pending';
 
     const itemsContainer = document.getElementById('field-order-items');
     if (itemsContainer) {
