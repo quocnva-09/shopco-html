@@ -6,7 +6,6 @@ export function authGuard() {
   const currentPath = window.location.pathname;
   const token = localStorage.getItem("access_token");
   
-  // Dùng try-catch để tránh lỗi sập app nếu JSON trong localStorage bị hỏng
   let user = null;
   try {
     user = JSON.parse(localStorage.getItem("user"));
@@ -17,27 +16,24 @@ export function authGuard() {
   const isLoggedIn = !!(token && user);
   const isAdmin = isLoggedIn && user.role === "admin";
 
-  // 1. NẾU CHƯA LOGIN
   if (!isLoggedIn) {
-    // Chỉ redirect nếu hiện tại KHÔNG PHẢI là trang auth
     if (!currentPath.includes("/auth.html")) {
-      window.location.replace("/auth.html"); // Dùng replace thay vì href để không rác lịch sử (Back button)
+      window.location.replace("/auth.html");
     }
     return;
   }
 
-  // 2. NẾU ĐÃ LOGIN VÀ LÀ ADMIN
-  if (isAdmin) {
-    // Chỉ redirect nếu hiện tại KHÔNG PHẢI là trang admin
-    if (!currentPath.includes("/admin-dashboard.html")) {
-      window.location.replace("/admin-dashboard.html");
+  if (currentPath.includes("/auth.html")) {
+    if (isAdmin) {
+      window.location.replace("/admin/dashboard.html");
+    } else {
+      window.location.replace("/index.html");
     }
     return;
   }
 
-  // 3. NẾU ĐÃ LOGIN NHƯNG LÀ USER THƯỜNG
-  // Ngăn chặn user thường quay lại trang login hoặc cố ý truy cập trang admin
-  if (currentPath.includes("/auth.html") || currentPath.includes("/admin-dashboard.html")) {
-    window.location.replace("/");
+  if (!isAdmin && currentPath.includes("/admin")) {
+    window.location.replace("/index.html");
+    return;
   }
 }

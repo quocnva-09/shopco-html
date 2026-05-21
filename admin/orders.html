@@ -1,53 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Categories | Shop.co</title>
+  <title>Admin Orders | Shop.co</title>
 
-  <!-- Guard -->
-  
+  <!-- Middleware -->
+  <script type="module">
+    import { authGuard } from '../js/middleware/auth.guard.js';
+    authGuard();
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href="https://api.fontshare.com/v2/css?f[]=integral-cf@700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=integral-cf@700&f[]=satoshi@400,500,700&display=swap"
+    rel="stylesheet">
+
   <!-- Styles -->
   <link rel="stylesheet" href="../css/admin.css">
 
   <!-- Lucide Icons (similar to Vercel's clean icons) -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
 
   <div class="admin-layout">
-    
+
     <!-- Sidebar Container -->
     <div class="js-admin-sidebar-container"></div>
 
     <!-- Main Content Area -->
     <main class="admin-main">
-      
+
       <!-- Top Header Container -->
       <div class="js-admin-header-container"></div>
 
       <!-- Dashboard Content -->
       <div class="admin-main__content">
         <div class="admin-dashboard">
-          
+
           <div class="admin-dashboard__header">
-            <h1 class="admin-dashboard__title">Categories</h1>
+            <h1 class="admin-dashboard__title">Orders</h1>
           </div>
 
           <!-- Data Table Container -->
-           <div class="js-admin-categories-container"></div>
+          <div class="js-admin-orders-container"></div>
 
         </div>
       </div>
     </main>
   </div>
 
-  <script type="module" src="./js/admin/main.js"></script>
+  <script type="module" src="../js/admin/main.js"></script>
 </body>
+
 </html>

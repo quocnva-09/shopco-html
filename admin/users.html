@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Customers | Shop.co</title>
+
+  <!-- Middleware -->
+  <script type="module">
+    import { authGuard } from '../js/middleware/auth.guard.js';
+    authGuard();
+  </script>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +18,7 @@
   <link href="https://api.fontshare.com/v2/css?f[]=integral-cf@700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="./css/admin.css">
+  <link rel="stylesheet" href="../css/admin.css">
 
   <!-- Lucide Icons (similar to Vercel's clean icons) -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -46,6 +52,6 @@
     </main>
   </div>
 
-  <script type="module" src="./js/admin/main.js"></script>
+  <script type="module" src="../js/admin/main.js"></script>
 </body>
 </html>

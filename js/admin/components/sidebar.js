@@ -17,12 +17,12 @@
  * @type {Array<{ match: string, selector: string }>}
  */
 const NAV_ROUTES = [
-  { match: 'admin-dashboard', selector: '.js-nav-overview' },
-  { match: 'admin-orders', selector: '.js-nav-orders' },
-  { match: 'admin-products', selector: '.js-nav-products' },
-  { match: 'admin-users', selector: '.js-nav-users' },
-  { match: 'admin-categories', selector: '.js-nav-categories' },
-  { match: 'admin-reviews', selector: '.js-nav-reviews' },
+  { match: 'admin/dashboard', selector: '.js-nav-overview' },
+  { match: 'admin/orders', selector: '.js-nav-orders' },
+  { match: 'admin/products', selector: '.js-nav-products' },
+  { match: 'admin/users', selector: '.js-nav-users' },
+  { match: 'admin/categories', selector: '.js-nav-categories' },
+  { match: 'admin/reviews', selector: '.js-nav-reviews' },
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -42,32 +42,32 @@ function buildSidebarHTML() {
       <nav class="admin-sidebar__nav">
         <ul class="admin-sidebar__list">
           <li class="admin-sidebar__item">
-            <a href="admin-dashboard.html" class="admin-sidebar__link js-nav-overview">
+            <a href="dashboard.html" class="admin-sidebar__link js-nav-overview">
               <i data-lucide="layout-dashboard"></i> Overview
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="admin-orders.html" class="admin-sidebar__link js-nav-orders">
+            <a href="orders.html" class="admin-sidebar__link js-nav-orders">
               <i data-lucide="shopping-cart"></i> Orders
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="admin-products.html" class="admin-sidebar__link js-nav-products">
+            <a href="products.html" class="admin-sidebar__link js-nav-products">
               <i data-lucide="package"></i> Products
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="admin-users.html" class="admin-sidebar__link js-nav-users">
+            <a href="users.html" class="admin-sidebar__link js-nav-users">
               <i data-lucide="users"></i> Users
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="admin-categories.html" class="admin-sidebar__link js-nav-categories">
+            <a href="categories.html" class="admin-sidebar__link js-nav-categories">
               <i data-lucide="tag"></i> Categories
             </a>
           </li>
           <li class="admin-sidebar__item">
-            <a href="admin-reviews.html" class="admin-sidebar__link js-nav-reviews">
+            <a href="reviews.html" class="admin-sidebar__link js-nav-reviews">
               <i data-lucide="star"></i> Reviews
             </a>
           </li>
