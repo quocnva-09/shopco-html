@@ -135,6 +135,18 @@
       object-fit: cover;
     }
   }
+
+  &__logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $color-danger;
+    padding: $space-2 $space-3;
+    transition: opacity 0.2s ease;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
 }
 
 .admin-main {

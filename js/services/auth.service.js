@@ -28,7 +28,7 @@ export const AuthService = {
     return {
       success: true,
       userName: userName,
-      redirectUrl: "/index.html",
+      redirectUrl: data.user.role === "admin" ? "/admin-dashboard.html" : "/index.html",
     };
   },
 

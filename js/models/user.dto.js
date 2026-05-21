@@ -7,7 +7,7 @@ export class UserDTO {
     this.phone = data.phone || "No phone";
     this.bio = data.bio || "No bio";
     this.address = data.address || "No address";
-    this.avatar = data.profile_image || "No avatar";
+    this.avatar = data.profile_image || "https://shopco-s3.s3.ap-southeast-1.amazonaws.com/fallback/avatar.png";
     this.role = data.role || "user";
     this.createdAt = data.created_at || null;
   }

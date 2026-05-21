@@ -1,5 +1,5 @@
 import { BaseCrudManager } from '../controller/BaseCrudManager.js';
-import { buildAdminFormLayout, buildAdminFormFooter } from '../layouts/admin-form.layout.js';
+import { buildUserFormLayout, buildUserFormFooter } from '../layouts/user-form.layout.js';
 import { buildUserRow, buildTrashedUserRow } from '../layouts/user-table.layout.js';
 import { UserService } from '../../services/user.service.js';
 
@@ -26,8 +26,8 @@ export function initUserModule(container) {
     },
 
     layouts: {
-      formBody: buildAdminFormLayout(formId),
-      formFooter: buildAdminFormFooter(formId, 'modal-save-btn', 'modal-cancel-btn'),
+      formBody: buildUserFormLayout(formId),
+      formFooter: buildUserFormFooter(formId, 'modal-save-btn', 'modal-cancel-btn'),
       row: buildUserRow,
       trashedRow: buildTrashedUserRow
     },

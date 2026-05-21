@@ -1,3 +1,5 @@
+import { UserDTO } from "../../models/user.dto.js";
+
 /**
  * Initializes the admin header component and injects it into the DOM.
  * 
@@ -5,6 +7,10 @@
  */
 export function initHeader(container) {
   if (!container) return;
+
+  const userStorage = JSON.parse(localStorage.getItem('user')) || {};
+  const user = new UserDTO(userStorage);
+  
 
   const headerHTML = `
     <header class="admin-header">
@@ -17,9 +23,12 @@ export function initHeader(container) {
           <i data-lucide="bell" style="width: 20px; height: 20px; color: #999;"></i>
         </button>
         <div class="admin-header__user">
-          <img src="./assets/images/pic-profile-demo.jpg" alt="Admin" onerror="this.src='https://ui-avatars.com/api/?name=Admin&background=random'">
-          <span>Admin</span>
+          <img src="${user.avatar}" alt="${user.name}">
+          <span>${user.name}</span>
         </div>
+        <button class="admin-header__logout js-logout-btn" aria-label="Logout">
+          <i data-lucide="log-out"></i>
+        </button>
       </div>
     </header>
   `;
@@ -32,6 +41,7 @@ export function initHeader(container) {
 
   // Handle toggle event
   const toggleBtn = container.querySelector('.js-sidebar-toggle');
+  const logoutBtn = container.querySelector('.js-logout-btn');
   
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
@@ -40,6 +50,14 @@ export function initHeader(container) {
       if (sidebarEl) {
         sidebarEl.classList.add('admin-sidebar--open');
       }
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('user');
+      localStorage.removeItem('access_token');
+      window.location.href = '/auth.html';
     });
   }
 }
