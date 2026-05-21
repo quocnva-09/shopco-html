@@ -63,10 +63,10 @@ export class DataTable {
   }
 
   _renderShell() {
-    const { columns, searchPlaceholder, actionBtnText } = this.options;
+    const { columns, searchPlaceholder, actionBtnText, exportBtnText } = this.options;
     
     this.container.innerHTML = `
-      ${buildTableToolbarHTML(searchPlaceholder, actionBtnText, 'table-create-btn')}
+      ${buildTableToolbarHTML(searchPlaceholder, actionBtnText, 'table-create-btn', exportBtnText)}
       ${buildTableWrapperHTML(columns)}
       <div class="js-table-pagination-container"></div>
       ${buildConfirmDialogHTML()}
@@ -114,6 +114,13 @@ export class DataTable {
     this.container.addEventListener('click', (e) => {
       if (e.target.closest('.js-create-btn')) {
         this.options.onAction('create', null);
+      }
+    });
+
+    // Toolbar: Export
+    this.container.addEventListener('click', (e) => {
+      if (e.target.closest('.js-export-btn')) {
+        this.options.onAction('export', null);
       }
     });
 

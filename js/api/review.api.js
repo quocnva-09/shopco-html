@@ -5,9 +5,8 @@ import { getAuthHeaders } from "../utils/handleHeader.js";
 import { getNoAcceptHeader } from "../utils/handleHeader.js";
 
 const BASE_URL = ENV.BASE_URL;
-const API_REVIEWS = `${BASE_URL.replace(/\/$/, "")}`;
-
-
+const API_REVIEWS = `${BASE_URL.replace(/\/$/, "")}/reviews`;
+const API_ADMIN_REVIEWS = `${BASE_URL.replace(/\/$/, "")}/admin/reviews`;
 
 export const ReviewAPI = {
   /**
@@ -18,7 +17,7 @@ export const ReviewAPI = {
   async getByProduct(productId, queryString = "") {
     try {
       const response = await fetch(
-        `${API_REVIEWS}/products/${productId}/reviews${queryString ? `?${queryString}` : ""}`,
+        `${BASE_URL}/products/${productId}/reviews${queryString ? `?${queryString}` : ""}`,
         {
           method: "GET",
           headers: getNoAcceptHeader(),
@@ -37,7 +36,7 @@ export const ReviewAPI = {
    */
   async getAll(queryString = "") {
     try {
-      const response = await fetch(`${API_REVIEWS}/reviews${queryString ? `?${queryString}` : ""}`, {
+      const response = await fetch(`${API_REVIEWS}${queryString ? `?${queryString}` : ""}`, {
         method: "GET",
         headers: getNoAcceptHeader(),
       });
@@ -50,7 +49,7 @@ export const ReviewAPI = {
 
   async createReview(reviewData) {
     try {
-      const response = await fetch(`${API_REVIEWS}/reviews`, {
+      const response = await fetch(`${API_REVIEWS}`, {
         method: "POST",
         headers: getAuthHeaders(),
         body: JSON.stringify(reviewData),
@@ -64,7 +63,7 @@ export const ReviewAPI = {
 
   async getById(reviewId) {
     try {
-      const response = await fetch(`${API_REVIEWS}/reviews/${reviewId}`, {
+      const response = await fetch(`${API_REVIEWS}/${reviewId}`, {
         method: "GET",
         headers: getNoAcceptHeader(),
       });
@@ -77,7 +76,7 @@ export const ReviewAPI = {
 
   async approveReview(reviewId) {
     try {
-      const response = await fetch(`${API_REVIEWS}/reviews/${reviewId}/approve`, {
+      const response = await fetch(`${API_ADMIN_REVIEWS}/${reviewId}/approve`, {
         method: "PATCH",
         headers: getAuthHeaders(),
         body: JSON.stringify({ is_approved: true }),
@@ -91,7 +90,7 @@ export const ReviewAPI = {
 
   async deleteReview(reviewId) {
     try {
-      const response = await fetch(`${API_REVIEWS}/reviews/${reviewId}`, {
+      const response = await fetch(`${API_ADMIN_REVIEWS}/${reviewId}`, {
         method: "DELETE",
         headers: getAuthHeaders(),
       });

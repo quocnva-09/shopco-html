@@ -23,6 +23,7 @@ const NAV_ROUTES = [
   { match: 'admin/users', selector: '.js-nav-users' },
   { match: 'admin/categories', selector: '.js-nav-categories' },
   { match: 'admin/reviews', selector: '.js-nav-reviews' },
+  { match: 'admin/exports', selector: '.js-nav-exports' },
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -69,6 +70,11 @@ function buildSidebarHTML() {
           <li class="admin-sidebar__item">
             <a href="reviews.html" class="admin-sidebar__link js-nav-reviews">
               <i data-lucide="star"></i> Reviews
+            </a>
+          </li>
+          <li class="admin-sidebar__item">
+            <a href="exports.html" class="admin-sidebar__link js-nav-exports">
+              <i data-lucide="download-cloud"></i> Exports
             </a>
           </li>
         </ul>

@@ -3,7 +3,14 @@
  * Provides HTML builder functions for the generic data table.
  */
 
-export function buildTableToolbarHTML(searchPlaceholder = 'Search…', actionBtnText = '+ Create', actionBtnId = 'create-btn') {
+export function buildTableToolbarHTML(searchPlaceholder = 'Search…', actionBtnText = '+ Create', actionBtnId = 'create-btn', exportBtnText = null) {
+  const exportBtnHtml = exportBtnText 
+    ? `<button class="admin-btn admin-btn--outline js-export-btn" type="button" style="margin-right: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        ${exportBtnText}
+       </button>`
+    : '';
+
   return `
     <div class="toolbar js-toolbar">
       <div class="toolbar__search">
@@ -25,6 +32,7 @@ export function buildTableToolbarHTML(searchPlaceholder = 'Search…', actionBtn
       </div>
 
       <div class="toolbar__actions">
+        ${exportBtnHtml}
         <button class="admin-btn admin-btn--primary js-create-btn" id="${actionBtnId}" type="button">
           ${actionBtnText}
         </button>

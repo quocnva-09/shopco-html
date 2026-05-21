@@ -9,25 +9,32 @@ const API_ADMIN_PRODUCTS = `${BASE_URL.replace(/\/$/, "")}/admin/products`;
 export const ProductAPI = {
   /**
    * Fetch all products from backend.
-   * 
+   *
    * @returns {Promise<Object>} The response data.
    */
   async getAll(queryString = "") {
     try {
-      const response = await fetch(`${API_PRODUCTS}${queryString ? `?${queryString}` : ""}`, {
-        method: "GET",
-        headers: getNoAcceptHeader(),
-      });
+      const response = await fetch(
+        `${API_PRODUCTS}${queryString ? `?${queryString}` : ""}`,
+        {
+          method: "GET",
+          headers: getNoAcceptHeader(),
+        },
+      );
       return await handleResponse(response);
     } catch (error) {
       console.error("Failed to fetch products:", error);
-      return { status: 500, message: error.message || "Lỗi kết nối đến server", data: [] };
+      return {
+        status: 500,
+        message: error.message || "Lỗi kết nối đến server",
+        data: [],
+      };
     }
   },
 
   /**
    * Fetch a single product by ID.
-   * 
+   *
    * @param {number|string} id - The product ID.
    * @returns {Promise<Object>} The product details response.
    */
@@ -40,7 +47,11 @@ export const ProductAPI = {
       return await handleResponse(response);
     } catch (error) {
       console.error(`Failed to fetch product by ID ${id}:`, error);
-      return { status: 500, message: error.message || "Failed to fetch product", data: null };
+      return {
+        status: 500,
+        message: error.message || "Failed to fetch product",
+        data: null,
+      };
     }
   },
 
@@ -58,7 +69,11 @@ export const ProductAPI = {
       return await handleResponse(response);
     } catch (error) {
       console.error("Failed to create product:", error);
-      return { status: 500, message: error.message || "Failed to create product", data: null };
+      return {
+        status: 500,
+        message: error.message || "Failed to create product",
+        data: null,
+      };
     }
   },
 
@@ -72,7 +87,11 @@ export const ProductAPI = {
       return await handleResponse(response);
     } catch (error) {
       console.error(`Failed to update product by ID ${id}:`, error);
-      return { status: 500, message: error.message || "Failed to update product", data: null };
+      return {
+        status: 500,
+        message: error.message || "Failed to update product",
+        data: null,
+      };
     }
   },
 
@@ -85,33 +104,51 @@ export const ProductAPI = {
       return await handleResponse(response);
     } catch (error) {
       console.error(`Failed to delete product by ID ${id}:`, error);
-      return { status: 500, message: error.message || "Failed to delete product", data: null };
+      return {
+        status: 500,
+        message: error.message || "Failed to delete product",
+        data: null,
+      };
     }
   },
 
   async getAdminProducts(queryString = "") {
     try {
-      const response = await fetch(`${API_ADMIN_PRODUCTS}${queryString ? `?${queryString}` : ""}`, {
-        method: "GET",
-        headers: getAuthHeaders(),
-      });
+      const response = await fetch(
+        `${API_ADMIN_PRODUCTS}${queryString ? `?${queryString}` : ""}`,
+        {
+          method: "GET",
+          headers: getAuthHeaders(),
+        },
+      );
       return await handleResponse(response);
     } catch (error) {
       console.error("Failed to fetch admin products:", error);
-      return { status: 500, message: error.message || "Failed to fetch products", data: [] };
+      return {
+        status: 500,
+        message: error.message || "Failed to fetch products",
+        data: [],
+      };
     }
   },
 
   async getTrashedProducts(queryString = "") {
     try {
-      const response = await fetch(`${API_ADMIN_PRODUCTS}/trashed${queryString ? `?${queryString}` : ""}`, {
-        method: "GET",
-        headers: getAuthHeaders(),
-      });
+      const response = await fetch(
+        `${API_ADMIN_PRODUCTS}/trashed${queryString ? `?${queryString}` : ""}`,
+        {
+          method: "GET",
+          headers: getAuthHeaders(),
+        },
+      );
       return await handleResponse(response);
     } catch (error) {
       console.error("Failed to fetch trashed products:", error);
-      return { status: 500, message: error.message || "Failed to fetch trashed products", data: [] };
+      return {
+        status: 500,
+        message: error.message || "Failed to fetch trashed products",
+        data: [],
+      };
     }
   },
 
@@ -124,7 +161,11 @@ export const ProductAPI = {
       return await handleResponse(response);
     } catch (error) {
       console.error(`Failed to restore product by ID ${id}:`, error);
-      return { status: 500, message: error.message || "Failed to restore product", data: null };
+      return {
+        status: 500,
+        message: error.message || "Failed to restore product",
+        data: null,
+      };
     }
   },
 
@@ -137,7 +178,11 @@ export const ProductAPI = {
       return await handleResponse(response);
     } catch (error) {
       console.error(`Failed to force delete product by ID ${id}:`, error);
-      return { status: 500, message: error.message || "Failed to force delete product", data: null };
+      return {
+        status: 500,
+        message: error.message || "Failed to force delete product",
+        data: null,
+      };
     }
   },
 };

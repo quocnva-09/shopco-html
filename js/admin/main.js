@@ -6,6 +6,8 @@ import { initUserModule } from './modules/user.module.js';
 import { initCategoryModule } from './modules/category.module.js';
 import { initProductModule } from './modules/product.module.js';
 import { initOrderModule } from './modules/order.module.js';
+import { initReviewModule } from './modules/review.module.js';
+import { initExportModule } from './modules/export.module.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Admin Components
@@ -25,6 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.js-admin-products-container');
   const orderContainer =
     document.querySelector('.js-admin-orders-container');
+  const reviewContainer =
+    document.querySelector('.js-reviews-table-container');
+  const exportContainer =
+    document.querySelector('.js-exports-table-container');
 
   if (sidebarContainer) initSidebar(sidebarContainer);
   if (headerContainer) initHeader(headerContainer);
@@ -34,5 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (categoryContainer) initCategoryModule(categoryContainer);
   if (productContainer) initProductModule(productContainer);
   if (orderContainer) initOrderModule(orderContainer);
+  if (reviewContainer) initReviewModule(reviewContainer);
+  if (exportContainer) initExportModule(exportContainer);
 });
+
 
