@@ -2,7 +2,8 @@ import { initHeader } from './components/header.js';
 import { initFooter } from './components/footer.js';
 import { initAuth } from './modules/auth.js';
 import { initProfile } from './modules/profile.js';
-import { initApiData } from './modules/api.js';
+import { initHomePage } from './modules/home.page.js';
+import { initCategoryPage } from './modules/category.page.js';
 import { initProductPage } from './modules/product-page.js';
 import { initCartPage } from './modules/cart-page.js';
 import { initOrderPage } from './modules/order.js';
@@ -20,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initProfile();
 
 
-  // API data
-  initApiData();
+  // Home Page logic
+  initHomePage();
 
   // Product Page Specific logic
   initProductPage();
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCartPage();
 
   // Category Page Specific logic
+  initCategoryPage();
   const rangeSliderEl = document.querySelector('.js-range-slider');
   if (rangeSliderEl) {
     new RangeSlider(rangeSliderEl);

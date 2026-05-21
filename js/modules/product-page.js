@@ -1,5 +1,7 @@
 import { ProductService } from "../services/product.service.js";
 import { CartService } from "../services/cart.service.js";
+import { ReviewService } from "../services/review.service.js";
+import { generateReviewCardHTML } from "../components/review-card.js";
 import { formatPrice } from "../utils/format.js";
 import { toast } from "../utils/toast.js";
 
@@ -121,9 +123,7 @@ function processFilter() {
   ratingRows.forEach((ratingRow) => {
     ratingRow.addEventListener("click", () => {
       const selectedRating = Number(ratingRow.getAttribute("data-rating"));
-      if (typeof showReviews === "function") {
-        showReviews(selectedRating);
-      }
+      showReviews(selectedRating);
       menu.style.display = "none";
     });
   });
@@ -134,6 +134,26 @@ function processFilter() {
     } else {
       menu.style.display = "flex";
     }
+  });
+}
+
+// ── showReviews logic ───────────────────────────────────
+async function showReviews(filterRating = 0) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get("id") || 1;
+  let reviews = await ReviewService.getByProduct(productId);
+
+  reviews =
+    filterRating === 0
+      ? reviews
+      : reviews.filter((review) => Math.floor(review.rating) === filterRating);
+
+  const reviewContainer = document.getElementById("js-reviews-grid");
+  if (!reviewContainer) return;
+
+  reviewContainer.innerHTML = "";
+  reviews.forEach((review) => {
+    reviewContainer.innerHTML += generateReviewCardHTML(review);
   });
 }
 
@@ -334,4 +354,5 @@ export async function initProductPage() {
   processTabs();
   processFilter();
   productSlider();
+  showReviews();
 }

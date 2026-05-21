@@ -33,28 +33,9 @@
 
         <div class="sidebar__content">
           <!-- Categories -->
-          <div class="filter-group filter-group--categories">
+          <div class="filter-group filter-group--categories js-categories-filter">
             <ul class="filter-group__list">
-              <li class="filter-group__item">
-                <a href="#">T-shirts</a>
-                <img src="assets/icons/vector-direct-right.svg" alt="Right" />
-              </li>
-              <li class="filter-group__item">
-                <a href="#">Shorts</a>
-                <img src="assets/icons/vector-direct-right.svg" alt="Right" />
-              </li>
-              <li class="filter-group__item">
-                <a href="#">Shirts</a>
-                <img src="assets/icons/vector-direct-right.svg" alt="Right" />
-              </li>
-              <li class="filter-group__item">
-                <a href="#">Hoodie</a>
-                <img src="assets/icons/vector-direct-right.svg" alt="Right" />
-              </li>
-              <li class="filter-group__item">
-                <a href="#">Jeans</a>
-                <img src="assets/icons/vector-direct-right.svg" alt="Right" />
-              </li>
+              <!-- JS will populate categories here -->
             </ul>
           </div>
 
@@ -92,32 +73,9 @@
               <h3 class="filter-group__title">Colors</h3>
               <img src="assets/icons/icn-arrow-down.svg" class="filter-group__icon" alt="Toggle" />
             </div>
-            <div class="filter-group__content">
-              <div class="color-selector">
-                <!-- Color options as in design -->
-                <input type="radio" name="color-filter" id="color-f1" value="green" class="color-selector__input" />
-                <label for="color-f1" class="color-selector__label" style="background-color: #00c12b"></label>
-                <input type="radio" name="color-filter" id="color-f2" value="red" class="color-selector__input" />
-                <label for="color-f2" class="color-selector__label" style="background-color: #f50606"></label>
-                <input type="radio" name="color-filter" id="color-f3" value="yellow" class="color-selector__input" />
-                <label for="color-f3" class="color-selector__label" style="background-color: #f5dd06"></label>
-                <input type="radio" name="color-filter" id="color-f4" value="orange" class="color-selector__input" />
-                <label for="color-f4" class="color-selector__label" style="background-color: #f57906"></label>
-                <input type="radio" name="color-filter" id="color-f5" value="cyan" class="color-selector__input" />
-                <label for="color-f5" class="color-selector__label" style="background-color: #06caf5"></label>
-
-                <input type="radio" name="color-filter" id="color-f6" value="blue" class="color-selector__input"
-                  checked />
-                <label for="color-f6" class="color-selector__label" style="background-color: #063af5"></label>
-                <input type="radio" name="color-filter" id="color-f7" value="purple" class="color-selector__input" />
-                <label for="color-f7" class="color-selector__label" style="background-color: #7d06f5"></label>
-                <input type="radio" name="color-filter" id="color-f8" value="pink" class="color-selector__input" />
-                <label for="color-f8" class="color-selector__label" style="background-color: #f506a4"></label>
-                <input type="radio" name="color-filter" id="color-f9" value="white" class="color-selector__input" />
-                <label for="color-f9" class="color-selector__label"
-                  style="background-color: #ffffff; border: 1px solid #ccc"></label>
-                <input type="radio" name="color-filter" id="color-f10" value="black" class="color-selector__input" />
-                <label for="color-f10" class="color-selector__label" style="background-color: #000000"></label>
+            <div class="filter-group__content ">
+              <div class="color-selector js-color-selector">
+                <!-- JS will populate colors here -->
               </div>
             </div>
           </div>
@@ -131,26 +89,8 @@
               <img src="assets/icons/icn-arrow-down.svg" class="filter-group__icon" alt="Toggle" />
             </div>
             <div class="filter-group__content">
-              <div class="size-selector size-selector--grid">
-                <input type="radio" name="size-filter" id="size-f1" value="XX-Small" class="size-selector__input" />
-                <label for="size-f1" class="size-selector__label">XX-Small</label>
-                <input type="radio" name="size-filter" id="size-f2" value="X-Small" class="size-selector__input" />
-                <label for="size-f2" class="size-selector__label">X-Small</label>
-                <input type="radio" name="size-filter" id="size-f3" value="Small" class="size-selector__input" />
-                <label for="size-f3" class="size-selector__label">Small</label>
-                <input type="radio" name="size-filter" id="size-f4" value="Medium" class="size-selector__input" />
-                <label for="size-f4" class="size-selector__label">Medium</label>
-                <input type="radio" name="size-filter" id="size-f5" value="Large" class="size-selector__input"
-                  checked />
-                <label for="size-f5" class="size-selector__label">Large</label>
-                <input type="radio" name="size-filter" id="size-f6" value="X-Large" class="size-selector__input" />
-                <label for="size-f6" class="size-selector__label">X-Large</label>
-                <input type="radio" name="size-filter" id="size-f7" value="XX-Large" class="size-selector__input" />
-                <label for="size-f7" class="size-selector__label">XX-Large</label>
-                <input type="radio" name="size-filter" id="size-f8" value="3X-Large" class="size-selector__input" />
-                <label for="size-f8" class="size-selector__label">3X-Large</label>
-                <input type="radio" name="size-filter" id="size-f9" value="4X-Large" class="size-selector__input" />
-                <label for="size-f9" class="size-selector__label">4X-Large</label>
+              <div class="size-selector size-selector--grid js-size-selector">
+                <!-- JS will populate sizes here -->
               </div>
             </div>
           </div>
