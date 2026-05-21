@@ -94,7 +94,9 @@ export class BaseCrudManager {
         if (this.config.onPrepareForm) this.config.onPrepareForm("edit");
 
         let fillData = dataset ? { ...dataset } : {};
-        if (this.currentId && !dataset.name) {
+        const shouldFetch = !dataset.name
+          || this.config.alwaysFetchOnEdit;
+        if (this.currentId && shouldFetch) {
           try {
             const result = await service.fetchOne(this.currentId);
             if (result && result.error) {

@@ -319,8 +319,8 @@ export async function initProductPage() {
   if (id) {
     currentProductId = id;
     try {
-      const product = await ProductService.getProductById(id);
-      renderProduct(product);
+      const rawProduct = await ProductService.getProductById(id);
+      renderProduct(rawProduct.data);
     } catch (error) {
       console.error("Failed to load product details:", error);
       toast.show("Failed to load product details.", "error");

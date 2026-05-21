@@ -19,3 +19,11 @@ export const getNoAcceptHeader = () => {
     "Content-Type": "application/json",
   };
 };
+
+export function getUploadHeaders() {
+  const token = localStorage.getItem("access_token");
+  return {
+    Accept: "application/json",
+    Authorization: token ? `Bearer ${token}` : "",
+  };
+}

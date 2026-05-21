@@ -41,6 +41,53 @@ export function buildProductFormLayout(formId) {
         <textarea class="admin-form__textarea" id="field-description" name="description" placeholder="Product description..." rows="3"></textarea>
       </div>
 
+      <div class="admin-form__group">
+        <label class="admin-form__label">Product Images</label>
+
+        <div class="admin-form__input--image js-images-preview-container">
+          <!-- Upload Trigger Card -->
+          <div
+            class="admin-form__image-trigger js-upload-trigger-card"
+            onclick="document.getElementById('field-image-upload').click();"
+          >
+            <svg
+              class="admin-form__image-trigger-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span class="admin-form__image-trigger-label">
+              Add Image
+            </span>
+          </div>
+        </div>
+
+        <input
+          type="file"
+          id="field-image-upload"
+          accept="image/*"
+          multiple
+          style="display: none;"
+        >
+        <input
+          type="hidden"
+          name="images"
+          id="field-images-json"
+          value="[]"
+        >
+        <span
+          class="admin-form__error js-field-error"
+          data-field="images"
+        ></span>
+      </div>
+
       <div class="admin-form__group" style="display: flex; align-items: center; gap: 8px;">
         <input type="checkbox" id="field-is-active" name="is_active" value="true" checked>
         <label class="admin-form__label" for="field-is-active" style="margin-bottom: 0;">Is Active</label>

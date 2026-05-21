@@ -91,4 +91,110 @@
       display: block;
     }
   }
+
+  // ── Image upload grid ──────────────────────────────
+  &__input--image {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-3;
+    margin-bottom: $space-3;
+  }
+
+  &__image-trigger {
+    width: 80px;
+    height: 80px;
+    border: 2px dashed $color-border;
+    border-radius: $radius-md;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: $color-canvas-soft;
+    -webkit-transition: border-color 0.2s ease,
+      background-color 0.2s ease;
+    -moz-transition: border-color 0.2s ease,
+      background-color 0.2s ease;
+    -o-transition: border-color 0.2s ease,
+      background-color 0.2s ease;
+    transition: border-color 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover {
+      border-color: $color-accent;
+      background: $color-canvas;
+    }
+  }
+
+  &__image-trigger-icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: $space-1;
+  }
+
+  &__image-trigger-label {
+    font-size: 1rem;
+    color: $color-mute;
+    font-weight: 500;
+  }
+
+  // ── Image preview thumbnails ───────────────────────
+  &__image-preview {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: $radius-md;
+    overflow: hidden;
+    border: 1px solid $color-border;
+    -webkit-transition: border-color 0.2s ease;
+    -moz-transition: border-color 0.2s ease;
+    -o-transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: $color-accent;
+    }
+
+    &:hover .admin-form__image-preview-remove {
+      opacity: 1;
+    }
+  }
+
+  &__image-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__image-preview-remove {
+    position: absolute;
+    top: $space-1;
+    right: $space-1;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: $color-canvas;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    line-height: 1;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease,
+      background-color 0.2s ease;
+    -moz-transition: opacity 0.2s ease,
+      background-color 0.2s ease;
+    -o-transition: opacity 0.2s ease,
+      background-color 0.2s ease;
+    transition: opacity 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover {
+      background: $color-danger;
+    }
+  }
 }
