@@ -2,6 +2,7 @@ import { ProductService } from "../services/product.service.js";
 import { CartService } from "../services/cart.service.js";
 import { ReviewService } from "../services/review.service.js";
 import { generateReviewCardHTML } from "../components/review-card.js";
+import { generateProductCardsHTML } from "../components/product-card.js";
 import { formatPrice } from "../utils/format.js";
 import { toast } from "../utils/toast.js";
 
@@ -157,13 +158,47 @@ async function showReviews(filterRating = 0) {
   });
 }
 
-function productSlider() {
+async function initRelatedProducts(categoryId, currentId) {
+  const list = document.getElementById("js-related-products");
+  if (!list) return;
+
+  try {
+    const products = await ProductService.getAllProducts({ category_id: categoryId, limit: 8 });
+    
+    const relatedProducts = products
+      .filter(p => String(p.id) !== String(currentId))
+      .slice(0, 8);
+
+    if (relatedProducts.length > 0) {
+      list.innerHTML = await generateProductCardsHTML(relatedProducts);
+      setupSlider(list, relatedProducts.length);
+    } else {
+      list.innerHTML = "<p>No related products found.</p>";
+      const btnPrev = document.querySelector(".js-prev");
+      const btnNext = document.querySelector(".js-next");
+      if (btnPrev) btnPrev.style.display = "none";
+      if (btnNext) btnNext.style.display = "none";
+    }
+  } catch (error) {
+    console.error("Failed to load related products:", error);
+  }
+}
+
+function setupSlider(list, itemCount) {
   let currentIndex = 0;
-  const MAX_INDEX = 4;
+  const MAX_INDEX = Math.max(0, itemCount - 8);
   const btnPrev = document.querySelector(".js-prev");
   const btnNext = document.querySelector(".js-next");
 
   if (!btnPrev || !btnNext) return;
+
+  if (MAX_INDEX === 0) {
+    btnPrev.style.display = "none";
+    btnNext.style.display = "none";
+  } else {
+    btnPrev.style.display = "";
+    btnNext.style.display = "";
+  }
 
   btnPrev.addEventListener("click", () => {
     if (currentIndex > 0) {
@@ -182,7 +217,6 @@ function productSlider() {
   });
 
   function updateSlider() {
-    const list = document.getElementById("js-related-products");
     const firstCard = list.querySelector(".product-card");
     if (!firstCard || !list) return;
 
@@ -193,6 +227,7 @@ function productSlider() {
 
   let autoSlideInterval;
   function startAutoSlide() {
+    if (MAX_INDEX === 0) return;
     autoSlideInterval = setInterval(() => {
       if (currentIndex < MAX_INDEX) {
         currentIndex++;
@@ -335,12 +370,14 @@ export async function initProductPage() {
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
+  let categoryId = null;
 
   if (id) {
     currentProductId = id;
     try {
       const rawProduct = await ProductService.getProductById(id);
       renderProduct(rawProduct.data);
+      categoryId = rawProduct.data.category ? rawProduct.data.category.id : null;
     } catch (error) {
       console.error("Failed to load product details:", error);
       toast.show("Failed to load product details.", "error");
@@ -353,6 +390,8 @@ export async function initProductPage() {
   processProductInfo();
   processTabs();
   processFilter();
-  productSlider();
+  if (categoryId) {
+    await initRelatedProducts(categoryId, currentProductId);
+  }
   showReviews();
 }
