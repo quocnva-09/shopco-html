@@ -85,7 +85,7 @@ export const UserService = {
     async fetchUser(id) {
         const { data, error } = await UserAPI.getUser(id);
         return {
-            user: data ? toDTO(data) : null,
+            data: data ? toDTO(data) : null,
             error,
         };
     },

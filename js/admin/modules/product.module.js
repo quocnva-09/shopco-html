@@ -91,6 +91,8 @@ export function initProductModule(container) {
                 description,
                 is_active,
                 images,
+                sizes,
+                colors,
             } = data;
             return {
                 name,
@@ -101,6 +103,8 @@ export function initProductModule(container) {
                 description,
                 is_active,
                 images,
+                sizes,
+                colors,
             };
         },
 
@@ -175,6 +179,10 @@ function validateProductForm(data) {
         data.images = [];
     }
 
+    // Parse sizes and colors from comma-separated string to arrays
+    data.sizes = data.sizes ? data.sizes.split(',').map(s => s.trim()).filter(Boolean) : [];
+    data.colors = data.colors ? data.colors.split(',').map(c => c.trim()).filter(Boolean) : [];
+
     if (!data.name) {
         errors.name = "Product name is required.";
     }
@@ -227,6 +235,8 @@ function fillProductForm(product) {
         price_discount: product.price_discount
             || product.currentPrice || "",
         description: product.description || "",
+        sizes: Array.isArray(product.sizes) ? product.sizes.join(', ') : (product.sizes || ""),
+        colors: Array.isArray(product.colors) ? product.colors.join(', ') : (product.colors || ""),
     };
 
     Object.entries(fieldMap).forEach(

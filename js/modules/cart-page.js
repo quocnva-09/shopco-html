@@ -72,14 +72,16 @@ const renderSummaryList = (cartDTO) => {
   const deliveryFee = 15;
   const total = subtotal - discount + deliveryFee;
 
+  // Tạm thời chưa xử lí discount
+  // <li class="cart-summary__item cart-summary__item--discount">
+  //   <span class="cart-summary__label">Discount (-20%)</span>
+  //   <span class="cart-summary__value">-$${discount}</span>
+  // </li>
+
   return `
     <li class="cart-summary__item">
       <span class="cart-summary__label">Subtotal</span>
       <span class="cart-summary__value">$${subtotal}</span>
-    </li>
-    <li class="cart-summary__item cart-summary__item--discount">
-      <span class="cart-summary__label">Discount (-20%)</span>
-      <span class="cart-summary__value">-$${discount}</span>
     </li>
     <li class="cart-summary__item">
       <span class="cart-summary__label">Delivery Fee</span>
@@ -120,22 +122,21 @@ export async function initCartPage() {
 
       // Update Summary
       if (cartSummaryList && cartSummaryTotalContainer) {
-        // We render both list and total, so we can wrap them or replace the content appropriately
-        // Since original HTML has a ul list and then a total div, let's update them
         const subtotal = cart.subTotal || 0;
-        const discountRate = 0.2; // 20% discount
-        const discount = Math.round(subtotal * discountRate);
+        // Tạm thời chưa xử lí discount
+        // const discountRate = 0.2; // 20% discount
+        // const discount = Math.round(subtotal * discountRate);
+        // <li class="cart-summary__item cart-summary__item--discount">
+        //   <span class="cart-summary__label">Discount (-20%)</span>
+        //   <span class="cart-summary__value">-$${discount}</span>
+        // </li>
         const deliveryFee = 15;
-        const total = subtotal - discount + deliveryFee;
+        const total = subtotal + deliveryFee;
 
         cartSummaryList.innerHTML = `
           <li class="cart-summary__item">
             <span class="cart-summary__label">Subtotal</span>
             <span class="cart-summary__value">$${subtotal}</span>
-          </li>
-          <li class="cart-summary__item cart-summary__item--discount">
-            <span class="cart-summary__label">Discount (-20%)</span>
-            <span class="cart-summary__value">-$${discount}</span>
           </li>
           <li class="cart-summary__item">
             <span class="cart-summary__label">Delivery Fee</span>

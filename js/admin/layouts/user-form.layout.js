@@ -35,6 +35,47 @@ export function buildUserFormLayout(formId) {
       </div>
 
       <div class="admin-form__group">
+        <label class="admin-form__label">Avatar</label>
+        <div class="admin-form__input--image js-avatar-preview-container">
+          <!-- Upload Trigger Card -->
+          <div
+            class="admin-form__image-trigger js-upload-trigger-card"
+            onclick="document.getElementById('field-avatar-upload').click();"
+          >
+            <svg
+              class="admin-form__image-trigger-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span class="admin-form__image-trigger-label">
+              Add Avatar
+            </span>
+          </div>
+        </div>
+        <input
+          type="file"
+          id="field-avatar-upload"
+          accept="image/*"
+          style="display: none;"
+        >
+        <input
+          type="hidden"
+          name="avatar"
+          id="field-avatar-json"
+          value="[]"
+        >
+        <span class="admin-form__error js-field-error" data-field="avatar"></span>
+      </div>
+
+      <div class="admin-form__group">
         <label class="admin-form__label" for="field-phone">Phone</label>
         <input class="admin-form__input" type="tel" id="field-phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="off">
       </div>

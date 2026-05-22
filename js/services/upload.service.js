@@ -47,10 +47,13 @@ export const UploadService = {
         return { success: false, error: "No file provided" };
       }
 
+      console.log("File to upload", file)
+
       const response = await UploadAPI.uploadUserProfileImage(file);
       const isSuccess = response && (response.status === 200 || response.data);
 
       if (isSuccess) {
+        console.log("Upload image successfully", response.data);
         return {
           success: true,
           message: response.message || "Uploaded successfully",

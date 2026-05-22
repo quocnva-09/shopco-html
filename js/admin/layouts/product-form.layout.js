@@ -14,6 +14,16 @@ export function buildProductFormLayout(formId) {
       </div>
 
       <div class="admin-form__group">
+        <label class="admin-form__label" for="field-sizes">Sizes</label>
+        <input class="admin-form__input" type="text" id="field-sizes" name="sizes" placeholder="e.g. S, M, L, XL" autocomplete="off">
+      </div>
+
+      <div class="admin-form__group">
+        <label class="admin-form__label" for="field-colors">Colors</label>
+        <input class="admin-form__input" type="text" id="field-colors" name="colors" placeholder="e.g. Red, Green, Blue" autocomplete="off">
+      </div>
+
+      <div class="admin-form__group">
         <label class="admin-form__label" for="field-category">Category</label>
         <select class="admin-form__input" id="field-category" name="category_id">
           <!-- Populated dynamically via JS -->

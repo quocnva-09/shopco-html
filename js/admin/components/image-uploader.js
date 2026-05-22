@@ -11,6 +11,7 @@ export class ImageUploader {
      * @param {string} config.fileInputId - ID of the file input element
      * @param {string} config.hiddenInputId - ID of the hidden input for JSON string
      * @param {Function} config.uploadFn - Function that takes a File and returns {success, data: {imgPath, imageUrl}, error}
+     * @param {number} [config.maxImages] - Maximum number of images allowed
      */
     constructor(config) {
         this.config = config;
@@ -72,6 +73,14 @@ export class ImageUploader {
         if (files.length === 0) return;
 
         for (const file of files) {
+            if (this.config.maxImages && this.currentUploadedImages.length >= this.config.maxImages) {
+                showToast({
+                    message: `Maximum ${this.config.maxImages} image(s) allowed`,
+                    type: "warning",
+                });
+                break;
+            }
+
             const result = await this.config.uploadFn(file);
             if (result.success && result.data) {
                 this.currentUploadedImages.push({
@@ -151,7 +160,9 @@ export class ImageUploader {
             .map((img, i) => this.buildImagePreviewCard(img, i))
             .join("");
 
-        const triggerHtml = `
+        const showTrigger = !this.config.maxImages || this.currentUploadedImages.length < this.config.maxImages;
+
+        const triggerHtml = showTrigger ? `
             <div
                 class="admin-form__image-trigger js-upload-trigger-card"
                 onclick="document.getElementById('${this.config.fileInputId}').click();"
@@ -172,7 +183,7 @@ export class ImageUploader {
                 <span class="admin-form__image-trigger-label">
                     Add Image
                 </span>
-            </div>`;
+            </div>` : "";
 
         container.innerHTML = thumbsHtml + triggerHtml;
 

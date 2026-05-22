@@ -173,6 +173,8 @@ export class BaseCrudManager {
       const updateData = this.config.formatUpdateData
         ? this.config.formatUpdateData(data)
         : data;
+
+      console.log("Update data", updateData);
       result = await this.config.service.update(this.currentId, updateData);
     }
 
